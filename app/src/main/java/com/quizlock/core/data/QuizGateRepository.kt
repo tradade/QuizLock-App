@@ -1,6 +1,7 @@
 package com.quizlock.core.data
 
 import android.content.Context
+import androidx.room.withTransaction
 import com.quizlock.BuildConfig
 import com.quizlock.core.policy.PolicyConfig
 import com.quizlock.core.policy.PolicyEngine
@@ -332,10 +333,29 @@ class QuizGateRepository(
 
     suspend fun importQuestionsFromJsonString(jsonString: String): Int = withContext(Dispatchers.IO) {
         val questions = StarterPackImporter.parseQuestionsFromJson(jsonString)
-        if (questions.isNotEmpty()) {
-            database.questionDao().insertQuestions(questions)
+        importQuestions(questions).imported
+    }
+
+    suspend fun importQuestions(questions: List<QuestionEntity>): QuestionImportSummary = withContext(Dispatchers.IO) {
+        if (questions.isEmpty()) {
+            return@withContext QuestionImportSummary(imported = 0, duplicates = 0)
         }
-        questions.size
+
+        database.withTransaction {
+            val existing = database.questionDao().getQuestionIdentities()
+            val plan = QuestionDeduplicator.plan(
+                incoming = questions,
+                existingIds = existing.mapTo(HashSet()) { it.id },
+                existingKeys = existing.mapTo(HashSet()) {
+                    QuestionIdentity.contentKey(it.question, it.answer, it.ageBand, it.lang)
+                }
+            )
+
+            if (plan.toInsert.isNotEmpty()) {
+                database.questionDao().insertQuestions(plan.toInsert)
+            }
+            QuestionImportSummary(imported = plan.toInsert.size, duplicates = plan.duplicates)
+        }
     }
 
     suspend fun importQuestionsFromUrl(url: String): Result<Int> = withContext(Dispatchers.IO) {
@@ -364,6 +384,19 @@ class QuizGateRepository(
     }
 
     suspend fun restoreDefaultQuestions(context: Context): Int = withContext(Dispatchers.IO) {
-        StarterPackImporter.importFromAsset(context, database)
+        val questions = StarterPackImporter.parseQuestionsFromAsset(context)
+        importQuestions(questions).imported
+    }
+
+    suspend fun deleteAllQuestions(): Int = withContext(Dispatchers.IO) {
+        database.withTransaction {
+            val count = database.questionDao().getQuestionCount()
+            database.questionDao().deleteAllQuestions()
+            // Keep an intentional empty bank from being re-seeded on the next launch.
+            database.configDao().set(
+                ConfigEntity(StarterPackImporter.KEY_STARTER_SEEDED, "1")
+            )
+            count
+        }
     }
 }

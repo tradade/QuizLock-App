@@ -5,12 +5,12 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
-import java.util.UUID
 
 object StarterPackImporter {
 
     private const val TAG = "StarterPackImporter"
     const val ASSET_FILE = "questions-starter.json"
+    const val KEY_STARTER_SEEDED = "starter_pack_seeded"
 
     fun parseQuestionsFromJson(jsonString: String): List<QuestionEntity> {
         val jsonArray = JSONArray(jsonString.trim())
@@ -18,11 +18,6 @@ object StarterPackImporter {
 
         for (i in 0 until jsonArray.length()) {
             val obj = jsonArray.getJSONObject(i)
-            val id = if (obj.has("id") && obj.getString("id").isNotBlank()) {
-                obj.getString("id")
-            } else {
-                "q_custom_${UUID.randomUUID().toString().take(8)}"
-            }
             val type = obj.optString("type", "choice")
             val topic = obj.optString("topic", "Tổng hợp")
             val ageBand = obj.optString("age_band", "7-9")
@@ -46,6 +41,12 @@ object StarterPackImporter {
             val explanation = if (obj.has("explanation") && !obj.isNull("explanation")) obj.getString("explanation") else null
             val active = obj.optInt("active", 1)
 
+            val id = if (obj.has("id") && obj.getString("id").isNotBlank()) {
+                obj.getString("id")
+            } else {
+                QuestionIdentity.stableId(question, optionsJson, answer, ageBand, lang)
+            }
+
             questionList.add(
                 QuestionEntity(
                     id = id,
@@ -66,23 +67,34 @@ object StarterPackImporter {
         return questionList
     }
 
-    suspend fun importFromAsset(context: Context, database: QuizGateDatabase): Int = withContext(Dispatchers.IO) {
+    fun parseQuestionsFromAsset(context: Context): List<QuestionEntity> {
         val jsonString = context.assets.open(ASSET_FILE).bufferedReader().use { it.readText() }
-        val questions = parseQuestionsFromJson(jsonString)
+        return parseQuestionsFromJson(jsonString)
+    }
+
+    suspend fun importFromAsset(context: Context, database: QuizGateDatabase): Int = withContext(Dispatchers.IO) {
+        val questions = parseQuestionsFromAsset(context)
         database.questionDao().insertQuestions(questions)
         questions.size
     }
 
     suspend fun importIfNeeded(context: Context, database: QuizGateDatabase) = withContext(Dispatchers.IO) {
         try {
-            val count = database.questionDao().getQuestionCount()
-            if (count > 0) {
-                Log.d(TAG, "Database already has $count questions. Skipping starter import.")
+            // Seed only once. Without this flag, deleting the bank would be undone
+            // on the next launch because the room table would look like a fresh install.
+            if (database.configDao().get(KEY_STARTER_SEEDED) == "1") {
                 return@withContext
             }
 
-            val importedCount = importFromAsset(context, database)
-            Log.d(TAG, "Successfully seeded $importedCount starter questions into Room DB.")
+            val count = database.questionDao().getQuestionCount()
+            if (count == 0) {
+                val importedCount = importFromAsset(context, database)
+                Log.d(TAG, "Successfully seeded $importedCount starter questions into Room DB.")
+            } else {
+                Log.d(TAG, "Database already has $count questions. Skipping starter import.")
+            }
+
+            database.configDao().set(ConfigEntity(KEY_STARTER_SEEDED, "1"))
         } catch (e: Exception) {
             Log.e(TAG, "Failed to import starter pack from assets", e)
         }

@@ -102,7 +102,9 @@ Trẻ em thường bị cắt ngang cảm xúc khi bị tắt thiết bị độ
 
 ### Ngân hàng câu hỏi
 - Đóng gói sẵn **200 câu hỏi** tiếng Việt theo 3 nhóm tuổi trong APK.
-- Cập nhật thêm từ một URL JSON trực tiếp trong Cài đặt.
+- Cập nhật thêm từ URL JSON trực tiếp hoặc nhập từ file Excel/CSV trong Cài đặt.
+- Chống trùng theo nội dung: câu hỏi trùng nội dung + đáp án + nhóm tuổi + ngôn ngữ sẽ bị bỏ qua khi nhập.
+- Có nút **xóa toàn bộ ngân hàng câu hỏi** (có xác nhận) trong Cài đặt.
 - Khi hết câu hoặc mất dữ liệu, **bộ sinh câu hỏi dự phòng** tự tạo phép Toán / Logic theo nhóm tuổi — cổng không bao giờ “chết”.
 
 ### Song ngữ Việt – Anh
@@ -325,6 +327,28 @@ Câu hỏi dùng JSON, có thể nạp từ asset hoặc URL:
 - `age_band`: `4-6`, `7-9`, `10-12`.
 - `lang`: `vi` hoặc `en`.
 - Bộ câu hỏi mặc định nằm tại `app/src/main/assets/questions-starter.json`.
+
+### Nhập từ Excel / CSV
+
+Trong **Cài đặt → Câu hỏi**, chọn **Nhập câu hỏi từ Excel**. Hỗ trợ `.xlsx` và `.csv` với các cột:
+
+| Cột | Bắt buộc | Ghi chú |
+|---|---|---|
+| STT | Không | Bỏ qua |
+| Question | Có | Nội dung câu hỏi |
+| A / B / C / D | Có ít nhất 2 | Các đáp án; ô trống được bỏ qua |
+| Correct | Có | Chữ cái A–D, số 1–4, hoặc đúng nội dung đáp án |
+| Description | Không | Lời giải, lưu vào `explanation` |
+| Topic / Age Band / Difficulty / Hint / Lang | Không | Nếu có sẽ ghi đè giá trị mặc định đang chọn trong app |
+
+- Nhóm tuổi và ngôn ngữ mặc định chọn ngay trong thẻ nhập file; cột `Age Band` / `Lang` (nếu có) được ưu tiên.
+- **Chống trùng:** câu hỏi trùng *nội dung + đáp án + nhóm tuổi + ngôn ngữ* sẽ bị bỏ qua; nhập lại cùng file sẽ cập nhật thay vì nhân đôi. JSON thiếu `id` cũng được sinh ID ổn định theo nội dung.
+- File mẫu: [Google Sheets](https://docs.google.com/spreadsheets/d/1Z88wm1TV01O3vufHuXGkX0kgsY7ctbVlasEZmIFNa-A/edit?usp=sharing).
+- File `.xls` cũ chưa hỗ trợ — lưu sang `.xlsx` hoặc `.csv`.
+
+### Xóa toàn bộ ngân hàng
+
+Trong **Cài đặt → Câu hỏi**, nút **Xóa toàn bộ câu hỏi** sẽ xóa toàn bộ bảng `questions` (và lịch sử `question_seen` đi kèm) sau khi xác nhận. Cổng đố vui vẫn hoạt động bằng bộ sinh câu hỏi tự động cho đến khi bạn nhập lại.
 
 ---
 

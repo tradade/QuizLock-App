@@ -8,6 +8,14 @@ import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
+data class QuestionIdentityRow(
+    val id: String,
+    val question: String,
+    val answer: String,
+    val ageBand: String,
+    val lang: String
+)
+
 @Dao
 interface ProfileDao {
     @Query("SELECT * FROM profiles WHERE isActive = 1 ORDER BY createdAt ASC")
@@ -69,6 +77,9 @@ interface QuestionDao {
 
     @Query("SELECT COUNT(*) FROM questions WHERE active = 1 AND ageBand = :ageBand")
     suspend fun getQuestionCountByAgeBand(ageBand: String): Int
+
+    @Query("SELECT id, question, answer, ageBand, lang FROM questions")
+    suspend fun getQuestionIdentities(): List<QuestionIdentityRow>
 
     @Query("DELETE FROM questions")
     suspend fun deleteAllQuestions()

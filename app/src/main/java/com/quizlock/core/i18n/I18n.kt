@@ -346,6 +346,25 @@ class Strings internal constructor(private val values: Map<String, String>) {
     val jsonFormatTitle: String by values
     val collapse: String by values
     val showSample: String by values
+    val excelImportTitle: String by values
+    val excelImportDesc: String by values
+    val excelImportButton: String by values
+    val excelImportAgeBandLabel: String by values
+    val excelImportLanguageLabel: String by values
+    val excelImportSampleLink: String by values
+    val excelImportSuccess: String by values
+    val excelImportErrorEmpty: String by values
+    val excelImportErrorOldFormat: String by values
+    val excelImportErrorUnreadable: String by values
+    val excelImportErrorNoQuestions: String by values
+    val deleteAllQuestionsTitle: String by values
+    val deleteAllQuestionsDesc: String by values
+    val deleteAllQuestionsButton: String by values
+    val deleteAllQuestionsConfirmTitle: String by values
+    val deleteAllQuestionsConfirmMsg: String by values
+    val deleteAllQuestionsAction: String by values
+    val deleteAllQuestionsSuccess: String by values
+    val deleteAllQuestionsError: String by values
 
     // Notification
     val notifBrokenTitle: String by values
@@ -656,7 +675,7 @@ val ViStrings = Strings(
         "urlFieldLabel" to ("Đường dẫn URL chứa file JSON câu hỏi"),
         "fillSampleLink" to ("Điền link mẫu thử nghiệm"),
         "invalidUrlMessage" to ("Vui lòng nhập đường dẫn URL hợp lệ bắt đầu bằng https:// hoặc http://"),
-        "importSuccess" to ("Đã tải và nạp thành công %d câu hỏi mới vào ngân hàng!"),
+        "importSuccess" to ("Đã tải và nạp %d câu hỏi vào ngân hàng!"),
         "importFailed" to ("Không thể cập nhật: %s"),
         "networkError" to ("Lỗi kết nối mạng"),
         "loadingData" to ("Đang tải dữ liệu..."),
@@ -668,6 +687,25 @@ val ViStrings = Strings(
         "jsonFormatTitle" to ("Định dạng JSON câu hỏi chuẩn"),
         "collapse" to ("Thu gọn"),
         "showSample" to ("Xem mẫu"),
+        "excelImportTitle" to ("Nhập câu hỏi từ Excel"),
+        "excelImportDesc" to ("Chọn file .xlsx hoặc .csv có các cột: Question, A, B, C, D, Correct, Description. Dòng thiếu đáp án hợp lệ sẽ bị bỏ qua."),
+        "excelImportButton" to ("Chọn file Excel / CSV"),
+        "excelImportAgeBandLabel" to ("Áp dụng cho nhóm tuổi"),
+        "excelImportLanguageLabel" to ("Ngôn ngữ nội dung"),
+        "excelImportSampleLink" to ("Mở file mẫu trên Google Sheets"),
+        "excelImportSuccess" to ("Đã nhập %d câu hỏi (bỏ qua %d dòng lỗi, %d câu trùng)."),
+        "excelImportErrorEmpty" to ("File trống."),
+        "excelImportErrorOldFormat" to ("Chưa hỗ trợ file .xls cũ. Hãy lưu sang .xlsx hoặc .csv."),
+        "excelImportErrorUnreadable" to ("Không đọc được file. Kiểm tra định dạng .xlsx/.csv."),
+        "excelImportErrorNoQuestions" to ("Không tìm thấy câu hỏi hợp lệ trong file."),
+        "deleteAllQuestionsTitle" to ("Xóa toàn bộ ngân hàng câu hỏi"),
+        "deleteAllQuestionsDesc" to ("Xóa tất cả câu hỏi đã nhập và câu hỏi mặc định. Cổng đố vui sẽ dùng bộ sinh câu hỏi tự động cho đến khi bạn nhập lại."),
+        "deleteAllQuestionsButton" to ("Xóa toàn bộ câu hỏi"),
+        "deleteAllQuestionsConfirmTitle" to ("Xác nhận xóa toàn bộ?"),
+        "deleteAllQuestionsConfirmMsg" to ("Hành động này không thể hoàn tác. Toàn bộ ngân hàng câu hỏi và lịch sử đã gặp sẽ bị xóa."),
+        "deleteAllQuestionsAction" to ("Xóa tất cả"),
+        "deleteAllQuestionsSuccess" to ("Đã xóa %d câu hỏi. Cổng đố vui sẽ dùng câu hỏi tự sinh."),
+        "deleteAllQuestionsError" to ("Không thể xóa ngân hàng câu hỏi."),
         "notifBrokenTitle" to ("Cần kiểm tra quyền"),
         "notifBrokenContent" to ("Dịch vụ Trợ năng đang tắt — mở Quiz Gate để sửa."),
         "notifNoProfile" to ("Chưa có hồ sơ trẻ"),
@@ -977,7 +1015,7 @@ val EnStrings = Strings(
         "urlFieldLabel" to ("URL of the question JSON file"),
         "fillSampleLink" to ("Fill sample link"),
         "invalidUrlMessage" to ("Please enter a valid URL starting with https:// or http://"),
-        "importSuccess" to ("Loaded %d new questions into the bank!"),
+        "importSuccess" to ("Loaded %d questions into the bank!"),
         "importFailed" to ("Update failed: %s"),
         "networkError" to ("Network error"),
         "loadingData" to ("Loading data..."),
@@ -989,6 +1027,25 @@ val EnStrings = Strings(
         "jsonFormatTitle" to ("Standard question JSON format"),
         "collapse" to ("Collapse"),
         "showSample" to ("Show sample"),
+        "excelImportTitle" to ("Import questions from Excel"),
+        "excelImportDesc" to ("Choose an .xlsx or .csv file with columns: Question, A, B, C, D, Correct, Description. Rows without a valid answer are skipped."),
+        "excelImportButton" to ("Choose Excel / CSV file"),
+        "excelImportAgeBandLabel" to ("Apply to age band"),
+        "excelImportLanguageLabel" to ("Content language"),
+        "excelImportSampleLink" to ("Open template in Google Sheets"),
+        "excelImportSuccess" to ("Imported %d questions (skipped %d invalid rows, %d duplicates)."),
+        "excelImportErrorEmpty" to ("The file is empty."),
+        "excelImportErrorOldFormat" to ("Legacy .xls files aren't supported. Save as .xlsx or .csv."),
+        "excelImportErrorUnreadable" to ("Could not read the file. Check the .xlsx/.csv format."),
+        "excelImportErrorNoQuestions" to ("No valid questions found in the file."),
+        "deleteAllQuestionsTitle" to ("Delete the entire question bank"),
+        "deleteAllQuestionsDesc" to ("Deletes all imported and bundled questions. Quiz gates will use automatically generated questions until you import again."),
+        "deleteAllQuestionsButton" to ("Delete all questions"),
+        "deleteAllQuestionsConfirmTitle" to ("Delete everything?"),
+        "deleteAllQuestionsConfirmMsg" to ("This cannot be undone. The whole question bank and its seen-history will be removed."),
+        "deleteAllQuestionsAction" to ("Delete all"),
+        "deleteAllQuestionsSuccess" to ("Deleted %d questions. Quiz gates will use generated questions."),
+        "deleteAllQuestionsError" to ("Could not delete the question bank."),
         "notifBrokenTitle" to ("Permission needed"),
         "notifBrokenContent" to ("Accessibility is off — open Quiz Gate to fix it."),
         "notifNoProfile" to ("No child profile yet"),
