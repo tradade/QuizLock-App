@@ -3,6 +3,10 @@ package com.quizlock.ui.parent
 import android.content.ClipDescription
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
@@ -20,13 +24,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.Code
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Restore
 import androidx.compose.material.icons.filled.School
+import androidx.compose.material.icons.filled.UploadFile
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -54,12 +62,15 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.quizlock.core.data.ExcelQuestionImporter
 import com.quizlock.core.data.QuizGateRepository
 import com.quizlock.core.i18n.LocalStrings
 import com.quizlock.ui.theme.QuizAmberSecondary
 import com.quizlock.ui.theme.QuizBluePrimary
 import com.quizlock.ui.theme.QuizGreenSuccess
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Composable
 fun QuestionBankTab(
@@ -81,6 +92,17 @@ fun QuestionBankTab(
     var isStatusSuccess by remember { mutableStateOf(false) }
     var showJsonSample by remember { mutableStateOf(false) }
 
+    var excelAgeBand by remember { mutableStateOf("7-9") }
+    var excelLang by remember { mutableStateOf("vi") }
+    var excelStatusMessage by remember { mutableStateOf<String?>(null) }
+    var excelStatusSuccess by remember { mutableStateOf(false) }
+    var isExcelLoading by remember { mutableStateOf(false) }
+
+    var showDeleteAllConfirm by remember { mutableStateOf(false) }
+    var deleteStatusMessage by remember { mutableStateOf<String?>(null) }
+    var deleteStatusSuccess by remember { mutableStateOf(true) }
+    var isDeleting by remember { mutableStateOf(false) }
+
     fun refreshStats() {
         coroutineScope.launch {
             totalCount = repository.getQuestionsCount()
@@ -92,6 +114,95 @@ fun QuestionBankTab(
 
     LaunchedEffect(Unit) {
         refreshStats()
+        excelAgeBand = repository.getActiveProfile()?.ageBand ?: "7-9"
+        excelLang = repository.getAppLanguage().code
+    }
+
+    fun importExcel(uri: Uri) {
+        isExcelLoading = true
+        excelStatusMessage = null
+
+        val defaults = ExcelQuestionImporter.Defaults(
+            ageBand = excelAgeBand,
+            lang = excelLang,
+            topic = if (excelLang == "en") "General" else "Tổng hợp",
+            difficulty = 2
+        )
+
+        coroutineScope.launch {
+            val outcome = withContext(Dispatchers.IO) {
+                try {
+                    val input = context.contentResolver.openInputStream(uri)
+                    if (input == null) {
+                        ExcelImportOutcome.Failure(ExcelQuestionImporter.Error.UNREADABLE)
+                    } else {
+                        input.use {
+                            when (val parsed = ExcelQuestionImporter.parse(it, defaults)) {
+                                is ExcelQuestionImporter.Result.Success -> {
+                                    val summary = repository.importQuestions(parsed.questions)
+                                    ExcelImportOutcome.Success(
+                                        imported = summary.imported,
+                                        skipped = parsed.skippedRows,
+                                        duplicates = summary.duplicates
+                                    )
+                                }
+                                is ExcelQuestionImporter.Result.Failure -> {
+                                    ExcelImportOutcome.Failure(parsed.error)
+                                }
+                            }
+                        }
+                    }
+                } catch (_: Exception) {
+                    ExcelImportOutcome.Failure(ExcelQuestionImporter.Error.UNREADABLE)
+                }
+            }
+
+            isExcelLoading = false
+            when (outcome) {
+                is ExcelImportOutcome.Success -> {
+                    excelStatusSuccess = true
+                    excelStatusMessage = s.excelImportSuccess.format(
+                        outcome.imported,
+                        outcome.skipped,
+                        outcome.duplicates
+                    )
+                    refreshStats()
+                }
+                is ExcelImportOutcome.Failure -> {
+                    excelStatusSuccess = false
+                    excelStatusMessage = when (outcome.error) {
+                        ExcelQuestionImporter.Error.EMPTY_FILE -> s.excelImportErrorEmpty
+                        ExcelQuestionImporter.Error.UNSUPPORTED_OLD_XLS -> s.excelImportErrorOldFormat
+                        ExcelQuestionImporter.Error.UNREADABLE -> s.excelImportErrorUnreadable
+                        ExcelQuestionImporter.Error.NO_VALID_QUESTIONS -> s.excelImportErrorNoQuestions
+                    }
+                }
+            }
+        }
+    }
+
+    val excelPicker = rememberLauncherForActivityResult(
+        ActivityResultContracts.OpenDocument()
+    ) { uri ->
+        if (uri != null) importExcel(uri)
+    }
+
+    fun deleteAllQuestions() {
+        isDeleting = true
+        deleteStatusMessage = null
+        coroutineScope.launch {
+            try {
+                val deleted = repository.deleteAllQuestions()
+                deleteStatusSuccess = true
+                deleteStatusMessage = s.deleteAllQuestionsSuccess.format(deleted)
+                refreshStats()
+            } catch (_: Exception) {
+                deleteStatusSuccess = false
+                deleteStatusMessage = s.deleteAllQuestionsError
+            } finally {
+                isDeleting = false
+            }
+        }
     }
 
     Column(
@@ -300,41 +411,166 @@ fun QuestionBankTab(
                 // Status Banner
                 statusMessage?.let { msg ->
                     Spacer(modifier = Modifier.height(12.dp))
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = if (isStatusSuccess) MaterialTheme.colorScheme.tertiaryContainer else MaterialTheme.colorScheme.errorContainer
-                        ),
-                        shape = RoundedCornerShape(12.dp),
-                        border = BorderStroke(
-                            1.dp,
-                            if (isStatusSuccess) MaterialTheme.colorScheme.tertiary.copy(alpha = 0.5f) else MaterialTheme.colorScheme.error.copy(alpha = 0.5f)
-                        )
-                    ) {
-                        Row(
-                            modifier = Modifier.padding(12.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Icon(
-                                imageVector = if (isStatusSuccess) Icons.Default.CheckCircle else Icons.Default.ErrorOutline,
-                                contentDescription = null,
-                                tint = if (isStatusSuccess) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.error,
-                                modifier = Modifier.size(20.dp)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(
-                                text = msg,
-                                style = MaterialTheme.typography.bodySmall,
-                                fontWeight = FontWeight.Medium,
-                                color = if (isStatusSuccess) MaterialTheme.colorScheme.onTertiaryContainer else MaterialTheme.colorScheme.onErrorContainer
-                            )
-                        }
-                    }
+                    ImportStatusBanner(message = msg, isSuccess = isStatusSuccess)
                 }
             }
         }
 
-        // 3. Reset / Restore Default Starter Pack
+        // 3. Import from Excel / CSV
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
+            elevation = CardDefaults.cardElevation(2.dp)
+        ) {
+            Column(modifier = Modifier.padding(20.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.UploadFile,
+                        contentDescription = null,
+                        tint = QuizBluePrimary,
+                        modifier = Modifier.size(22.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = s.excelImportTitle,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = s.excelImportDesc,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                Text(
+                    text = s.excelImportAgeBandLabel,
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(6.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    listOf(
+                        "4-6" to s.band4to6Short,
+                        "7-9" to s.band7to9Short,
+                        "10-12" to s.band10to12Short
+                    ).forEach { (band, label) ->
+                        val selected = excelAgeBand == band
+                        Surface(
+                            onClick = { excelAgeBand = band },
+                            shape = RoundedCornerShape(10.dp),
+                            color = if (selected) QuizBluePrimary else MaterialTheme.colorScheme.surfaceVariant,
+                            modifier = Modifier.testTag("excel_band_$band")
+                        ) {
+                            Text(
+                                text = label,
+                                color = if (selected) Color.White else MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 12.sp,
+                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                Text(
+                    text = s.excelImportLanguageLabel,
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(6.dp))
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    listOf("vi" to "🇻🇳 Tiếng Việt", "en" to "🇬🇧 English").forEach { (code, label) ->
+                        val selected = excelLang == code
+                        Surface(
+                            onClick = { excelLang = code },
+                            shape = RoundedCornerShape(10.dp),
+                            color = if (selected) QuizBluePrimary else MaterialTheme.colorScheme.surfaceVariant,
+                            modifier = Modifier.testTag("excel_lang_$code")
+                        ) {
+                            Text(
+                                text = label,
+                                color = if (selected) Color.White else MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 12.sp,
+                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(
+                    onClick = {
+                        excelPicker.launch(
+                            arrayOf(
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                "text/csv",
+                                "text/comma-separated-values",
+                                "application/csv",
+                                "application/octet-stream"
+                            )
+                        )
+                    },
+                    enabled = !isExcelLoading,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(48.dp)
+                        .testTag("import_excel_button"),
+                    shape = RoundedCornerShape(14.dp)
+                ) {
+                    if (isExcelLoading) {
+                        CircularProgressIndicator(
+                            color = Color.White,
+                            modifier = Modifier.size(20.dp),
+                            strokeWidth = 2.dp
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(s.loadingData)
+                    } else {
+                        Icon(Icons.Default.UploadFile, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(s.excelImportButton)
+                    }
+                }
+
+                TextButton(
+                    onClick = {
+                        runCatching {
+                            context.startActivity(
+                                Intent(Intent.ACTION_VIEW, Uri.parse(EXCEL_TEMPLATE_URL))
+                            )
+                        }
+                    },
+                    modifier = Modifier.testTag("excel_template_link")
+                ) {
+                    Text(s.excelImportSampleLink, fontSize = 12.sp)
+                }
+
+                excelStatusMessage?.let { msg ->
+                    Spacer(modifier = Modifier.height(8.dp))
+                    ImportStatusBanner(message = msg, isSuccess = excelStatusSuccess)
+                }
+            }
+        }
+
+        // 4. Reset / Restore Default Starter Pack
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp),
@@ -391,7 +627,68 @@ fun QuestionBankTab(
             }
         }
 
-        // 4. Schema Reference / Format Guide Card
+        // 5. Delete all questions
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.35f)
+            ),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.6f)),
+            elevation = CardDefaults.cardElevation(2.dp)
+        ) {
+            Column(modifier = Modifier.padding(20.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.size(22.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = s.deleteAllQuestionsTitle,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = s.deleteAllQuestionsDesc,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                OutlinedButton(
+                    onClick = { showDeleteAllConfirm = true },
+                    enabled = !isDeleting,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(48.dp)
+                        .testTag("delete_all_questions_button"),
+                    shape = RoundedCornerShape(14.dp),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        contentColor = MaterialTheme.colorScheme.error
+                    )
+                ) {
+                    Icon(Icons.Default.Delete, contentDescription = null, modifier = Modifier.size(18.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(if (isDeleting) s.loadingData else s.deleteAllQuestionsButton)
+                }
+
+                deleteStatusMessage?.let { msg ->
+                    Spacer(modifier = Modifier.height(8.dp))
+                    ImportStatusBanner(message = msg, isSuccess = deleteStatusSuccess)
+                }
+            }
+        }
+
+        // 6. Schema Reference / Format Guide Card
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp),
@@ -450,7 +747,87 @@ fun QuestionBankTab(
             }
         }
     }
+
+    if (showDeleteAllConfirm) {
+        AlertDialog(
+            onDismissRequest = { showDeleteAllConfirm = false },
+            title = { Text(s.deleteAllQuestionsConfirmTitle) },
+            text = { Text(s.deleteAllQuestionsConfirmMsg) },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        showDeleteAllConfirm = false
+                        deleteAllQuestions()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.error
+                    )
+                ) {
+                    Text(s.deleteAllQuestionsAction)
+                }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = { showDeleteAllConfirm = false }) {
+                    Text(s.cancel)
+                }
+            }
+        )
+    }
 }
+
+@Composable
+private fun ImportStatusBanner(message: String, isSuccess: Boolean) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = if (isSuccess) {
+                MaterialTheme.colorScheme.tertiaryContainer
+            } else {
+                MaterialTheme.colorScheme.errorContainer
+            }
+        ),
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(
+            1.dp,
+            if (isSuccess) {
+                MaterialTheme.colorScheme.tertiary.copy(alpha = 0.5f)
+            } else {
+                MaterialTheme.colorScheme.error.copy(alpha = 0.5f)
+            }
+        )
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = if (isSuccess) Icons.Default.CheckCircle else Icons.Default.ErrorOutline,
+                contentDescription = null,
+                tint = if (isSuccess) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.error,
+                modifier = Modifier.size(20.dp)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = message,
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.Medium,
+                color = if (isSuccess) {
+                    MaterialTheme.colorScheme.onTertiaryContainer
+                } else {
+                    MaterialTheme.colorScheme.onErrorContainer
+                }
+            )
+        }
+    }
+}
+
+private sealed interface ExcelImportOutcome {
+    data class Success(val imported: Int, val skipped: Int, val duplicates: Int) : ExcelImportOutcome
+    data class Failure(val error: ExcelQuestionImporter.Error) : ExcelImportOutcome
+}
+
+private const val EXCEL_TEMPLATE_URL =
+    "https://docs.google.com/spreadsheets/d/1Z88wm1TV01O3vufHuXGkX0kgsY7ctbVlasEZmIFNa-A/edit?usp=sharing"
 
 @Composable
 private fun AgeBandStatBadge(

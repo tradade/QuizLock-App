@@ -103,7 +103,9 @@ Children often get upset when a device is suddenly taken away. Quiz Gate takes a
 
 ### Question bank
 - **200 Vietnamese questions** bundled in the APK across 3 age bands.
-- Additional questions can be imported from a direct JSON URL in Settings.
+- Additional questions can be imported from a direct JSON URL or an Excel/CSV file in Settings.
+- Content-based duplicate prevention: the same question + answer + age band + language is skipped on import.
+- A **delete the entire question bank** action (with confirmation) is available in Settings.
 - When the bank is empty or exhausted, a **fallback generator** creates age-appropriate Math / Logic questions — the gate never dies.
 
 ### Vietnamese – English support
@@ -326,6 +328,28 @@ Questions are JSON and can be loaded from an asset or a URL:
 - `age_band`: `4-6`, `7-9`, `10-12`.
 - `lang`: `vi` or `en`.
 - The default bank is at `app/src/main/assets/questions-starter.json`.
+
+### Excel / CSV import
+
+In **Settings → Questions**, choose **Import questions from Excel**. Both `.xlsx` and `.csv` are supported with these columns:
+
+| Column | Required | Notes |
+|---|---|---|
+| STT | No | Ignored |
+| Question | Yes | Question text |
+| A / B / C / D | At least 2 | Answer options; blank cells are skipped |
+| Correct | Yes | Letter A–D, number 1–4, or the exact option text |
+| Description | No | Stored as `explanation` |
+| Topic / Age Band / Difficulty / Hint / Lang | No | Override the defaults selected in the app |
+
+- Default age band and content language are selected in the import card; `Age Band` / `Lang` columns take precedence when present.
+- **Duplicate prevention:** the same *question + answer + age band + language* is skipped; re-importing the same file updates rows instead of duplicating them. JSON without an `id` also receives a deterministic content-based ID.
+- Template: [Google Sheets](https://docs.google.com/spreadsheets/d/1Z88wm1TV01O3vufHuXGkX0kgsY7ctbVlasEZmIFNa-A/edit?usp=sharing).
+- Legacy `.xls` files are not supported — save as `.xlsx` or `.csv`.
+
+### Delete the entire bank
+
+In **Settings → Questions**, **Delete all questions** removes the whole `questions` table (and its `question_seen` history) after confirmation. Quiz gates keep working with the automatic question generator until you import again.
 
 ---
 
