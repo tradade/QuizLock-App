@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Quiz Gate</string>
+    <string name="accessibility_service_description">Dịch vụ giám sát ứng dụng nền và hiển thị cổng câu đố học tập để quản lý thời gian sử dụng thiết bị của trẻ em.</string>
+    <string name="notification_channel_name">Trạng thái giám sát Quiz Gate</string>
+    <string name="notification_channel_desc">Hiển thị thời gian xem hiện tại và trạng thái cổng câu đố</string>
+    <string name="fgs_title">Quiz Gate đang hoạt động</string>
+</resources>

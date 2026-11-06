@@ -1,0 +1,3802 @@
+[
+  {
+    "id": "q_0001",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "2 + 3 bằng bao nhiêu?",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": "5",
+    "hint": "Đếm thêm 3 ngón tay từ số 2 nhé.",
+    "explanation": "2 cộng thêm 3 bằng 5.",
+    "active": 1
+  },
+  {
+    "id": "q_0002",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "4 + 1 bằng bao nhiêu?",
+    "options": [
+      "3",
+      "5",
+      "6",
+      "4"
+    ],
+    "answer": "5",
+    "hint": "Số liền sau số 4 là số mấy nhỉ?",
+    "explanation": "4 + 1 = 5.",
+    "active": 1
+  },
+  {
+    "id": "q_0003",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "5 + 2 bằng bao nhiêu?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "7",
+    "hint": "Xòe 5 ngón tay rồi thêm 2 ngón nữa.",
+    "explanation": "5 + 2 = 7.",
+    "active": 1
+  },
+  {
+    "id": "q_0004",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "3 + 3 bằng bao nhiêu?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "6",
+    "hint": "Gấp đôi số 3 sẽ được bao nhiêu?",
+    "explanation": "3 + 3 = 6.",
+    "active": 1
+  },
+  {
+    "id": "q_0005",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "1 + 6 bằng bao nhiêu?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "7",
+    "hint": "Thêm 1 vào 6.",
+    "explanation": "1 + 6 = 7.",
+    "active": 1
+  },
+  {
+    "id": "q_0006",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "4 + 4 bằng bao nhiêu?",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "6"
+    ],
+    "answer": "8",
+    "hint": "4 ngón tay cộng thêm 4 ngón tay.",
+    "explanation": "4 + 4 = 8.",
+    "active": 1
+  },
+  {
+    "id": "q_0007",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "5 + 5 bằng bao nhiêu?",
+    "options": [
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "answer": "10",
+    "hint": "Số ngón tay của cả hai bàn tay.",
+    "explanation": "5 + 5 = 10.",
+    "active": 1
+  },
+  {
+    "id": "q_0008",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "6 + 3 bằng bao nhiêu?",
+    "options": [
+      "8",
+      "9",
+      "10",
+      "7"
+    ],
+    "answer": "9",
+    "hint": "Đếm từ 6 thêm 3 bước.",
+    "explanation": "6 + 3 = 9.",
+    "active": 1
+  },
+  {
+    "id": "q_0009",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "7 + 2 bằng bao nhiêu?",
+    "options": [
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "answer": "9",
+    "hint": "7 thêm 2 đơn vị.",
+    "explanation": "7 + 2 = 9.",
+    "active": 1
+  },
+  {
+    "id": "q_0010",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "8 + 2 bằng bao nhiêu?",
+    "options": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "answer": "10",
+    "hint": "Tròn chục rồi đấy!",
+    "explanation": "8 + 2 = 10.",
+    "active": 1
+  },
+  {
+    "id": "q_0011",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "5 - 2 bằng bao nhiêu?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "1"
+    ],
+    "answer": "3",
+    "hint": "Có 5 quả táo, bớt đi 2 quả.",
+    "explanation": "5 - 2 = 3.",
+    "active": 1
+  },
+  {
+    "id": "q_0012",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "4 - 1 bằng bao nhiêu?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "3",
+    "hint": "Số đứng trước số 4 là gì?",
+    "explanation": "4 - 1 = 3.",
+    "active": 1
+  },
+  {
+    "id": "q_0013",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "6 - 3 bằng bao nhiêu?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "3",
+    "hint": "Bớt đi một nửa số 6.",
+    "explanation": "6 - 3 = 3.",
+    "active": 1
+  },
+  {
+    "id": "q_0014",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "7 - 4 bằng bao nhiêu?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "3",
+    "hint": "Đếm lùi 4 bước từ 7.",
+    "explanation": "7 - 4 = 3.",
+    "active": 1
+  },
+  {
+    "id": "q_0015",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "8 - 5 bằng bao nhiêu?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "3",
+    "hint": "8 bớt 5 còn mấy nhỉ?",
+    "explanation": "8 - 5 = 3.",
+    "active": 1
+  },
+  {
+    "id": "q_0016",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "10 - 4 bằng bao nhiêu?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "6",
+    "hint": "10 ngón tay cụp lại 4 ngón.",
+    "explanation": "10 - 4 = 6.",
+    "active": 1
+  },
+  {
+    "id": "q_0017",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "9 - 2 bằng bao nhiêu?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "5"
+    ],
+    "answer": "7",
+    "hint": "Đếm lùi 2 bước từ 9.",
+    "explanation": "9 - 2 = 7.",
+    "active": 1
+  },
+  {
+    "id": "q_0018",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "10 - 5 bằng bao nhiêu?",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": "5",
+    "hint": "Một bàn tay có 5 ngón.",
+    "explanation": "10 - 5 = 5.",
+    "active": 1
+  },
+  {
+    "id": "q_0019",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "3 + 7 bằng bao nhiêu?",
+    "options": [
+      "9",
+      "10",
+      "11",
+      "8"
+    ],
+    "answer": "10",
+    "hint": "7 thêm 3 đơn vị.",
+    "explanation": "3 + 7 = 10.",
+    "active": 1
+  },
+  {
+    "id": "q_0020",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "6 - 6 bằng bao nhiêu?",
+    "options": [
+      "0",
+      "1",
+      "6",
+      "12"
+    ],
+    "answer": "0",
+    "hint": "Có 6 cái kẹo ăn hết cả 6 cái.",
+    "explanation": "Bất kỳ số nào trừ chính nó đều bằng 0.",
+    "active": 1
+  },
+  {
+    "id": "q_0021",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Số nào lớn hơn: 7 hay 4?",
+    "options": [
+      "7",
+      "4",
+      "Bằng nhau",
+      "Không biết"
+    ],
+    "answer": "7",
+    "hint": "Số đếm sau trên tia số sẽ lớn hơn.",
+    "explanation": "7 lớn hơn 4.",
+    "active": 1
+  },
+  {
+    "id": "q_0022",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Số nào nhỏ nhất trong các số: 3, 8, 1, 6?",
+    "options": [
+      "3",
+      "8",
+      "1",
+      "6"
+    ],
+    "answer": "1",
+    "hint": "Số nào đứng đầu khi đếm từ 1?",
+    "explanation": "Số 1 là số nhỏ nhất.",
+    "active": 1
+  },
+  {
+    "id": "q_0023",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Số liền sau của số 8 là số nào?",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "answer": "9",
+    "hint": "Thêm 1 vào số 8.",
+    "explanation": "Số liền sau số 8 là 9.",
+    "active": 1
+  },
+  {
+    "id": "q_0024",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Hình nào có 3 cạnh?",
+    "options": [
+      "Hình vuông",
+      "Hình tròn",
+      "Hình tam giác",
+      "Hình chữ nhật"
+    ],
+    "answer": "Hình tam giác",
+    "hint": "Tam có nghĩa là 3.",
+    "explanation": "Hình tam giác có 3 cạnh.",
+    "active": 1
+  },
+  {
+    "id": "q_0025",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Hình tròn có mấy góc nhọn?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "4"
+    ],
+    "answer": "0",
+    "hint": "Hình tròn cong đều, không có góc cạnh.",
+    "explanation": "Hình tròn có 0 góc.",
+    "active": 1
+  },
+  {
+    "id": "q_0026",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con mèo kêu như thế nào?",
+    "options": [
+      "Gâu gâu",
+      "Meo meo",
+      "Cục tác",
+      "Ò ó o"
+    ],
+    "answer": "Meo meo",
+    "hint": "Tiếng kêu quen thuộc của chú mèo con.",
+    "explanation": "Mèo kêu meo meo.",
+    "active": 1
+  },
+  {
+    "id": "q_0027",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con chó sủa như thế nào?",
+    "options": [
+      "Meo meo",
+      "Gâu gâu",
+      "Chiếp chiếp",
+      "Ò ó o"
+    ],
+    "answer": "Gâu gâu",
+    "hint": "Tiếng sủa của chú cún con trông nhà.",
+    "explanation": "Chó sủa gâu gâu.",
+    "active": 1
+  },
+  {
+    "id": "q_0028",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con gà trống gáy vào buổi sáng như thế nào?",
+    "options": [
+      "Cục cục",
+      "Ò ó o",
+      "Quác quác",
+      "Meo meo"
+    ],
+    "answer": "Ò ó o",
+    "hint": "Tiếng gáy đánh thức mọi người dậy.",
+    "explanation": "Gà trống gáy ò ó o.",
+    "active": 1
+  },
+  {
+    "id": "q_0029",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Quả chuối chín thường có màu gì?",
+    "options": [
+      "Màu xanh lục",
+      "Màu vàng",
+      "Màu tím",
+      "Màu đen"
+    ],
+    "answer": "Màu vàng",
+    "hint": "Màu sắc rực rỡ ngọt ngào của chuối chín.",
+    "explanation": "Chuối chín có màu vàng tươi.",
+    "active": 1
+  },
+  {
+    "id": "q_0030",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Lá cây bình thường có màu gì?",
+    "options": [
+      "Màu xanh lá",
+      "Màu đỏ",
+      "Màu tím",
+      "Màu hồng"
+    ],
+    "answer": "Màu xanh lá",
+    "hint": "Màu của chất diệp lục trong lá.",
+    "explanation": "Lá cây có màu xanh lá cây.",
+    "active": 1
+  },
+  {
+    "id": "q_0031",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Mặt trời mọc vào buổi nào trong ngày?",
+    "options": [
+      "Buổi trưa",
+      "Buổi sáng",
+      "Buổi tối",
+      "Nửa đêm"
+    ],
+    "answer": "Buổi sáng",
+    "hint": "Khi thức dậy chào ngày mới.",
+    "explanation": "Mặt trời mọc vào buổi sáng ở hướng Đông.",
+    "active": 1
+  },
+  {
+    "id": "q_0032",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Từ nào trái nghĩa với từ To?",
+    "options": [
+      "Lớn",
+      "Khổng lồ",
+      "Nhỏ",
+      "Béo"
+    ],
+    "answer": "Nhỏ",
+    "hint": "Một con voi to, một chú kiến...",
+    "explanation": "Trái nghĩa với to là nhỏ.",
+    "active": 1
+  },
+  {
+    "id": "q_0033",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Từ nào trái nghĩa với từ Cao?",
+    "options": [
+      "Dài",
+      "Thấp",
+      "Rộng",
+      "Lớn"
+    ],
+    "answer": "Thấp",
+    "hint": "Bạn hươu cao cổ, bạn rùa...",
+    "explanation": "Trái nghĩa với cao là thấp.",
+    "active": 1
+  },
+  {
+    "id": "q_0034",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Từ nào trái nghĩa với từ Ngày?",
+    "options": [
+      "Sáng",
+      "Đêm",
+      "Trưa",
+      "Chiều"
+    ],
+    "answer": "Đêm",
+    "hint": "Khi mặt trời lặn và có trăng sao.",
+    "explanation": "Trái nghĩa với ngày là đêm.",
+    "active": 1
+  },
+  {
+    "id": "q_0035",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Một tuần có bao nhiêu ngày?",
+    "options": [
+      "5 ngày",
+      "6 ngày",
+      "7 ngày",
+      "8 ngày"
+    ],
+    "answer": "7 ngày",
+    "hint": "Từ thứ Hai đến Chủ Nhật.",
+    "explanation": "Một tuần có đúng 7 ngày.",
+    "active": 1
+  },
+  {
+    "id": "q_0036",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Cơ thể con người có mấy cánh tay?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": "2",
+    "hint": "Tay trái và tay phải.",
+    "explanation": "Mỗi người bình thường có 2 cánh tay.",
+    "active": 1
+  },
+  {
+    "id": "q_0037",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Chúng ta dùng bộ phận nào để ngửi mùi thơm?",
+    "options": [
+      "Mắt",
+      "Mũi",
+      "Tai",
+      "Miệng"
+    ],
+    "answer": "Mũi",
+    "hint": "Bộ phận ở giữa khuôn mặt.",
+    "explanation": "Mũi dùng để ngửi mùi.",
+    "active": 1
+  },
+  {
+    "id": "q_0038",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Chúng ta dùng bộ phận nào để nghe âm thanh?",
+    "options": [
+      "Mắt",
+      "Tai",
+      "Tay",
+      "Mũi"
+    ],
+    "answer": "Tai",
+    "hint": "Hai bên đầu để lắng nghe lời cô giáo.",
+    "explanation": "Tai dùng để nghe.",
+    "active": 1
+  },
+  {
+    "id": "q_0039",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Đèn giao thông màu gì thì các xe phải dừng lại?",
+    "options": [
+      "Màu xanh",
+      "Màu vàng",
+      "Màu đỏ",
+      "Màu trắng"
+    ],
+    "answer": "Màu đỏ",
+    "hint": "Màu báo hiệu nguy hiểm cần dừng lại ngay.",
+    "explanation": "Đèn đỏ phải dừng lại.",
+    "active": 1
+  },
+  {
+    "id": "q_0040",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con vật nào sau đây biết bay trên trời?",
+    "options": [
+      "Con cá",
+      "Con chim sẻ",
+      "Con rùa",
+      "Con voi"
+    ],
+    "answer": "Con chim sẻ",
+    "hint": "Loài có đôi cánh vỗ bay trên mây.",
+    "explanation": "Chim sẻ có cánh để bay.",
+    "active": 1
+  },
+  {
+    "id": "q_0041",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Mùa nào trong năm thời tiết lạnh nhất?",
+    "options": [
+      "Mùa xuân",
+      "Mùa hạ",
+      "Mùa thu",
+      "Mùa đông"
+    ],
+    "answer": "Mùa đông",
+    "hint": "Mùa cần phải mặc áo len ấm áp.",
+    "explanation": "Mùa đông là mùa lạnh nhất.",
+    "active": 1
+  },
+  {
+    "id": "q_0042",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Nước uống hàng ngày có vị gì tự nhiên?",
+    "options": [
+      "Vị cay",
+      "Không vị",
+      "Vị đắng",
+      "Vị mặn"
+    ],
+    "answer": "Không vị",
+    "hint": "Nước tinh khiết trong lành.",
+    "explanation": "Nước sạch tự nhiên không màu, không mùi, không vị.",
+    "active": 1
+  },
+  {
+    "id": "q_0043",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Bánh chưng truyền thống ngày Tết có hình gì?",
+    "options": [
+      "Hình tam giác",
+      "Hình tròn",
+      "Hình vuông",
+      "Hình ngôi sao"
+    ],
+    "answer": "Hình vuông",
+    "hint": "Tượng trưng cho mặt đất theo tích bánh chưng bánh giầy.",
+    "explanation": "Bánh chưng có hình vuông.",
+    "active": 1
+  },
+  {
+    "id": "q_0044",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con bò thích ăn gì nhất?",
+    "options": [
+      "Thịt",
+      "Cỏ tươi",
+      "Cá",
+      "Kẹo"
+    ],
+    "answer": "Cỏ tươi",
+    "hint": "Bò là động vật ăn thực vật.",
+    "explanation": "Bò thích ăn cỏ.",
+    "active": 1
+  },
+  {
+    "id": "q_0045",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Sau cơn mưa, trên bầu trời đôi khi xuất hiện cái gì 7 màu?",
+    "options": [
+      "Cầu vồng",
+      "Khinh khí cầu",
+      "Máy bay",
+      "Mặt trăng"
+    ],
+    "answer": "Cầu vồng",
+    "hint": "Hiện tượng khúc xạ ánh sáng kỳ diệu.",
+    "explanation": "Đó là cầu vồng 7 sắc rực rỡ.",
+    "active": 1
+  },
+  {
+    "id": "q_0046",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con thỏ thích ăn củ gì nhất?",
+    "options": [
+      "Củ gừng",
+      "Củ cà rốt",
+      "Củ hành",
+      "Củ sắn"
+    ],
+    "answer": "Củ cà rốt",
+    "hint": "Củ màu cam dài có lá xanh.",
+    "explanation": "Thỏ rất thích ăn cà rốt tươi.",
+    "active": 1
+  },
+  {
+    "id": "q_0047",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Có 3 chú chim đậu trên cành, 1 chú bay đi. Còn lại mấy chú?",
+    "options": [
+      "1 chú",
+      "2 chú",
+      "3 chú",
+      "0 chú"
+    ],
+    "answer": "2 chú",
+    "hint": "3 bớt đi 1 bằng mấy?",
+    "explanation": "3 - 1 = 2 chú chim.",
+    "active": 1
+  },
+  {
+    "id": "q_0048",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con vịt có bao nhiêu cái chân?",
+    "options": [
+      "2 chân",
+      "4 chân",
+      "1 chân",
+      "6 chân"
+    ],
+    "answer": "2 chân",
+    "hint": "Vịt có 2 chân màng để bơi dưới nước.",
+    "explanation": "Con vịt có 2 chân.",
+    "active": 1
+  },
+  {
+    "id": "q_0049",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Cái gì dùng để che khi trời mưa hoặc nắng?",
+    "options": [
+      "Cái chăn",
+      "Cái ô (dù)",
+      "Cái quạt",
+      "Cái đĩa"
+    ],
+    "answer": "Cái ô (dù)",
+    "hint": "Vật mở bung ra che trên đầu.",
+    "explanation": "Cái ô dùng để che mưa nắng.",
+    "active": 1
+  },
+  {
+    "id": "q_0050",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Buổi sáng thức dậy, em cần làm gì đầu tiên để răng sạch sẽ?",
+    "options": [
+      "Ăn kẹo",
+      "Đánh răng",
+      "Xem tivi",
+      "Đi ngủ tiếp"
+    ],
+    "answer": "Đánh răng",
+    "hint": "Dùng bàn chải và kem đánh răng.",
+    "explanation": "Đánh răng giúp bảo vệ răng trắng sạch.",
+    "active": 1
+  },
+  {
+    "id": "q_0051",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Quả trứng do con gì đẻ ra?",
+    "options": [
+      "Con gà mái",
+      "Con chó",
+      "Con mèo",
+      "Con thỏ"
+    ],
+    "answer": "Con gà mái",
+    "hint": "Cục ta cục tác đẻ ra quả trứng hồng.",
+    "explanation": "Gà mái đẻ ra trứng gà.",
+    "active": 1
+  },
+  {
+    "id": "q_0052",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Cá sống ở môi trường nào?",
+    "options": [
+      "Trên ngọn cây",
+      "Dưới nước",
+      "Trong hang cát",
+      "Trên mái nhà"
+    ],
+    "answer": "Dưới nước",
+    "hint": "Cá bơi lội tung tăng bằng vây và thở bằng mang.",
+    "explanation": "Cá sống dưới nước.",
+    "active": 1
+  },
+  {
+    "id": "q_0053",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Tháng nào thường có ngày Tết Nguyên Đán?",
+    "options": [
+      "Tháng 1 hoặc 2",
+      "Tháng 6",
+      "Tháng 8",
+      "Tháng 10"
+    ],
+    "answer": "Tháng 1 hoặc 2",
+    "hint": "Mùa xuân đầu năm ấm áp sum vầy.",
+    "explanation": "Tết cổ truyền diễn ra vào đầu năm dương lịch.",
+    "active": 1
+  },
+  {
+    "id": "q_0054",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Phương tiện nào di chuyển trên đường ray?",
+    "options": [
+      "Xe máy",
+      "Tàu hỏa",
+      "Máy bay",
+      "Tàu thủy"
+    ],
+    "answer": "Tàu hỏa",
+    "hint": "Đoàn tàu xình xịch chạy dài.",
+    "explanation": "Tàu hỏa chạy trên đường ray.",
+    "active": 1
+  },
+  {
+    "id": "q_0055",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Bàn tay của em có mấy ngón tay?",
+    "options": [
+      "4 ngón",
+      "5 ngón",
+      "6 ngón",
+      "10 ngón"
+    ],
+    "answer": "5 ngón",
+    "hint": "Đếm từ ngón cái đến ngón út.",
+    "explanation": "Mỗi bàn tay có đúng 5 ngón tay.",
+    "active": 1
+  },
+  {
+    "id": "q_0056",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Khi khát nước, em nên uống gì tốt nhất cho sức khỏe?",
+    "options": [
+      "Nước ngọt có ga",
+      "Nước lọc đun sôi",
+      "Nước phẩm màu",
+      "Nước muối"
+    ],
+    "answer": "Nước lọc đun sôi",
+    "hint": "Nước sạch tinh khiết nhất.",
+    "explanation": "Nước lọc giúp cơ thể khỏe mạnh.",
+    "active": 1
+  },
+  {
+    "id": "q_0057",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Đâu là loại quả có vỏ xanh, ruột đỏ, hạt đen ngọt mát?",
+    "options": [
+      "Quả chuối",
+      "Quả dưa hấu",
+      "Quả cam",
+      "Quả dừa"
+    ],
+    "answer": "Quả dưa hấu",
+    "hint": "Vỏ xanh ruột đỏ hạt đen.",
+    "explanation": "Đó chính là quả dưa hấu.",
+    "active": 1
+  },
+  {
+    "id": "q_0058",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Xe buýt chở được nhiều người hay xe đạp chở được nhiều hơn?",
+    "options": [
+      "Xe buýt",
+      "Xe đạp",
+      "Bằng nhau",
+      "Không xe nào"
+    ],
+    "answer": "Xe buýt",
+    "hint": "Xe buýt to lớn có nhiều chỗ ngồi.",
+    "explanation": "Xe buýt chở được hàng chục người.",
+    "active": 1
+  },
+  {
+    "id": "q_0059",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Mặt trăng thường xuất hiện vào thời gian nào?",
+    "options": [
+      "Ban ngày",
+      "Ban đêm",
+      "Buổi sáng sớm",
+      "Buổi trưa"
+    ],
+    "answer": "Ban đêm",
+    "hint": "Cùng với những vì sao lấp lánh.",
+    "explanation": "Mặt trăng chiếu sáng vào ban đêm.",
+    "active": 1
+  },
+  {
+    "id": "q_0060",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Cây cối cần gì để lớn lên tươi tốt?",
+    "options": [
+      "Ánh nắng và nước",
+      "Bóng tối",
+      "Nước ngọt có ga",
+      "Không cần gì"
+    ],
+    "answer": "Ánh nắng và nước",
+    "hint": "Nước tưới và ánh mặt trời quang hợp.",
+    "explanation": "Cây cối cần nước, ánh sáng và đất tốt.",
+    "active": 1
+  },
+  {
+    "id": "q_0061",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Em gặp người lớn tuổi thì nên làm gì?",
+    "options": [
+      "Chào hỏi lễ phép",
+      "Làm lơ đi qua",
+      "Hét lớn",
+      "Chạy trốn"
+    ],
+    "answer": "Chào hỏi lễ phép",
+    "hint": "Khoanh tay cúi đầu chào ông bà, cha mẹ.",
+    "explanation": "Chào hỏi lễ phép là nét đẹp ngoan ngoãn.",
+    "active": 1
+  },
+  {
+    "id": "q_0062",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con ong chăm chỉ đi tìm gì để làm mật ngọt?",
+    "options": [
+      "Nước mưa",
+      "Hút mật hoa",
+      "Lá khô",
+      "Cát mịn"
+    ],
+    "answer": "Hút mật hoa",
+    "hint": "Những bông hoa thơm ngát trên cành.",
+    "explanation": "Ong hút mật hoa về làm mật ong ngọt lịm.",
+    "active": 1
+  },
+  {
+    "id": "q_0063",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Quả bóng bay chứa khí nhẹ thì bay lên hay rơi xuống?",
+    "options": [
+      "Bay lên cao",
+      "Rơi xuống đất",
+      "Đứng yên",
+      "Chìm xuống nước"
+    ],
+    "answer": "Bay lên cao",
+    "hint": "Khi buông tay quả bóng sẽ bay về phía bầu trời.",
+    "explanation": "Khí nhẹ giúp bóng bay lên trời.",
+    "active": 1
+  },
+  {
+    "id": "q_0064",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Có 4 cái bánh, chia đều cho 2 bạn thì mỗi bạn được mấy cái?",
+    "options": [
+      "1 cái",
+      "2 cái",
+      "3 cái",
+      "4 cái"
+    ],
+    "answer": "2 cái",
+    "hint": "Chia đôi 4 chiếc bánh.",
+    "explanation": "4 chia 2 bằng 2 cái bánh.",
+    "active": 1
+  },
+  {
+    "id": "q_0065",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "4-6",
+    "difficulty": 1,
+    "lang": "vi",
+    "question": "Con rùa di chuyển nhanh hay chậm?",
+    "options": [
+      "Rất nhanh",
+      "Chậm chạp",
+      "Bay như gió",
+      "Nhanh như thỏ"
+    ],
+    "answer": "Chậm chạp",
+    "hint": "Rùa mang mai nặng nề bò từng bước.",
+    "explanation": "Rùa bò rất chậm chạp.",
+    "active": 1
+  },
+  {
+    "id": "q_0066",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "6 x 7 bằng bao nhiêu?",
+    "options": [
+      "40",
+      "42",
+      "44",
+      "48"
+    ],
+    "answer": "42",
+    "hint": "Bảng nhân 6 hoặc nhân 7.",
+    "explanation": "6 x 7 = 42.",
+    "active": 1
+  },
+  {
+    "id": "q_0067",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "8 x 9 bằng bao nhiêu?",
+    "options": [
+      "72",
+      "74",
+      "81",
+      "68"
+    ],
+    "answer": "72",
+    "hint": "9 x 8 = 72.",
+    "explanation": "8 x 9 = 72.",
+    "active": 1
+  },
+  {
+    "id": "q_0068",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "7 x 8 bằng bao nhiêu?",
+    "options": [
+      "54",
+      "56",
+      "58",
+      "64"
+    ],
+    "answer": "56",
+    "hint": "Nhớ bảng nhân 7.",
+    "explanation": "7 x 8 = 56.",
+    "active": 1
+  },
+  {
+    "id": "q_0069",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "9 x 6 bằng bao nhiêu?",
+    "options": [
+      "54",
+      "52",
+      "56",
+      "63"
+    ],
+    "answer": "54",
+    "hint": "6 x 9 = 54.",
+    "explanation": "9 x 6 = 54.",
+    "active": 1
+  },
+  {
+    "id": "q_0070",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "36 : 4 bằng bao nhiêu?",
+    "options": [
+      "8",
+      "9",
+      "7",
+      "6"
+    ],
+    "answer": "9",
+    "hint": "Số nào nhân 4 bằng 36?",
+    "explanation": "36 : 4 = 9.",
+    "active": 1
+  },
+  {
+    "id": "q_0071",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "45 : 5 bằng bao nhiêu?",
+    "options": [
+      "8",
+      "9",
+      "10",
+      "7"
+    ],
+    "answer": "9",
+    "hint": "5 x 9 = 45.",
+    "explanation": "45 : 5 = 9.",
+    "active": 1
+  },
+  {
+    "id": "q_0072",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "48 : 6 bằng bao nhiêu?",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "6"
+    ],
+    "answer": "8",
+    "hint": "6 x 8 = 48.",
+    "explanation": "48 : 6 = 8.",
+    "active": 1
+  },
+  {
+    "id": "q_0073",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "63 : 7 bằng bao nhiêu?",
+    "options": [
+      "8",
+      "9",
+      "7",
+      "10"
+    ],
+    "answer": "9",
+    "hint": "7 x 9 = 63.",
+    "explanation": "63 : 7 = 9.",
+    "active": 1
+  },
+  {
+    "id": "q_0074",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "56 : 8 bằng bao nhiêu?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "answer": "7",
+    "hint": "8 x 7 = 56.",
+    "explanation": "56 : 8 = 7.",
+    "active": 1
+  },
+  {
+    "id": "q_0075",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "72 : 9 bằng bao nhiêu?",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "6"
+    ],
+    "answer": "8",
+    "hint": "9 x 8 = 72.",
+    "explanation": "72 : 9 = 8.",
+    "active": 1
+  },
+  {
+    "id": "q_0076",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "15 x 3 bằng bao nhiêu?",
+    "options": [
+      "35",
+      "40",
+      "45",
+      "50"
+    ],
+    "answer": "45",
+    "hint": "10x3 + 5x3 = 30 + 15.",
+    "explanation": "15 x 3 = 45.",
+    "active": 1
+  },
+  {
+    "id": "q_0077",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "24 x 2 bằng bao nhiêu?",
+    "options": [
+      "46",
+      "48",
+      "50",
+      "52"
+    ],
+    "answer": "48",
+    "hint": "Nhân đôi số 24.",
+    "explanation": "24 x 2 = 48.",
+    "active": 1
+  },
+  {
+    "id": "q_0078",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "100 - 37 bằng bao nhiêu?",
+    "options": [
+      "63",
+      "73",
+      "53",
+      "67"
+    ],
+    "answer": "63",
+    "hint": "100 - 30 = 70, bớt thêm 7.",
+    "explanation": "100 - 37 = 63.",
+    "active": 1
+  },
+  {
+    "id": "q_0079",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "125 + 75 bằng bao nhiêu?",
+    "options": [
+      "190",
+      "200",
+      "210",
+      "205"
+    ],
+    "answer": "200",
+    "hint": "25 + 75 tròn 100.",
+    "explanation": "125 + 75 = 200.",
+    "active": 1
+  },
+  {
+    "id": "q_0080",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "250 - 80 bằng bao nhiêu?",
+    "options": [
+      "160",
+      "170",
+      "180",
+      "150"
+    ],
+    "answer": "170",
+    "hint": "250 - 50 = 200, trừ thêm 30.",
+    "explanation": "250 - 80 = 170.",
+    "active": 1
+  },
+  {
+    "id": "q_0081",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Một hình vuông có cạnh dài 5cm. Chu vi hình vuông là bao nhiêu?",
+    "options": [
+      "20cm",
+      "25cm",
+      "15cm",
+      "10cm"
+    ],
+    "answer": "20cm",
+    "hint": "Chu vi hình vuông = cạnh x 4.",
+    "explanation": "5 x 4 = 20cm.",
+    "active": 1
+  },
+  {
+    "id": "q_0082",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Một hình chữ nhật có chiều dài 6cm, chiều rộng 4cm. Chu vi là bao nhiêu?",
+    "options": [
+      "20cm",
+      "24cm",
+      "10cm",
+      "12cm"
+    ],
+    "answer": "20cm",
+    "hint": "(Dài + Rộng) x 2.",
+    "explanation": "(6 + 4) x 2 = 20cm.",
+    "active": 1
+  },
+  {
+    "id": "q_0083",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Một giờ có bao nhiêu phút?",
+    "options": [
+      "50 phút",
+      "60 phút",
+      "100 phút",
+      "120 phút"
+    ],
+    "answer": "60 phút",
+    "hint": "Kim phút quay đủ một vòng đồng hồ.",
+    "explanation": "1 giờ có đúng 60 phút.",
+    "active": 1
+  },
+  {
+    "id": "q_0084",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Nửa giờ tương đương bao nhiêu phút?",
+    "options": [
+      "15 phút",
+      "20 phút",
+      "30 phút",
+      "45 phút"
+    ],
+    "answer": "30 phút",
+    "hint": "Một nửa của 60 phút.",
+    "explanation": "60 : 2 = 30 phút.",
+    "active": 1
+  },
+  {
+    "id": "q_0085",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "1 mét bằng bao nhiêu xăng-ti-mét (cm)?",
+    "options": [
+      "10 cm",
+      "100 cm",
+      "1000 cm",
+      "50 cm"
+    ],
+    "answer": "100 cm",
+    "hint": "Tiền tố centi là 1/100.",
+    "explanation": "1m = 100cm.",
+    "active": 1
+  },
+  {
+    "id": "q_0086",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "1 ki-lô-gam (kg) bằng bao nhiêu gam (g)?",
+    "options": [
+      "100 g",
+      "500 g",
+      "1000 g",
+      "10 g"
+    ],
+    "answer": "1000 g",
+    "hint": "Kilo nghĩa là nghìn.",
+    "explanation": "1kg = 1000g.",
+    "active": 1
+  },
+  {
+    "id": "q_0087",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Tìm x, biết: x + 18 = 40?",
+    "options": [
+      "22",
+      "32",
+      "12",
+      "28"
+    ],
+    "answer": "22",
+    "hint": "x = 40 - 18.",
+    "explanation": "x = 22.",
+    "active": 1
+  },
+  {
+    "id": "q_0088",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Tìm x, biết: x x 5 = 35?",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "5"
+    ],
+    "answer": "7",
+    "hint": "x = 35 : 5.",
+    "explanation": "x = 7.",
+    "active": 1
+  },
+  {
+    "id": "q_0089",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Có 24 cái kẹo chia đều cho 4 bạn. Mỗi bạn được mấy cái?",
+    "options": [
+      "5 cái",
+      "6 cái",
+      "7 cái",
+      "8 cái"
+    ],
+    "answer": "6 cái",
+    "hint": "24 chia cho 4.",
+    "explanation": "24 : 4 = 6 cái kẹo.",
+    "active": 1
+  },
+  {
+    "id": "q_0090",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "An có 15 quyển vở, Bình có nhiều hơn An 7 quyển. Bình có bao nhiêu quyển?",
+    "options": [
+      "20 quyển",
+      "21 quyển",
+      "22 quyển",
+      "23 quyển"
+    ],
+    "answer": "22 quyển",
+    "hint": "Lấy số vở của An cộng thêm 7.",
+    "explanation": "15 + 7 = 22 quyển vở.",
+    "active": 1
+  },
+  {
+    "id": "q_0091",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Thủ đô của nước Việt Nam là thành phố nào?",
+    "options": [
+      "Hà Nội",
+      "Đà Nẵng",
+      "TP. Hồ Chí Minh",
+      "Huế"
+    ],
+    "answer": "Hà Nội",
+    "hint": "Thành phố nghìn năm văn hiến có Hồ Gươm.",
+    "explanation": "Thủ đô của Việt Nam là Hà Nội.",
+    "active": 1
+  },
+  {
+    "id": "q_0092",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Sông nào dài nhất chảy qua nhiều tỉnh phía Nam Việt Nam?",
+    "options": [
+      "Sông Hồng",
+      "Sông Mê Kông",
+      "Sông Cầu",
+      "Sông Hương"
+    ],
+    "answer": "Sông Mê Kông",
+    "hint": "Dòng sông Cửu Long 9 nhánh đổ ra biển.",
+    "explanation": "Sông Mê Kông (sông Cửu Long).",
+    "active": 1
+  },
+  {
+    "id": "q_0093",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Từ nào sau đây là từ chỉ hoạt động?",
+    "options": [
+      "Cái bàn",
+      "Chạy nhảy",
+      "Xanh biếc",
+      "Đẹp đẽ"
+    ],
+    "answer": "Chạy nhảy",
+    "hint": "Hành động của con người hoặc con vật.",
+    "explanation": "Chạy nhảy là từ chỉ hoạt động.",
+    "active": 1
+  },
+  {
+    "id": "q_0094",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Từ nào sau đây là từ chỉ đặc điểm, tính chất?",
+    "options": [
+      "Học sinh",
+      "Đi bộ",
+      "Chăm chỉ",
+      "Quyển sách"
+    ],
+    "answer": "Chăm chỉ",
+    "hint": "Nói về đức tính tốt của bạn học trò.",
+    "explanation": "Chăm chỉ là từ chỉ tính chất.",
+    "active": 1
+  },
+  {
+    "id": "q_0095",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Từ nào đồng nghĩa với từ Dũng cảm?",
+    "options": [
+      "Nhút nhát",
+      "Can đảm",
+      "Sợ sệt",
+      "Rụt rè"
+    ],
+    "answer": "Can đảm",
+    "hint": "Không sợ hãi trước khó khăn hiểm nguy.",
+    "explanation": "Can đảm đồng nghĩa với dũng cảm.",
+    "active": 1
+  },
+  {
+    "id": "q_0096",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Từ nào trái nghĩa với từ Tiết kiệm?",
+    "options": [
+      "Chắt chiu",
+      "Lãng phí",
+      "Cần kiệm",
+      "Dành dụm"
+    ],
+    "answer": "Lãng phí",
+    "hint": "Tiêu xài bừa bãi không suy nghĩ.",
+    "explanation": "Trái nghĩa với tiết kiệm là lãng phí.",
+    "active": 1
+  },
+  {
+    "id": "q_0097",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Thành ngữ nào khuyên ta phải nhớ ơn cội nguồn?",
+    "options": [
+      "Ăn quả nhớ kẻ trồng cây",
+      "Đi một ngày đàng",
+      "Học thầy không tày học bạn",
+      "Có công mài sắt"
+    ],
+    "answer": "Ăn quả nhớ kẻ trồng cây",
+    "hint": "Khi hưởng trái ngọt phải nhớ người vun trồng.",
+    "explanation": "Ăn quả nhớ kẻ trồng cây thể hiện lòng biết ơn.",
+    "active": 1
+  },
+  {
+    "id": "q_0098",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Ai là người sáng lập ra Đội Thiếu niên Tiền phong Hồ Chí Minh?",
+    "options": [
+      "Kim Đồng",
+      "Bác Hồ (Chủ tịch Hồ Chí Minh)",
+      "Võ Thị Sáu",
+      "Lê Văn Tám"
+    ],
+    "answer": "Bác Hồ (Chủ tịch Hồ Chí Minh)",
+    "hint": "Vị cha già kính yêu của dân tộc Việt Nam.",
+    "explanation": "Bác Hồ sáng lập Đội Thiếu niên Tiền phong.",
+    "active": 1
+  },
+  {
+    "id": "q_0099",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Người đội trưởng đầu tiên của Đội Thiếu niên Tiền phong là ai?",
+    "options": [
+      "Kim Đồng",
+      "Lê Văn Tám",
+      "Vừ A Dính",
+      "Nguyễn Viết Xuân"
+    ],
+    "answer": "Kim Đồng",
+    "hint": "Người thiếu niên anh hùng quê ở Cao Bằng.",
+    "explanation": "Anh Kim Đồng (Nông Văn Dền).",
+    "active": 1
+  },
+  {
+    "id": "q_0100",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Nước tinh khiết sôi ở nhiệt độ bao nhiêu độ C?",
+    "options": [
+      "80°C",
+      "90°C",
+      "100°C",
+      "120°C"
+    ],
+    "answer": "100°C",
+    "hint": "Điểm sôi quen thuộc của nước.",
+    "explanation": "Nước sôi ở 100 độ C.",
+    "active": 1
+  },
+  {
+    "id": "q_0101",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Nước đóng băng thành đá ở nhiệt độ bao nhiêu độ C?",
+    "options": [
+      "0°C",
+      "10°C",
+      "-10°C",
+      "5°C"
+    ],
+    "answer": "0°C",
+    "hint": "Điểm đóng băng của nước tinh khiết.",
+    "explanation": "Nước đóng băng ở 0 độ C.",
+    "active": 1
+  },
+  {
+    "id": "q_0102",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Hành tinh chúng ta đang sinh sống là hành tinh nào?",
+    "options": [
+      "Sao Hỏa",
+      "Trái Đất",
+      "Sao Kim",
+      "Sao Mộc"
+    ],
+    "answer": "Trái Đất",
+    "hint": "Hành tinh xanh có sự sống.",
+    "explanation": "Chúng ta sống trên Trái Đất.",
+    "active": 1
+  },
+  {
+    "id": "q_0103",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Mặt Trời là một ngôi sao hay một hành tinh?",
+    "options": [
+      "Hành tinh",
+      "Ngôi sao tự phát sáng",
+      "Vệ tinh",
+      "Tiểu hành tinh"
+    ],
+    "answer": "Ngôi sao tự phát sáng",
+    "hint": "Nguồn phát sáng và sưởi ấm cho hệ mặt trời.",
+    "explanation": "Mặt Trời là một ngôi sao lớn.",
+    "active": 1
+  },
+  {
+    "id": "q_0104",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Con người hít thở khí gì để duy trì sự sống?",
+    "options": [
+      "Khí O-xy",
+      "Khí Cac-bo-nic",
+      "Khí Ni-tơ",
+      "Khí Mê-tan"
+    ],
+    "answer": "Khí O-xy",
+    "hint": "Khí oxy trong lành từ không khí.",
+    "explanation": "Con người cần khí O-xy (O2) để thở.",
+    "active": 1
+  },
+  {
+    "id": "q_0105",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Cây xanh ban ngày hấp thụ khí gì và nhả ra khí gì khi quang hợp?",
+    "options": [
+      "Hút O-xy, nhả Cac-bo-nic",
+      "Hút Cac-bo-nic, nhả O-xy",
+      "Chỉ hút Ni-tơ",
+      "Không trao đổi khí"
+    ],
+    "answer": "Hút Cac-bo-nic, nhả O-xy",
+    "hint": "Nhờ đó cây xanh giúp không khí trong lành.",
+    "explanation": "Cây quang hợp hút CO2 và nhả O2.",
+    "active": 1
+  },
+  {
+    "id": "q_0106",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Việt Nam tiếp giáp với biển nào ở phía Đông?",
+    "options": [
+      "Biển Đỏ",
+      "Biển Đông",
+      "Biển Chết",
+      "Biển Đen"
+    ],
+    "answer": "Biển Đông",
+    "hint": "Vùng biển rộng lớn giàu tài nguyên của Tổ quốc.",
+    "explanation": "Việt Nam giáp Biển Đông.",
+    "active": 1
+  },
+  {
+    "id": "q_0107",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Quần đảo Hoàng Sa và Trường Sa thuộc chủ quyền của quốc gia nào?",
+    "options": [
+      "Thái Lan",
+      "Việt Nam",
+      "Malaysia",
+      "Philippines"
+    ],
+    "answer": "Việt Nam",
+    "hint": "Mảnh đất thiêng liêng không thể tách rời.",
+    "explanation": "Hoàng Sa và Trường Sa là của Việt Nam.",
+    "active": 1
+  },
+  {
+    "id": "q_0108",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Động vật nào sau đây đẻ con và nuôi con bằng sữa mẹ?",
+    "options": [
+      "Chim bồ câu",
+      "Con cá heo",
+      "Con ếch",
+      "Con cá chép"
+    ],
+    "answer": "Con cá heo",
+    "hint": "Dù sống dưới nước nhưng là động vật có vú.",
+    "explanation": "Cá heo là thú có vú đẻ con.",
+    "active": 1
+  },
+  {
+    "id": "q_0109",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Một năm thông thường có bao nhiêu ngày?",
+    "options": [
+      "364 ngày",
+      "365 ngày",
+      "366 ngày",
+      "360 ngày"
+    ],
+    "answer": "365 ngày",
+    "hint": "Thời gian Trái Đất quay một vòng quanh Mặt Trời.",
+    "explanation": "Năm bình thường có 365 ngày.",
+    "active": 1
+  },
+  {
+    "id": "q_0110",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Tháng 2 của năm nhuận có bao nhiêu ngày?",
+    "options": [
+      "28 ngày",
+      "29 ngày",
+      "30 ngày",
+      "31 ngày"
+    ],
+    "answer": "29 ngày",
+    "hint": "Thêm một ngày đặc biệt cứ mỗi 4 năm.",
+    "explanation": "Năm nhuận tháng 2 có 29 ngày.",
+    "active": 1
+  },
+  {
+    "id": "q_0111",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Loài thú nào chạy nhanh nhất trên mặt đất?",
+    "options": [
+      "Báo săn (Cheetah)",
+      "Sư tử",
+      "Ngựa vằn",
+      "Linh cẩu"
+    ],
+    "answer": "Báo săn (Cheetah)",
+    "hint": "Có thể đạt tốc độ hơn 100 km/h trong thời gian ngắn.",
+    "explanation": "Báo săn là loài chạy nhanh nhất.",
+    "active": 1
+  },
+  {
+    "id": "q_0112",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Vị giác cảm nhận vị ngọt rõ nhất ở phần nào của lưỡi?",
+    "options": [
+      "Đầu lưỡi",
+      "Hai bên mép lưỡi",
+      "Cuống lưỡi",
+      "Chân răng"
+    ],
+    "answer": "Đầu lưỡi",
+    "hint": "Nơi nếm viên kẹo ngọt ngào đầu tiên.",
+    "explanation": "Đầu lưỡi nhạy cảm nhất với vị ngọt.",
+    "active": 1
+  },
+  {
+    "id": "q_0113",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Lá cờ Tổ quốc Việt Nam có hình gì ở giữa?",
+    "options": [
+      "Ngôi sao vàng 5 cánh",
+      "Hình mặt trăng",
+      "Hình bông sen",
+      "Hình con rồng"
+    ],
+    "answer": "Ngôi sao vàng 5 cánh",
+    "hint": "Lá cờ đỏ sao vàng năm cánh tự hào.",
+    "explanation": "Cờ Việt Nam có ngôi sao vàng 5 cánh ở giữa.",
+    "active": 1
+  },
+  {
+    "id": "q_0114",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Dấu câu nào dùng để kết thúc một câu hỏi?",
+    "options": [
+      "Dấu chấm (.)",
+      "Dấu hỏi chấm (?)",
+      "Dấu chấm than (!)",
+      "Dấu phẩy (,)"
+    ],
+    "answer": "Dấu hỏi chấm (?)",
+    "hint": "Biểu thị sự thắc mắc cần giải đáp.",
+    "explanation": "Dấu hỏi chấm dùng cuối câu hỏi.",
+    "active": 1
+  },
+  {
+    "id": "q_0115",
+    "type": "choice",
+    "topic": "tiếng việt",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Từ nào viết đúng chính tả tiếng Việt?",
+    "options": [
+      "Xắp xếp",
+      "Sắp xếp",
+      "Sắp sếp",
+      "Xắp sếp"
+    ],
+    "answer": "Sắp xếp",
+    "hint": "Dùng âm S cho chữ đầu và X cho chữ sau.",
+    "explanation": "Sắp xếp là từ đúng chính tả.",
+    "active": 1
+  },
+  {
+    "id": "q_0116",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Nếu hôm qua là thứ Ba, thì ngày mai là thứ mấy?",
+    "options": [
+      "Thứ Tư",
+      "Thứ Năm",
+      "Thứ Sáu",
+      "Thứ Bảy"
+    ],
+    "answer": "Thứ Năm",
+    "hint": "Hôm qua thứ Ba -> Hôm nay thứ Tư -> Ngày mai...",
+    "explanation": "Hôm nay là thứ Tư, nên ngày mai là thứ Năm.",
+    "active": 1
+  },
+  {
+    "id": "q_0117",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Vượt qua người chạy thứ nhì trong cuộc đua, bạn ở vị trí thứ mấy?",
+    "options": [
+      "Thứ nhất",
+      "Thứ nhì",
+      "Thứ ba",
+      "Thứ tư"
+    ],
+    "answer": "Thứ nhì",
+    "hint": "Bạn chiếm lấy vị trí của người bạn vừa vượt qua.",
+    "explanation": "Vượt người thứ nhì thì bạn trở thành người thứ nhì.",
+    "active": 1
+  },
+  {
+    "id": "q_0118",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Có 5 ngọn nến đang cháy, gió thổi tắt 2 ngọn. Hỏi cuối cùng còn lại mấy ngọn nến?",
+    "options": [
+      "3 ngọn",
+      "2 ngọn",
+      "5 ngọn",
+      "0 ngọn"
+    ],
+    "answer": "2 ngọn",
+    "hint": "3 ngọn kia cháy hết tan thành sáp, ngọn bị thổi tắt không bị cháy hết.",
+    "explanation": "2 ngọn tắt không cháy hết nên còn lại.",
+    "active": 1
+  },
+  {
+    "id": "q_0119",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Số tiếp theo trong dãy số: 2, 4, 6, 8, ... là số nào?",
+    "options": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "answer": "10",
+    "hint": "Mỗi số cộng thêm 2 đơn vị.",
+    "explanation": "Dãy số chẵn liên tiếp, số tiếp theo là 10.",
+    "active": 1
+  },
+  {
+    "id": "q_0120",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Số tiếp theo trong dãy số: 5, 10, 15, 20, ... là số nào?",
+    "options": [
+      "22",
+      "25",
+      "30",
+      "35"
+    ],
+    "answer": "25",
+    "hint": "Quy luật đếm thêm 5 đơn vị.",
+    "explanation": "20 + 5 = 25.",
+    "active": 1
+  },
+  {
+    "id": "q_0121",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Một con gà có 2 chân, 3 con thỏ có mấy chân?",
+    "options": [
+      "6 chân",
+      "8 chân",
+      "12 chân",
+      "10 chân"
+    ],
+    "answer": "12 chân",
+    "hint": "Mỗi con thỏ có 4 chân. Tính 3 con thỏ.",
+    "explanation": "3 x 4 = 12 chân thỏ.",
+    "active": 1
+  },
+  {
+    "id": "q_0122",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Cái gì của bạn nhưng người khác lại dùng nhiều hơn bạn?",
+    "options": [
+      "Tiền của bạn",
+      "Tên của bạn",
+      "Áo của bạn",
+      "Xe của bạn"
+    ],
+    "answer": "Tên của bạn",
+    "hint": "Mọi người gọi bạn bằng thứ này mỗi ngày.",
+    "explanation": "Tên của bạn được người khác gọi thường xuyên.",
+    "active": 1
+  },
+  {
+    "id": "q_0123",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Có 5 chìa khóa, cần thử nhiều nhất mấy lần để tìm đúng chìa mở khóa?",
+    "options": [
+      "4 lần",
+      "5 lần",
+      "6 lần",
+      "3 lần"
+    ],
+    "answer": "4 lần",
+    "hint": "Nếu 4 chìa đầu không vừa thì chắc chắn là chìa thứ 5.",
+    "explanation": "Tối đa 4 lần thử.",
+    "active": 1
+  },
+  {
+    "id": "q_0124",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Hình vuông có bao nhiêu trục đối xứng?",
+    "options": [
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "answer": "4",
+    "hint": "2 đường chéo và 2 đường nối trung điểm các cạnh đối.",
+    "explanation": "Hình vuông có 4 trục đối xứng.",
+    "active": 1
+  },
+  {
+    "id": "q_0125",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Kim giờ chỉ số 3, kim phút chỉ số 12. Lúc đó là mấy giờ?",
+    "options": [
+      "12 giờ",
+      "3 giờ đúng",
+      "3 giờ 12 phút",
+      "15 giờ 12 phút"
+    ],
+    "answer": "3 giờ đúng",
+    "hint": "Kim phút chỉ 12 là giờ tròn.",
+    "explanation": "Đó là 3 giờ đúng.",
+    "active": 1
+  },
+  {
+    "id": "q_0126",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Đi bộ 3 km trong 1 giờ. Với vận tốc đó, đi 9 km mất bao lâu?",
+    "options": [
+      "2 giờ",
+      "3 giờ",
+      "4 giờ",
+      "5 giờ"
+    ],
+    "answer": "3 giờ",
+    "hint": "9 chia cho 3.",
+    "explanation": "9 : 3 = 3 giờ.",
+    "active": 1
+  },
+  {
+    "id": "q_0127",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Vật nào sau đây dẫn điện tốt nhất?",
+    "options": [
+      "Dây đồng",
+      "Thước nhựa",
+      "Miếng xốp",
+      "Thanh gỗ khô"
+    ],
+    "answer": "Dây đồng",
+    "hint": "Kim loại dẫn điện rất tốt.",
+    "explanation": "Đồng là kim loại dẫn điện tốt.",
+    "active": 1
+  },
+  {
+    "id": "q_0128",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Hiện tượng tự nhiên nào tạo ra sấm sét?",
+    "options": [
+      "Gió bão",
+      "Sự phóng điện giữa các đám mây",
+      "Mặt trời mọc",
+      "Sóng thần"
+    ],
+    "answer": "Sự phóng điện giữa các đám mây",
+    "hint": "Tích tụ điện tích trong cơn dông.",
+    "explanation": "Sấm sét là tia lửa điện khổng lồ trong khí quyển.",
+    "active": 1
+  },
+  {
+    "id": "q_0129",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Đâu là nguồn năng lượng sạch có thể tái tạo?",
+    "options": [
+      "Than đá",
+      "Năng lượng mặt trời",
+      "Dầu mỏ",
+      "Khí đốt tự nhiên"
+    ],
+    "answer": "Năng lượng mặt trời",
+    "hint": "Nguồn năng lượng vô tận từ tự nhiên.",
+    "explanation": "Năng lượng mặt trời là năng lượng tái tạo.",
+    "active": 1
+  },
+  {
+    "id": "q_0130",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Tổng số đo ba góc trong một hình tam giác bằng bao nhiêu độ?",
+    "options": [
+      "90°",
+      "180°",
+      "270°",
+      "360°"
+    ],
+    "answer": "180°",
+    "hint": "Định lý cơ bản về tổng các góc của tam giác.",
+    "explanation": "Tổng ba góc của một tam giác luôn bằng 180 độ.",
+    "active": 1
+  },
+  {
+    "id": "q_0131",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Gấp đôi một tờ giấy 3 lần thì sẽ tạo thành bao nhiêu phần bằng nhau?",
+    "options": [
+      "6 phần",
+      "8 phần",
+      "9 phần",
+      "12 phần"
+    ],
+    "answer": "8 phần",
+    "hint": "2 x 2 x 2 = 8.",
+    "explanation": "Mỗi lần gấp nhân đôi số phần: 2 -> 4 -> 8.",
+    "active": 1
+  },
+  {
+    "id": "q_0132",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Mẹ của mẹ bạn được gọi là gì?",
+    "options": [
+      "Bà nội",
+      "Bà ngoại",
+      "Cô",
+      "Dì"
+    ],
+    "answer": "Bà ngoại",
+    "hint": "Người sinh ra mẹ bạn.",
+    "explanation": "Mẹ của mẹ là bà ngoại.",
+    "active": 1
+  },
+  {
+    "id": "q_0133",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Loài chim nào có thể bay lùi về phía sau?",
+    "options": [
+      "Chim đại bàng",
+      "Chim ruồi",
+      "Chim cánh cụt",
+      "Chim bồ câu"
+    ],
+    "answer": "Chim ruồi",
+    "hint": "Loài chim tí hon có cánh đập cực nhanh.",
+    "explanation": "Chim ruồi có khả năng bay lùi độc đáo.",
+    "active": 1
+  },
+  {
+    "id": "q_0134",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Bánh xe tròn giúp giảm lực gì khi di chuyển?",
+    "options": [
+      "Lực nâng",
+      "Lực ma sát",
+      "Lực hút",
+      "Lực đẩy"
+    ],
+    "answer": "Lực ma sát",
+    "hint": "Lăn dễ dàng hơn là trượt.",
+    "explanation": "Bánh xe giúp giảm lực ma sát trượt.",
+    "active": 1
+  },
+  {
+    "id": "q_0135",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "7-9",
+    "difficulty": 2,
+    "lang": "vi",
+    "question": "Có 12 quả táo xếp đều vào 3 đĩa. Mỗi đĩa có mấy quả táo?",
+    "options": [
+      "3 quả",
+      "4 quả",
+      "5 quả",
+      "6 quả"
+    ],
+    "answer": "4 quả",
+    "hint": "12 chia đều cho 3.",
+    "explanation": "12 : 3 = 4 quả táo.",
+    "active": 1
+  },
+  {
+    "id": "q_0136",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Phép tính 1/2 + 1/4 có kết quả là bao nhiêu?",
+    "options": [
+      "2/6",
+      "3/4",
+      "1/8",
+      "2/4"
+    ],
+    "answer": "3/4",
+    "hint": "Quy đồng mẫu số: 1/2 = 2/4.",
+    "explanation": "2/4 + 1/4 = 3/4.",
+    "active": 1
+  },
+  {
+    "id": "q_0137",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Phép tính 3/5 - 1/5 có kết quả là bao nhiêu?",
+    "options": [
+      "2/5",
+      "2/0",
+      "4/5",
+      "1/5"
+    ],
+    "answer": "2/5",
+    "hint": "Cùng mẫu số, trừ tử số cho nhau.",
+    "explanation": "3/5 - 1/5 = 2/5.",
+    "active": 1
+  },
+  {
+    "id": "q_0138",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Phép tính 2/3 x 3/4 có kết quả rút gọn là bao nhiêu?",
+    "options": [
+      "6/12",
+      "1/2",
+      "5/7",
+      "1/4"
+    ],
+    "answer": "1/2",
+    "hint": "Nhân tử với tử, mẫu với mẫu rồi rút gọn.",
+    "explanation": "6/12 rút gọn thành 1/2.",
+    "active": 1
+  },
+  {
+    "id": "q_0139",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "25% của 200 bằng bao nhiêu?",
+    "options": [
+      "40",
+      "50",
+      "60",
+      "75"
+    ],
+    "answer": "50",
+    "hint": "25% chính là 1/4 của số đó.",
+    "explanation": "200 : 4 = 50.",
+    "active": 1
+  },
+  {
+    "id": "q_0140",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "50% của 360 bằng bao nhiêu?",
+    "options": [
+      "150",
+      "180",
+      "200",
+      "120"
+    ],
+    "answer": "180",
+    "hint": "50% là một nửa.",
+    "explanation": "360 : 2 = 180.",
+    "active": 1
+  },
+  {
+    "id": "q_0141",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "10% của 850 bằng bao nhiêu?",
+    "options": [
+      "85",
+      "80",
+      "90",
+      "75"
+    ],
+    "answer": "85",
+    "hint": "Chia số đó cho 10.",
+    "explanation": "850 : 10 = 85.",
+    "active": 1
+  },
+  {
+    "id": "q_0142",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tính giá trị biểu thức: (14 + 6) x 5?",
+    "options": [
+      "44",
+      "100",
+      "84",
+      "120"
+    ],
+    "answer": "100",
+    "hint": "Thực hiện phép tính trong ngoặc trước.",
+    "explanation": "20 x 5 = 100.",
+    "active": 1
+  },
+  {
+    "id": "q_0143",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tính giá trị biểu thức: 50 - 20 : 2?",
+    "options": [
+      "15",
+      "40",
+      "30",
+      "25"
+    ],
+    "answer": "40",
+    "hint": "Nhân chia trước, cộng trừ sau.",
+    "explanation": "50 - 10 = 40.",
+    "active": 1
+  },
+  {
+    "id": "q_0144",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Số trung bình cộng của ba số: 10, 20, 30 là bao nhiêu?",
+    "options": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "answer": "20",
+    "hint": "Cộng ba số lại rồi chia cho 3.",
+    "explanation": "(10 + 20 + 30) : 3 = 20.",
+    "active": 1
+  },
+  {
+    "id": "q_0145",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Số trung bình cộng của 15 và 25 là bao nhiêu?",
+    "options": [
+      "18",
+      "20",
+      "22",
+      "25"
+    ],
+    "answer": "20",
+    "hint": "(15 + 25) : 2.",
+    "explanation": "40 : 2 = 20.",
+    "active": 1
+  },
+  {
+    "id": "q_0146",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Một hình chữ nhật có diện tích 48 cm2, chiều dài 8 cm. Chiều rộng là:",
+    "options": [
+      "4 cm",
+      "6 cm",
+      "8 cm",
+      "12 cm"
+    ],
+    "answer": "6 cm",
+    "hint": "Diện tích chia cho chiều dài.",
+    "explanation": "48 : 8 = 6 cm.",
+    "active": 1
+  },
+  {
+    "id": "q_0147",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Diện tích hình tam giác có đáy 10 cm và chiều cao 6 cm là bao nhiêu?",
+    "options": [
+      "60 cm2",
+      "30 cm2",
+      "16 cm2",
+      "45 cm2"
+    ],
+    "answer": "30 cm2",
+    "hint": "(Đáy x Chiều cao) : 2.",
+    "explanation": "(10 x 6) : 2 = 30 cm2.",
+    "active": 1
+  },
+  {
+    "id": "q_0148",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Số nào sau đây chia hết cho cả 2 và 5?",
+    "options": [
+      "12",
+      "25",
+      "40",
+      "33"
+    ],
+    "answer": "40",
+    "hint": "Số có chữ số tận cùng là 0.",
+    "explanation": "40 tận cùng là 0 nên chia hết cho cả 2 và 5.",
+    "active": 1
+  },
+  {
+    "id": "q_0149",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Số nào sau đây là số nguyên tố?",
+    "options": [
+      "9",
+      "15",
+      "17",
+      "21"
+    ],
+    "answer": "17",
+    "hint": "Chỉ chia hết cho 1 và chính nó.",
+    "explanation": "17 là số nguyên tố.",
+    "active": 1
+  },
+  {
+    "id": "q_0150",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Ước chung lớn nhất của 12 và 18 là số nào?",
+    "options": [
+      "2",
+      "3",
+      "6",
+      "9"
+    ],
+    "answer": "6",
+    "hint": "Số lớn nhất mà cả 12 và 18 đều chia hết.",
+    "explanation": "UCLN(12, 18) = 6.",
+    "active": 1
+  },
+  {
+    "id": "q_0151",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Bội chung nhỏ nhất khác 0 của 4 và 6 là số nào?",
+    "options": [
+      "12",
+      "24",
+      "8",
+      "16"
+    ],
+    "answer": "12",
+    "hint": "Số nhỏ nhất dương cùng chia hết cho 4 và 6.",
+    "explanation": "BCNN(4, 6) = 12.",
+    "active": 1
+  },
+  {
+    "id": "q_0152",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Phân số 15/20 rút gọn về tối giản là gì?",
+    "options": [
+      "3/4",
+      "3/5",
+      "5/4",
+      "1/2"
+    ],
+    "answer": "3/4",
+    "hint": "Cùng chia cả tử và mẫu cho 5.",
+    "explanation": "15:5 / 20:5 = 3/4.",
+    "active": 1
+  },
+  {
+    "id": "q_0153",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Số đối của số -7 là số nào?",
+    "options": [
+      "-7",
+      "7",
+      "0",
+      "1/7"
+    ],
+    "answer": "7",
+    "hint": "Số có cùng khoảng cách tới 0 nhưng ngược dấu.",
+    "explanation": "Số đối của -7 là 7.",
+    "active": 1
+  },
+  {
+    "id": "q_0154",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tính: (-5) + 8 = ?",
+    "options": [
+      "-3",
+      "3",
+      "13",
+      "-13"
+    ],
+    "answer": "3",
+    "hint": "Lấy 8 trừ đi 5.",
+    "explanation": "-5 + 8 = 3.",
+    "active": 1
+  },
+  {
+    "id": "q_0155",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tính: (-4) x (-3) = ?",
+    "options": [
+      "-12",
+      "12",
+      "-7",
+      "7"
+    ],
+    "answer": "12",
+    "hint": "Âm nhân âm ra dương.",
+    "explanation": "(-4) x (-3) = 12.",
+    "active": 1
+  },
+  {
+    "id": "q_0156",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Ca nô đi xuôi dòng vận tốc 25 km/h trong 2 giờ. Quãng đường đi được là:",
+    "options": [
+      "50 km",
+      "27 km",
+      "23 km",
+      "12.5 km"
+    ],
+    "answer": "50 km",
+    "hint": "Quãng đường = Vận tốc x Thời gian.",
+    "explanation": "25 x 2 = 50 km.",
+    "active": 1
+  },
+  {
+    "id": "q_0157",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Đổi 2.5 giờ ra phút:",
+    "options": [
+      "120 phút",
+      "150 phút",
+      "125 phút",
+      "140 phút"
+    ],
+    "answer": "150 phút",
+    "hint": "2 giờ = 120 phút; 0.5 giờ = 30 phút.",
+    "explanation": "120 + 30 = 150 phút.",
+    "active": 1
+  },
+  {
+    "id": "q_0158",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Chu vi hình tròn có bán kính r = 5 cm là bao nhiêu (pi = 3.14)?",
+    "options": [
+      "15.7 cm",
+      "31.4 cm",
+      "78.5 cm",
+      "25 cm"
+    ],
+    "answer": "31.4 cm",
+    "hint": "Công thức C = 2 x r x pi.",
+    "explanation": "2 x 5 x 3.14 = 31.4 cm.",
+    "active": 1
+  },
+  {
+    "id": "q_0159",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Gửi tiết kiệm 1.000.000đ lãi suất 6%/năm. Sau 1 năm tiền lãi nhận được là:",
+    "options": [
+      "60.000đ",
+      "6.000đ",
+      "600.000đ",
+      "106.000đ"
+    ],
+    "answer": "60.000đ",
+    "hint": "1.000.000 x 6%.",
+    "explanation": "Tiền lãi = 60.000 đồng.",
+    "active": 1
+  },
+  {
+    "id": "q_0160",
+    "type": "choice",
+    "topic": "toán",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tìm x, biết: 2x - 5 = 15?",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "20"
+    ],
+    "answer": "10",
+    "hint": "2x = 20 -> x = 10.",
+    "explanation": "x = 10.",
+    "active": 1
+  },
+  {
+    "id": "q_0161",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Hành tinh nào có kích thước lớn nhất trong Hệ Mặt Trời?",
+    "options": [
+      "Sao Thổ",
+      "Sao Mộc (Jupiter)",
+      "Sao Hỏa",
+      "Sao Hải Vương"
+    ],
+    "answer": "Sao Mộc (Jupiter)",
+    "hint": "Khí khổng lồ có vết đỏ lớn nổi tiếng.",
+    "explanation": "Sao Mộc là hành tinh lớn nhất.",
+    "active": 1
+  },
+  {
+    "id": "q_0162",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Cơ quan nào trong cơ thể con người chịu trách nhiệm bơm máu đi nuôi cơ thể?",
+    "options": [
+      "Lá phổi",
+      "Trái tim",
+      "Dạ dày",
+      "Bộ não"
+    ],
+    "answer": "Trái tim",
+    "hint": "Cơ quan nằm trong lồng ngực đập liên tục suốt đời.",
+    "explanation": "Tim là cơ quan tuần hoàn bơm máu.",
+    "active": 1
+  },
+  {
+    "id": "q_0163",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Chất diệp lục trong lá cây giúp cây thực hiện quá trình gì?",
+    "options": [
+      "Hô hấp",
+      "Quang hợp",
+      "Thoát hơi nước",
+      "Rụng lá"
+    ],
+    "answer": "Quang hợp",
+    "hint": "Tạo ra chất dinh dưỡng nuôi cây.",
+    "explanation": "Quá trình quang hợp tổng hợp chất hữu cơ.",
+    "active": 1
+  },
+  {
+    "id": "q_0164",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Âm thanh có thể truyền qua môi trường nào nhanh nhất?",
+    "options": [
+      "Chất rắn",
+      "Chất lỏng",
+      "Chất khí",
+      "Chân không"
+    ],
+    "answer": "Chất rắn",
+    "hint": "Các phân tử xếp khít nhau nhất.",
+    "explanation": "Âm thanh truyền nhanh nhất trong chất rắn.",
+    "active": 1
+  },
+  {
+    "id": "q_0165",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Vận tốc của ánh sáng trong chân không xấp xỉ khoảng bao nhiêu?",
+    "options": [
+      "300.000 km/s",
+      "30.000 km/s",
+      "3.000 km/s",
+      "3.000.000 km/s"
+    ],
+    "answer": "300.000 km/s",
+    "hint": "Tốc độ nhanh nhất trong vũ trụ.",
+    "explanation": "Ánh sáng truyền với vận tốc ~300.000 km mỗi giây.",
+    "active": 1
+  },
+  {
+    "id": "q_0166",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Chiến thắng Điện Biên Phủ lịch sử diễn ra vào năm nào?",
+    "options": [
+      "1945",
+      "1954",
+      "1975",
+      "1968"
+    ],
+    "answer": "1954",
+    "hint": "Chiến thắng lừng lẫy năm châu chấn động địa cầu.",
+    "explanation": "Chiến thắng Điện Biên Phủ vào ngày 7/5/1954.",
+    "active": 1
+  },
+  {
+    "id": "q_0167",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Đại thắng mùa Xuân giải phóng miền Nam thống nhất đất nước vào năm nào?",
+    "options": [
+      "1954",
+      "1972",
+      "1975",
+      "1986"
+    ],
+    "answer": "1975",
+    "hint": "Ngày 30 tháng 4 lịch sử.",
+    "explanation": "Ngày 30/4/1975 thống nhất đất nước.",
+    "active": 1
+  },
+  {
+    "id": "q_0168",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tác phẩm Truyện Kiều bất hủ do đại thi hào nào sáng tác?",
+    "options": [
+      "Nguyễn Trãi",
+      "Nguyễn Du",
+      "Hồ Xuân Hương",
+      "Cao Bá Quát"
+    ],
+    "answer": "Nguyễn Du",
+    "hint": "Đại thi hào văn hóa thế giới của Việt Nam.",
+    "explanation": "Nguyễn Du là tác giả Truyện Kiều.",
+    "active": 1
+  },
+  {
+    "id": "q_0169",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Đỉnh núi Fansipan - nóc nhà Đông Dương nằm ở tỉnh nào của Việt Nam?",
+    "options": [
+      "Hà Giang",
+      "Lào Cai",
+      "Sơn La",
+      "Cao Bằng"
+    ],
+    "answer": "Lào Cai",
+    "hint": "Gần thị xã Sa Pa mờ sương.",
+    "explanation": "Đỉnh Fansipan cao 3.143m thuộc tỉnh Lào Cai.",
+    "active": 1
+  },
+  {
+    "id": "q_0170",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tế bào là đơn vị cơ bản cấu tạo nên cái gì?",
+    "options": [
+      "Mọi sinh vật sống",
+      "Đất đá",
+      "Kim loại",
+      "Nước biển"
+    ],
+    "answer": "Mọi sinh vật sống",
+    "hint": "Đơn vị sống nhỏ nhất của sự sống.",
+    "explanation": "Tế bào là đơn vị cấu tạo của sinh vật sống.",
+    "active": 1
+  },
+  {
+    "id": "q_0171",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Nguyên tố hóa học nào phổ biến nhất trong vũ trụ?",
+    "options": [
+      "O-xy",
+      "Hi-đrô (Hydrogen)",
+      "Cac-bon",
+      "Hê-li"
+    ],
+    "answer": "Hi-đrô (Hydrogen)",
+    "hint": "Khí nhẹ nhất cấu tạo nên các ngôi sao.",
+    "explanation": "Hi-đrô chiếm khoảng 75% khối lượng vũ trụ.",
+    "active": 1
+  },
+  {
+    "id": "q_0172",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Kim tự tháp Giza nổi tiếng thế giới thuộc quốc gia nào?",
+    "options": [
+      "Hy Lạp",
+      "Ai Cập",
+      "Ý",
+      "Ấn Độ"
+    ],
+    "answer": "Ai Cập",
+    "hint": "Xứ sở sông Nin và các Pharaon.",
+    "explanation": "Kim tự tháp Giza nằm ở Ai Cập.",
+    "active": 1
+  },
+  {
+    "id": "q_0173",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Đơn vị đo cường độ dòng điện trong Vật lý là gì?",
+    "options": [
+      "Vôn (V)",
+      "Am-pe (A)",
+      "Oát (W)",
+      "Jun (J)"
+    ],
+    "answer": "Am-pe (A)",
+    "hint": "Ký hiệu là A, đặt theo tên nhà vật lý Ampere.",
+    "explanation": "Am-pe đo cường độ dòng điện.",
+    "active": 1
+  },
+  {
+    "id": "q_0174",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Khí nào gây ra hiện tượng hiệu ứng nhà kính nhiều nhất do con người thải ra?",
+    "options": [
+      "Khí O-xy",
+      "Khí Cac-bo-nic (CO2)",
+      "Khí Hê-li",
+      "Khí Ni-tơ"
+    ],
+    "answer": "Khí Cac-bo-nic (CO2)",
+    "hint": "Sinh ra từ việc đốt nhiên liệu hóa thạch.",
+    "explanation": "Khí CO2 là tác nhân chính gây hiệu ứng nhà kính.",
+    "active": 1
+  },
+  {
+    "id": "q_0175",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Đại dương nào có diện tích lớn nhất trên Trái Đất?",
+    "options": [
+      "Đại Tây Dương",
+      "Thái Bình Dương",
+      "Ấn Độ Dương",
+      "Bắc Băng Dương"
+    ],
+    "answer": "Thái Bình Dương",
+    "hint": "Chiếm hơn một phần ba bề mặt hành tinh.",
+    "explanation": "Thái Bình Dương là đại dương lớn nhất.",
+    "active": 1
+  },
+  {
+    "id": "q_0176",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tác giả của bản Tuyên ngôn Độc lập khai sinh nước Việt Nam DCCH là ai?",
+    "options": [
+      "Đại tướng Võ Nguyên Giáp",
+      "Chủ tịch Hồ Chí Minh",
+      "Tổng bí thư Lê Duẩn",
+      "Thủ tướng Phạm Văn Đồng"
+    ],
+    "answer": "Chủ tịch Hồ Chí Minh",
+    "hint": "Đọc tại quảng trường Ba Đình ngày 2/9/1945.",
+    "explanation": "Bác Hồ đọc Tuyên ngôn Độc lập ngày 2/9/1945.",
+    "active": 1
+  },
+  {
+    "id": "q_0177",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tập thơ Nhật ký trong tù được Bác Hồ viết bằng ngôn ngữ nào?",
+    "options": [
+      "Tiếng Việt",
+      "Tiếng Hán",
+      "Tiếng Pháp",
+      "Tiếng Anh"
+    ],
+    "answer": "Tiếng Hán",
+    "hint": "Tập thơ chữ Hán gồm 133 bài thơ tứ tuyệt.",
+    "explanation": "Nhật ký trong tù được viết bằng chữ Hán.",
+    "active": 1
+  },
+  {
+    "id": "q_0178",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Cây cầu dây văng đầu tiên bắc qua sông Tiền ở miền Tây là cầu nào?",
+    "options": [
+      "Cầu Cần Thơ",
+      "Cầu Mỹ Thuận",
+      "Cầu Rạch Miễu",
+      "Cầu Vàm Cống"
+    ],
+    "answer": "Cầu Mỹ Thuận",
+    "hint": "Nối Tiền Giang và Vĩnh Long khánh thành năm 2000.",
+    "explanation": "Cầu Mỹ Thuận.",
+    "active": 1
+  },
+  {
+    "id": "q_0179",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Cực Bắc của Việt Nam nằm ở tỉnh nào?",
+    "options": [
+      "Lào Cai",
+      "Hà Giang",
+      "Cao Bằng",
+      "Điện Biên"
+    ],
+    "answer": "Hà Giang",
+    "hint": "Cột cờ Lũng Cú nổi tiếng.",
+    "explanation": "Điểm cực Bắc tại xã Lũng Cú, Hà Giang.",
+    "active": 1
+  },
+  {
+    "id": "q_0180",
+    "type": "choice",
+    "topic": "khoa học",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Mạng internet toàn cầu được phát minh vào khoảng thập kỷ nào?",
+    "options": [
+      "1960 - 1970",
+      "1920 - 1930",
+      "1880 - 1890",
+      "1940 - 1950"
+    ],
+    "answer": "1960 - 1970",
+    "hint": "Khởi nguồn từ mạng ARPANET.",
+    "explanation": "Internet bắt đầu phát triển từ cuối thập niên 1960.",
+    "active": 1
+  },
+  {
+    "id": "q_0181",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Bể nước có 2 vòi. Vòi 1 chảy đầy bể trong 3h, vòi 2 trong 6h. Mở cả 2 vòi thì sau bao lâu đầy bể?",
+    "options": [
+      "1.5 giờ",
+      "2 giờ",
+      "4.5 giờ",
+      "2.5 giờ"
+    ],
+    "answer": "2 giờ",
+    "hint": "1 giờ vòi 1 chảy 1/3 bể, vòi 2 chảy 1/6 bể. Tổng = 1/2 bể.",
+    "explanation": "Sau 2 giờ cả hai vòi chảy đầy bể.",
+    "active": 1
+  },
+  {
+    "id": "q_0182",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Số tiếp theo trong dãy Fibonacci: 1, 1, 2, 3, 5, 8, ... là số nào?",
+    "options": [
+      "11",
+      "13",
+      "14",
+      "15"
+    ],
+    "answer": "13",
+    "hint": "Số sau bằng tổng 2 số liền trước.",
+    "explanation": "5 + 8 = 13.",
+    "active": 1
+  },
+  {
+    "id": "q_0183",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Số tiếp theo trong dãy số: 1, 4, 9, 16, 25, ... là số nào?",
+    "options": [
+      "30",
+      "36",
+      "49",
+      "32"
+    ],
+    "answer": "36",
+    "hint": "Dãy số bình phương: 1^2, 2^2, 3^2, 4^2, 5^2, 6^2.",
+    "explanation": "6 x 6 = 36.",
+    "active": 1
+  },
+  {
+    "id": "q_0184",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Một đàn vịt: đi trước 2 vịt có 2 vịt, đi sau 2 vịt có 2 vịt, đi giữa 2 vịt có 2 vịt. Đàn vịt có ít nhất mấy con?",
+    "options": [
+      "4 con",
+      "6 con",
+      "8 con",
+      "2 con"
+    ],
+    "answer": "4 con",
+    "hint": "4 con đi nối đuôi nhau thành một hàng dọc.",
+    "explanation": "Ít nhất 4 con vịt đi theo hàng.",
+    "active": 1
+  },
+  {
+    "id": "q_0185",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Ốc sên trèo cây 10m. Ngày trèo lên 3m, đêm tụt xuống 2m. Sau mấy ngày ốc sên lên tới đỉnh cây?",
+    "options": [
+      "10 ngày",
+      "8 ngày",
+      "7 ngày",
+      "9 ngày"
+    ],
+    "answer": "8 ngày",
+    "hint": "Ngày thứ 7 trèo được 7m. Ngày thứ 8 ban ngày trèo thêm 3m là tới đỉnh.",
+    "explanation": "Đến ngày thứ 8 đã chạm đỉnh.",
+    "active": 1
+  },
+  {
+    "id": "q_0186",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Lớp có 30 học sinh: 18 bạn thích bóng đá, 15 bạn thích bóng rổ, 5 bạn thích cả hai. Mấy bạn không thích môn nào?",
+    "options": [
+      "2 bạn",
+      "3 bạn",
+      "4 bạn",
+      "5 bạn"
+    ],
+    "answer": "2 bạn",
+    "hint": "Tổng số bạn thích ít nhất 1 môn = 18 + 15 - 5 = 28.",
+    "explanation": "30 - 28 = 2 bạn.",
+    "active": 1
+  },
+  {
+    "id": "q_0187",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Nếu A cao hơn B, và B cao hơn C, thì câu nào sau đây luôn đúng?",
+    "options": [
+      "C cao hơn A",
+      "A cao hơn C",
+      "B cao nhất",
+      "A và C bằng nhau"
+    ],
+    "answer": "A cao hơn C",
+    "hint": "Tính chất bắc cầu của quan hệ lớn hơn.",
+    "explanation": "A cao hơn B và B cao hơn C nên A cao hơn C.",
+    "active": 1
+  },
+  {
+    "id": "q_0188",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Có 3 hộp bóng đỏ, xanh, lẫn lộn bị dán nhãn sai hết. Lấy ít nhất 1 quả từ hộp nào để biết tất cả?",
+    "options": [
+      "Hộp dán nhãn lẫn lộn",
+      "Hộp dán nhãn đỏ",
+      "Hộp dán nhãn xanh",
+      "Cả 3 hộp"
+    ],
+    "answer": "Hộp dán nhãn lẫn lộn",
+    "hint": "Hộp nhãn lẫn lộn chắc chắn chỉ chứa 1 màu duy nhất.",
+    "explanation": "Lấy 1 quả từ hộp dán nhãn lẫn lộn.",
+    "active": 1
+  },
+  {
+    "id": "q_0189",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Mỗi người bắt tay một lần trong nhóm 5 người. Có tất cả bao nhiêu cái bắt tay?",
+    "options": [
+      "10",
+      "20",
+      "15",
+      "25"
+    ],
+    "answer": "10",
+    "hint": "Công thức tổ hợp: 5 x 4 / 2 = 10.",
+    "explanation": "Có tất cả 10 cái bắt tay.",
+    "active": 1
+  },
+  {
+    "id": "q_0190",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Mệnh đề phủ định của câu: Tất cả học sinh đều chăm chỉ là gì?",
+    "options": [
+      "Không ai chăm chỉ",
+      "Có ít nhất một học sinh không chăm chỉ",
+      "Tất cả đều lười biếng",
+      "Đa số chăm chỉ"
+    ],
+    "answer": "Có ít nhất một học sinh không chăm chỉ",
+    "hint": "Phủ định của mọi x có P là tồn tại x không có P.",
+    "explanation": "Có ít nhất một học sinh không chăm chỉ.",
+    "active": 1
+  },
+  {
+    "id": "q_0191",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Đồng hồ chậm 5 phút mỗi giờ. Chỉnh đúng lúc 12h trưa thì đến 6h chiều đồng hồ chỉ mấy giờ?",
+    "options": [
+      "5 giờ 30 phút",
+      "5 giờ 35 phút",
+      "5 giờ 25 phút",
+      "6 giờ 30 phút"
+    ],
+    "answer": "5 giờ 30 phút",
+    "hint": "Qua 6 giờ, đồng hồ chậm: 6 x 5 = 30 phút.",
+    "explanation": "6 giờ - 30 phút = 5 giờ 30 phút.",
+    "active": 1
+  },
+  {
+    "id": "q_0192",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Hình chữ nhật tăng chiều dài 20% và giảm chiều rộng 20% thì diện tích thay đổi thế nào?",
+    "options": [
+      "Không đổi",
+      "Giảm 4%",
+      "Tăng 4%",
+      "Giảm 2%"
+    ],
+    "answer": "Giảm 4%",
+    "hint": "Diện tích mới = 1.2 x 0.8 = 0.96 lần diện tích cũ.",
+    "explanation": "Giảm đi: 1 - 0.96 = 4%.",
+    "active": 1
+  },
+  {
+    "id": "q_0193",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Số nào sau đây không thuộc tập hợp số hữu tỉ?",
+    "options": [
+      "1/3",
+      "0.75",
+      "Căn bậc hai của 2",
+      "-5"
+    ],
+    "answer": "Căn bậc hai của 2",
+    "hint": "Căn bậc hai của 2 là số vô tỉ.",
+    "explanation": "Căn bậc 2 của 2 là số vô tỉ.",
+    "active": 1
+  },
+  {
+    "id": "q_0194",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Để đun sôi 1 lít nước cần nhiều nhiệt lượng hơn hay 1 lít dầu ăn cần nhiều hơn?",
+    "options": [
+      "1 lít nước",
+      "1 lít dầu ăn",
+      "Như nhau",
+      "Tùy loại dầu"
+    ],
+    "answer": "1 lít nước",
+    "hint": "Nhiệt dung riêng của nước lớn hơn dầu ăn rất nhiều.",
+    "explanation": "Nước có nhiệt dung riêng cao hơn dầu ăn.",
+    "active": 1
+  },
+  {
+    "id": "q_0195",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Tia cực tím (UV) trong ánh sáng mặt trời bị cản lại chủ yếu bởi tầng nào?",
+    "options": [
+      "Tầng đối lưu",
+      "Tầng ô-dôn (Ozone)",
+      "Tầng nhiệt",
+      "Tầng trung lưu"
+    ],
+    "answer": "Tầng ô-dôn (Ozone)",
+    "hint": "Lớp lá chắn O3 bảo vệ sự sống trên mặt đất.",
+    "explanation": "Tầng ô-dôn hấp thụ phần lớn bức xạ UV.",
+    "active": 1
+  },
+  {
+    "id": "q_0196",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Thổi luồng khí vào giữa hai tờ giấy song song gần nhau, hai tờ giấy sẽ thế nào?",
+    "options": [
+      "Hút lại gần nhau",
+      "Bị đẩy xa nhau",
+      "Không di chuyển",
+      "Bị rách đôi"
+    ],
+    "answer": "Hút lại gần nhau",
+    "hint": "Định luật Bernoulli: vận tốc dòng khí tăng làm áp suất tĩnh giảm.",
+    "explanation": "Hai tờ giấy sẽ bị hút sát vào nhau.",
+    "active": 1
+  },
+  {
+    "id": "q_0197",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Trong hóa học, nước vôi trong là dung dịch của chất nào?",
+    "options": [
+      "Canxi cacbonat (CaCO3)",
+      "Canxi hidroxit (Ca(OH)2)",
+      "Canxi oxit (CaO)",
+      "Natri hidroxit (NaOH)"
+    ],
+    "answer": "Canxi hidroxit (Ca(OH)2)",
+    "hint": "Vôi sống tan trong nước tạo thành dung dịch kiềm.",
+    "explanation": "Ca(OH)2 là nước vôi trong.",
+    "active": 1
+  },
+  {
+    "id": "q_0198",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Hình lục giác đều có bao nhiêu đường chéo?",
+    "options": [
+      "6",
+      "9",
+      "12",
+      "15"
+    ],
+    "answer": "9",
+    "hint": "Công thức n(n-3)/2: 6 x 3 / 2 = 9.",
+    "explanation": "Lục giác đều có 9 đường chéo.",
+    "active": 1
+  },
+  {
+    "id": "q_0199",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Kim tự tháp Ai Cập có đáy là hình gì?",
+    "options": [
+      "Hình tam giác",
+      "Hình vuông",
+      "Hình tròn",
+      "Hình chữ nhật"
+    ],
+    "answer": "Hình vuông",
+    "hint": "Kim tự tháp là chóp tứ giác đều có đáy vuông.",
+    "explanation": "Đáy kim tự tháp là hình vuông.",
+    "active": 1
+  },
+  {
+    "id": "q_0200",
+    "type": "choice",
+    "topic": "luận lý",
+    "age_band": "10-12",
+    "difficulty": 3,
+    "lang": "vi",
+    "question": "Chu kỳ dao động của con lắc đồng hồ phụ thuộc chủ yếu vào yếu tố nào?",
+    "options": [
+      "Khối lượng quả nặng",
+      "Chiều dài của dây treo",
+      "Màu sắc quả lắc",
+      "Nhiệt độ phòng"
+    ],
+    "answer": "Chiều dài của dây treo",
+    "hint": "Công thức T = 2*pi*sqrt(L/g).",
+    "explanation": "Chu kỳ phụ thuộc vào chiều dài dây treo con lắc.",
+    "active": 1
+  }
+]

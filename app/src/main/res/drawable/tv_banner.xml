@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+
+    <!-- Background 16:9 for TV Leanback Launcher -->
+    <path
+        android:pathData="M0,0h320v180h-320z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="0"
+                android:startY="0"
+                android:endX="320"
+                android:endY="180"
+                android:type="linear">
+                <item android:color="#FF1E3A8A" android:offset="0.0" />
+                <item android:color="#FF0F172A" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Decorative Glow Circle -->
+    <path
+        android:pathData="M160,90m-60,0a60,60 0 1,1 120,0a60,60 0 1,1 -120,0"
+        android:fillColor="#153B82F6" />
+
+    <!-- Outer Shield Crest -->
+    <path
+        android:pathData="M160,35 L205,52 C205,98 160,135 160,135 C160,135 115,98 115,52 Z"
+        android:fillColor="#FF2563EB" />
+
+    <!-- Inner Shield Depth -->
+    <path
+        android:pathData="M160,42 L198,57 C198,94 160,126 160,126 C160,126 122,94 122,57 Z"
+        android:fillColor="#FF1D4ED8" />
+
+    <!-- Golden Academic Star in Center -->
+    <path
+        android:pathData="M160,62 L164.5,74.5 L178,75 L167.5,83.5 L171.5,96.5 L160,88.5 L148.5,96.5 L152.5,83.5 L142,75 L155.5,74.5 Z"
+        android:fillColor="#FFF59E0B" />
+
+</vector>
