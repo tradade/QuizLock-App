@@ -2,199 +2,200 @@
 
 [Tiếng Việt](README.md) · [English](README.en.md)
 
-> **Câu đố đổi giờ xem — biến thời gian dùng thiết bị thành vừa học vừa chơi.**
+> **Quiz for screen time — turn device time into a little learning-and-play moment.**
 
-Quiz Gate là ứng dụng Android dành cho phụ huynh muốn quản lý thời gian sử dụng TV / tablet / smartphone của con **mà không cần cấm đoán**. Thay vì khóa máy, ứng dụng biến mỗi khoảng thời gian xem thành một “cổng” nhỏ: con trả lời đúng một câu hỏi Toán, Tiếng Việt hoặc Logic để mở khóa và tiếp tục xem.
+Quiz Gate is an Android app for parents who want to manage their child's TV / tablet / smartphone time **without banning the device**. Instead of hard-locking the screen, it turns each viewing block into a small “gate”: the child answers one Math, Language or Logic question correctly to unlock and keep watching.
 
-Ứng dụng chạy hoàn toàn **on-device**, không backend, không tài khoản, không quảng cáo. Mục tiêu là một công cụ nhẹ, riêng tư và đủ đơn giản để phụ huynh Việt Nam dùng được trên cả TV box giá rẻ lẫn điện thoại phổ thông.
-
----
-
-## 1. Ý tưởng
-
-Trẻ em thường bị cắt ngang cảm xúc khi bị tắt thiết bị đột ngột. Quiz Gate chọn cách khác:
-
-- **Không cấm** — con vẫn được xem, nhưng phải “trả phí” bằng một câu trả lời đúng.
-- **Không học thêm nặng nề** — câu hỏi bám theo độ tuổi, có gợi ý và lời giải ngắn.
-- **Không xâm phạm quyền riêng tư** — dữ liệu trẻ ở lại trên máy, không gửi lên cloud.
-- **Không biến thiết bị thành “cục gạch”** — luôn có lối thoát bằng PIN phụ huynh và câu hỏi dự phòng sinh tự động.
+Everything runs **fully on-device** — no backend, no accounts, no ads. The goal is a lightweight, private tool that works on both affordable TV boxes and everyday Android phones.
 
 ---
 
-## 2. Cách hoạt động
+## 1. The idea
+
+Children often get upset when a device is suddenly taken away. Quiz Gate takes a different route:
+
+- **No ban** — the child can keep watching, but pays with a correct answer.
+- **No heavy extra schoolwork** — questions follow the child's age band, with hints and short explanations.
+- **No privacy trade-off** — child data stays on the device, never sent to the cloud.
+- **No bricked device** — there is always an escape hatch via the parent PIN and an automatic fallback question generator.
+
+---
+
+## 2. How it works
 
 ```
 ┌─────────────────────┐
-│ Trẻ mở YouTube/game │
+│ Child opens YouTube │
+│ or a game           │
 └──────────┬──────────┘
-           │  AccessibilityService theo dõi app đang hiển thị
+           │  AccessibilityService tracks the foreground app
            ▼
-┌──────────────────────┐        chưa tới ngưỡng
-│ Đếm thời gian đã xem │ ─────────────────────────┐
+┌──────────────────────┐        below threshold
+│ Accumulate watch time│ ─────────────────────────┐
 └──────────┬───────────┘                          │
-           │ đủ X phút / hết trần ngày / ngoài giờ │
+           │ X minutes / daily cap / outside hours │
            ▼                                       │
 ┌──────────────────────┐                          │
-│   Mở Quiz Gate       │ ◄────────────────────────┘
-│ (câu hỏi + 4 đáp án) │
+│   Open Quiz Gate     │ ◄────────────────────────┘
+│ (question + 4 answers│
 └──────────┬───────────┘
-           │ trả lời đúng
+           │ correct answer
            ▼
 ┌──────────────────────┐
-│ Mở khóa + ghi nhận   │ ──► trẻ quay lại app đang xem
-│ công, đóng sau ~2s   │
+│ Unlock + record      │ ──► child returns to the app
+│ progress, close ~2s  │
 └──────────────────────┘
 ```
 
-1. Phụ huynh cài đặt, cấp quyền, tạo PIN và hồ sơ cho con.
-2. Một service nền theo dõi app đang ở foreground và cộng dồn thời gian xem (bỏ qua app nằm trong danh sách loại trừ).
-3. Khi chạm ngưỡng, một màn hình câu đố toàn màn hình được mở phía trên app.
-4. Trả lời đúng → cổng đóng, con xem tiếp. Trả lời sai → thử lại, sau 2 lần hiện gợi ý, sau 3 lần đổi câu mới.
-5. Phụ huynh luôn có thể mở khóa bằng PIN hoặc bật **Parent Mode** khi cần dùng máy.
+1. The parent installs the app, grants permissions, creates a PIN and a child profile.
+2. A background service tracks the foreground app and accumulates screen time (excluding approved apps).
+3. When the threshold is reached, a full-screen quiz appears on top of the current app.
+4. Correct answer → the gate closes and the child continues. Wrong answer → retry; after 2 misses a hint appears; after 3 misses a new question is loaded.
+5. The parent can always unlock with the PIN or enable **Parent Mode** when the device is needed.
 
 ---
 
-## 3. Tính năng
+## 3. Features
 
-### Cổng câu đố
-- Câu hỏi trắc nghiệm 4 đáp án, lấy ngẫu nhiên theo nhóm tuổi của hồ sơ.
-- Chống lặp: không lặp lại câu đã gặp trong **14 ngày**.
-- Gợi ý sau 2 lần sai; tự đổi câu mới sau lần sai thứ 3 để trẻ không bị kẹt.
-- Màn “chiến thắng” ngắn kèm lời giải, tự đóng sau khoảng 2 giây.
-- Hỗ trợ D-pad / remote TV: phím số **1–4** chọn đáp án, các nút đều focusable.
-- Nút đọc câu hỏi bằng TTS; giọng đọc đổi theo ngôn ngữ ứng dụng.
+### Quiz gate
+- Four-answer multiple-choice questions selected by the child's age band.
+- Repetition guard: a question is not repeated within **14 days** for that profile.
+- Hint after 2 wrong attempts; automatically swaps to a fresh question after the 3rd wrong attempt.
+- Short victory screen with the explanation, auto-closing after ~2 seconds.
+- TV remote / D-pad support: number keys **1–4** select answers, and all controls are focusable.
+- Text-to-speech button reads the question; the voice follows the app language.
 
-### Ba chiến lược kiểm soát
-| Chiến lược | Cách hoạt động |
+### Three control strategies
+| Strategy | Behaviour |
 |---|---|
-| **Trần ngày** (mặc định) | Đặt tổng thời gian xem/ngày. Hết trần → khóa cứng, chỉ PIN mở. |
-| **Vô hạn** | Cứ mỗi X phút phải giải một câu để xem tiếp, không giới hạn tổng. |
-| **Tăng dần** | Mỗi cổng tiếp theo cần nhiều câu đúng hơn (1 → 2 → 3…). |
+| **Daily cap** (default) | Sets a total daily viewing limit. Once reached, the device locks; only the PIN can unlock. |
+| **Infinite** | Every X minutes the child must solve one question to continue; no total limit. |
+| **Escalating** | Each subsequent gate requires more correct answers (1 → 2 → 3…). |
 
-### Hồ sơ trẻ
-- Nhiều hồ sơ, mỗi bé có tên, tuổi, nhóm tuổi và giới hạn riêng.
-- **Bấm vào một hồ sơ** trong màn Quản lý để mở màn **Cài đặt riêng của bé**: bật/tắt kế thừa cài đặt chung, chọn chiến lược, khoảng cách cổng, trần ngày và khung giờ.
-- Icon bút chì trên card dùng để sửa tên và độ tuổi.
-- Khung giờ được phép xem riêng; ngoài khung giờ hiển thị màn “đi ngủ”.
+### Child profiles
+- Multiple profiles; each child has a name, age, age band and individual limits.
+- **Tap a profile** in the Profile Manager to open that child's **own Settings screen**: inherit global rules or enable custom ones, choose strategy, gate interval, daily cap and allowed hours.
+- The pencil icon on a card edits the child's name and age.
+- Each profile can have its own allowed viewing hours; outside them the “bedtime” screen is shown.
 
-### Quản lý thời gian
-- Khoảng cách cổng X (phút), hạn mức ngày, khung giờ bắt đầu/kết thúc.
-- Preset nhanh: cả ngày, sau giờ học, tối thư giãn, cuối tuần.
-- Danh sách **ứng dụng loại trừ**: app học tập, đọc sách, lớp online… không bị đếm giờ và không bị chặn.
-- **Parent Mode**: tạm dừng cổng theo 1 / 2 / 4 / 8 giờ, không đếm vào giờ của trẻ.
+### Time management
+- Gate interval X (minutes), daily cap and allowed start/end times.
+- Quick presets: all day, after school, relaxing evening, weekend.
+- **Excluded apps**: learning, reading or online-class apps are never counted or blocked.
+- **Parent Mode**: pause gates for 1 / 2 / 4 / 8 hours without counting toward the child's time.
 
-### Chạy nền & độ tin cậy
-- Watchdog **hướng sự kiện**: đánh giá khi đổi app, bật/tắt màn hình, đóng cổng hoặc đổi cấu hình; chỉ đánh thức tại biên cổng/trần/khung giờ kế tiếp thay vì poll mỗi 2 giây.
-- Thời gian xem được gom trong bộ nhớ và ghi DB mỗi 30 giây.
-- Tự khởi động lại sau reboot / cập nhật app; có cảnh báo BROKEN khi mất quyền Trợ năng.
-- Thử khởi động lại khi người dùng vuốt app khỏi recent (AlarmManager dự phòng), nhưng vẫn phụ thuộc hành vi OEM và thao tác force-stop.
-- Android 15/16 có thể chặn FGS `specialUse` khởi động từ `BOOT_COMPLETED`; khi đó watchdog vẫn chạy trong AccessibilityService và thử khởi động FGS từ service này.
+### Background reliability
+- **Event-driven watchdog**: re-evaluates on app changes, screen on/off, gate close or config changes, and only wakes at the next gate/cap/allowed-hours boundary instead of polling every 2 seconds.
+- Watched seconds are buffered in memory and flushed to the database every 30 seconds.
+- Restarts after reboot / app update; shows a broken-state warning when Accessibility is lost.
+- Best-effort restart when the task is swiped away (fallback AlarmManager), still subject to OEM behaviour and force-stop.
+- Android 15/16 may reject a `specialUse` FGS started from `BOOT_COMPLETED`; the watchdog keeps running in the AccessibilityService and tries to start the FGS from there.
 
-### Bảo mật & chống nghịch
-- PIN phụ huynh 6 số, lưu dưới dạng hash **PBKDF2-HMAC-SHA256, 150.000 vòng + salt ngẫu nhiên**.
-- Sai 5 lần → khóa thử 5 phút.
-- Mã khôi phục 8 ký tự, chỉ hiển thị một lần khi tạo, dùng để đặt lại PIN.
-- **Khóa ứng dụng**: khi đã thiết lập PIN, toàn bộ màn hình quản lý sẽ khóa lúc mở app và khi quay lại từ nền; mở bằng PIN hoặc mã khôi phục.
-- **Super PIN (chỉ bản debug)**: nhập `999999` tại màn khóa để vào phần quản lý mà không cần PIN đã thiết lập, đồng thời bỏ qua lockout. Release build hoàn toàn bỏ qua Super PIN.
-- **Cảnh báo BROKEN**: service nền kiểm tra quyền mỗi giờ; nếu Trợ năng bị tắt, notification đổi sang trạng thái “Cần kiểm tra quyền” kèm nút mở thẳng cài đặt Trợ năng.
-- Device Admin receiver + Boot receiver để dịch vụ sống lại sau khi khởi động máy.
-- Thông báo nền thường trực hiển thị trạng thái bảo vệ.
+### Security & anti-bypass
+- 6-digit parent PIN stored as a **PBKDF2-HMAC-SHA256 hash with 150,000 iterations and a random salt**.
+- 5 wrong attempts → 5-minute lockout.
+- 8-character recovery code shown once at setup, used to reset the PIN.
+- **App lock**: once a PIN is configured, the whole management UI is locked on launch and whenever the app returns from the background; unlock with the PIN or recovery code.
+- **Super PIN (debug builds only)**: enter `999999` on the lock screen to open management without the configured PIN, bypassing lockout as well. Release builds ignore it entirely.
+- **Broken-state warning**: the background service checks permissions every hour; if Accessibility is off, the notification switches to “Permission needed” with a button that opens Accessibility settings.
+- Device Admin receiver + Boot receiver so protection comes back after a restart.
+- Persistent foreground notification showing protection status.
 
-### Ngân hàng câu hỏi
-- Đóng gói sẵn **200 câu hỏi** tiếng Việt theo 3 nhóm tuổi trong APK.
-- Cập nhật thêm từ URL JSON trực tiếp hoặc nhập từ file Excel/CSV trong Cài đặt.
-- Chống trùng theo nội dung: câu hỏi trùng nội dung + đáp án + nhóm tuổi + ngôn ngữ sẽ bị bỏ qua khi nhập.
-- Có nút **xóa toàn bộ ngân hàng câu hỏi** (có xác nhận) trong Cài đặt.
-- Khi hết câu hoặc mất dữ liệu, **bộ sinh câu hỏi dự phòng** tự tạo phép Toán / Logic theo nhóm tuổi — cổng không bao giờ “chết”.
+### Question bank
+- **200 Vietnamese questions** bundled in the APK across 3 age bands.
+- Additional questions can be imported from a direct JSON URL or an Excel/CSV file in Settings.
+- Content-based duplicate prevention: the same question + answer + age band + language is skipped on import.
+- A **delete the entire question bank** action (with confirmation) is available in Settings.
+- When the bank is empty or exhausted, a **fallback generator** creates age-appropriate Math / Logic questions — the gate never dies.
 
-### Song ngữ Việt – Anh
-- Toàn bộ giao diện, thông báo, hộp thoại PIN, màn chặn và nội dung pháp lý hỗ trợ **Tiếng Việt / English**.
-- Đổi ngôn ngữ trực tiếp trong Dashboard, Onboarding hoặc Cài đặt; lựa chọn được lưu trong CSDL.
-- Tài nguyên hệ thống (mô tả Accessibility, notification channel, toast Device Admin) có bản dịch trong `values-en/`.
+### Vietnamese – English support
+- The entire UI, notifications, PIN dialogs, block screens and legal content support **Tiếng Việt / English**.
+- Language can be switched from the Dashboard, Onboarding or Settings; the choice is stored in the local database.
+- System resources (Accessibility description, notification channel, Device Admin toasts) are translated in `values-en/`.
 
 ---
 
-## 4. Kiến trúc & công nghệ
+## 4. Architecture & tech stack
 
-Dự án hiện là **một module `:app`** (chưa tách multi-module như bản thiết kế ban đầu), ưu tiên độ đơn giản và kích thước APK nhỏ.
+The project is currently a **single `:app` module** (not split into the multi-module design from the original plan), prioritising simplicity and a small APK.
 
-| Thành phần | Lựa chọn |
+| Component | Choice |
 |---|---|
-| Ngôn ngữ | Kotlin 2.2 |
+| Language | Kotlin 2.2 |
 | UI | Jetpack Compose + Material 3 |
-| Lưu trữ | Room (SQLite), không DataStore |
-| Theo dõi foreground | `AccessibilityService` |
-| Dịch vụ nền | Foreground Service + notification thường trực |
-| Chống gỡ / khởi động lại | Device Admin receiver + Boot receiver |
-| Mạng | OkHttp (chỉ khi phụ huynh chủ động nhập URL câu hỏi) |
-| Đa ngôn ngữ | `Strings` + `LocalStrings` / `LocalAppLanguage` trong Compose |
+| Storage | Room (SQLite), no DataStore |
+| Foreground tracking | `AccessibilityService` |
+| Background service | Foreground Service + persistent notification |
+| Anti-uninstall / restart | Device Admin receiver + Boot receiver |
+| Network | OkHttp (only when the parent explicitly imports a question URL) |
+| i18n | `Strings` + `LocalStrings` / `LocalAppLanguage` in Compose |
 | Build | AGP 9.1.1 · Gradle 9.3.1 · minSdk 24 · targetSdk 36 |
 
-### Cấu trúc thư mục
+### Directory structure
 
 ```
 app/src/main/java/com/quizlock/
-├── MainActivity.kt                 # Điều hướng chính + bottom nav
-├── QuizGateApplication.kt         # Khởi tạo DB, seed dữ liệu, start service
+├── MainActivity.kt                 # Main navigation + bottom nav
+├── QuizGateApplication.kt         # DB init, seeding, service start
 ├── core/
-│   ├── data/                      # Room entities, DAO, repository, fallback generator
-│   ├── i18n/                      # Bộ chuỗi VI/EN và CompositionLocal
-│   └── policy/                    # PolicyEngine: quyết định mở cổng / chặn cứng
+│   ├── data/                      # Room entities, DAOs, repository, fallback generator
+│   ├── i18n/                      # VI/EN strings and CompositionLocal
+│   └── policy/                    # PolicyEngine: gate / hard-block decisions
 ├── service/                       # AccessibilityService + ForegroundService
 ├── receiver/                      # BootReceiver, DeviceAdminReceiver
 └── ui/
     ├── parent/                    # Dashboard, Profiles, Settings, Onboarding, TOS
     ├── gate/                      # QuizGateActivity, HardBlockActivity
     ├── components/                # PIN pad, Time picker
-    └── theme/                     # Màu, typography
+    └── theme/                     # Colors, typography
 ```
 
-### Luồng dữ liệu
+### Data flow
 
-`AccessibilityService` → `QuizGateRepository` (đọc hồ sơ, config, sổ ngày) → `PolicyEngine` (quyết định thuần) → mở `QuizGateActivity` / `HardBlockActivity` → ghi `attempt_log`, `day_ledger`, `question_seen`.
+`AccessibilityService` → `QuizGateRepository` (profiles, config, daily ledger) → `PolicyEngine` (pure decision) → launches `QuizGateActivity` / `HardBlockActivity` → writes `attempt_log`, `day_ledger`, `question_seen`.
 
 ---
 
-## 5. Cài đặt & chạy
+## 5. Installation & setup
 
-### 5.1 Yêu cầu hệ thống
+### 5.1 Requirements
 
-| Thành phần | Phiên bản / ghi chú |
+| Component | Version / note |
 |---|---|
-| JDK | 17 hoặc 21 |
+| JDK | 17 or 21 |
 | Android SDK Platform | **36.1** (`compileSdk`), build-tools 36.1.0 |
-| Gradle | **9.3.1** (AGP 9.1.1 yêu cầu tối thiểu phiên bản này) |
-| Android Studio | Khuyến nghị, bản hỗ trợ AGP 9.x |
-| Thiết bị / emulator | Android 7.0 (API 24) trở lên |
+| Gradle | **9.3.1** (AGP 9.1.1 requires at least this version) |
+| Android Studio | Recommended, a build that supports AGP 9.x |
+| Device / emulator | Android 7.0 (API 24) or newer |
 
-> Ứng dụng không cần backend hay Firebase. Thiếu `google-services.json` chỉ tạo cảnh báo, không chặn build.
+> No backend or Firebase is required. A missing `google-services.json` only produces a warning and does not block the build.
 
-### 5.2 Chuẩn bị project
+### 5.2 Prepare the project
 
 ```bash
 git clone <repo-url> QuizLock
 cd QuizLock
 ```
 
-Tạo `local.properties` nếu Android Studio chưa tạo:
+Create `local.properties` if Android Studio has not done so:
 
 ```properties
-sdk.dir=/duong/dan/Android/Sdk
+sdk.dir=/path/to/Android/Sdk
 ```
 
-Hoặc đặt biến môi trường `ANDROID_HOME`.
+Or export `ANDROID_HOME`.
 
-Repo có `gradle/wrapper/gradle-wrapper.properties` nhưng có thể chưa kèm script `gradlew`. Nếu thiếu:
+The repo contains `gradle/wrapper/gradle-wrapper.properties` but may not include the `gradlew` script. If it is missing:
 
 ```bash
 gradle wrapper --gradle-version 9.3.1
 ```
 
-Hoặc mở project bằng Android Studio và để IDE sync/ tải Gradle.
+Or open the project in Android Studio and let it sync / download Gradle.
 
-### 5.3 Tạo debug keystore
+### 5.3 Create a debug keystore
 
-Cấu hình build debug trỏ tới `debug.keystore` ở thư mục gốc:
+The debug build config points to `debug.keystore` in the project root:
 
 ```bash
 keytool -genkeypair -v -keystore debug.keystore \
@@ -203,121 +204,121 @@ keytool -genkeypair -v -keystore debug.keystore \
   -dname "CN=Android Debug,O=Android,C=US"
 ```
 
-Build release dùng biến môi trường:
+Release builds use environment variables:
 
 ```bash
-export KEYSTORE_PATH=/duong/dan/upload-key.jks
-export STORE_PASSWORD=mat-khau-keystore
-export KEY_PASSWORD=mat-khau-key
+export KEYSTORE_PATH=/path/to/upload-key.jks
+export STORE_PASSWORD=keystore-password
+export KEY_PASSWORD=key-password
 ```
 
-### 5.4 Build & cài lên thiết bị
+### 5.4 Build & install
 
 ```bash
 ./gradlew :app:assembleDebug
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-- APK debug: `app/build/outputs/apk/debug/app-debug.apk`
+- Debug APK: `app/build/outputs/apk/debug/app-debug.apk`
 - Release: `./gradlew :app:assembleRelease` → `app/build/outputs/apk/release/`
-- Nếu cài đè báo lỗi chữ ký: `adb uninstall com.aistudio.quizgate.app` rồi cài lại.
-- **Android TV / TV box** (bật ADB debugging trong Developer options):
+- If installing over an existing build fails with a signature error: `adb uninstall com.aistudio.quizgate.app`, then install again.
+- **Android TV / TV box** (enable ADB debugging in Developer options):
 
 ```bash
-adb connect <ip-cua-tv>:5555
+adb connect <tv-ip>:5555
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-### 5.5 Setup lần đầu trong ứng dụng
+### 5.5 First-run setup inside the app
 
-1. Mở app → chọn ngôn ngữ **Tiếng Việt / English**.
-2. Cấp **Accessibility Service** (bắt buộc) — cơ chế chính để biết app nào đang mở.
-3. Cấp **Bỏ qua tối ưu hóa pin** và **quyền Thông báo** (Android 13+) để thấy trạng thái bảo vệ.
-4. (Khuyến nghị) Bật **Device Admin** để bước gỡ app phải qua cảnh báo.
-5. Tạo **PIN phụ huynh 6 số** và lưu lại **mã khôi phục 8 ký tự**. Từ lần mở sau, màn hình quản lý sẽ yêu cầu PIN này.
-6. Tạo hồ sơ đầu tiên: tên, tuổi, chiến lược, khoảng cách cổng X và trần ngày.
-7. Vào **Cài đặt → Loại trừ** để thêm app học tập / đọc sách không bị đếm giờ.
-8. Vào **Hồ sơ bé**, bấm vào một hồ sơ để mở **Cài đặt riêng** và bật “Tùy chỉnh riêng cho bé”.
-9. Kiểm tra nhanh bằng nút **Thử nghiệm cổng câu đố** trên Dashboard.
+1. Open the app → choose **Tiếng Việt / English**.
+2. Grant **Accessibility Service** (required) — the main mechanism for detecting the foreground app.
+3. Grant **Ignore battery optimization** and **Notifications** (Android 13+) so the protection status is visible.
+4. (Recommended) Enable **Device Admin** so uninstalling requires an extra warning step.
+5. Create a **6-digit parent PIN** and write down the **8-character recovery code**. From the next launch, the management UI asks for this PIN.
+6. Create the first child profile: name, age, strategy, gate interval X and daily cap.
+7. Go to **Settings → Exclusions** and add learning / reading apps that must not be counted.
+8. Open **Child Profiles**, tap a profile to open its **own Settings**, and enable “Custom rules for this child”.
+9. Use **Test Quiz Gate** on the Dashboard for a quick check.
 
-> **Super PIN cho dev:** trong bản **debug**, nhập `999999` ở màn khóa để vào quản lý mà không cần PIN phụ huynh (kể cả khi đang bị lockout). Bản release bỏ qua giá trị này. Đổi giá trị tại `QuizGateRepository.SUPER_PIN`.
+> **Developer Super PIN:** in **debug** builds, enter `999999` on the lock screen to open management without the parent PIN (even during lockout). Release builds ignore this value. Change it via `QuizGateRepository.SUPER_PIN`.
 
-#### Ghi chú theo thiết bị
+#### Device-specific notes
 
-- **Xiaomi / Redmi (MIUI)**: bật Autostart và đặt pin “No restrictions” cho Quiz Gate.
-- **Samsung / One UI**: thêm app vào “Never sleeping apps” nếu service bị dừng.
-- **Android TV / TV box**: một số máy ẩn màn hình cấp quyền; dùng remote hoặc ADB để mở Settings. Kiểm tra lại Accessibility sau khi reboot.
-- **Android 13+**: cấp quyền thông báo để thấy trạng thái bảo vệ.
+- **Xiaomi / Redmi (MIUI)**: enable Autostart and set the battery profile to “No restrictions” for Quiz Gate.
+- **Samsung / One UI**: add the app to “Never sleeping apps” if the service is stopped.
+- **Android TV / TV box**: some devices hide permission screens; use the remote or ADB to open Settings. Re-check Accessibility after a reboot.
+- **Android 13+**: grant notification permission to see the protection status.
 
-### 5.6 Kiểm thử
+### 5.6 Tests
 
 ```bash
 ./gradlew :app:testDebugUnitTest
 ```
 
-### 5.7 Xử lý sự cố thường gặp
+### 5.7 Troubleshooting
 
-| Lỗi | Cách xử lý |
+| Error | Fix |
 |---|---|
-| `Minimum supported Gradle version is 9.3.1` | Dùng đúng Gradle 9.3.1 (wrapper hoặc Android Studio). |
-| `Keystore file ... debug.keystore not found` | Tạo keystore theo mục 5.3. |
-| `google-services.json is missing` | Chỉ là cảnh báo; app không cần Firebase. |
-| Thiếu `SDK Platform 36.1` | Cài qua SDK Manager hoặc để Gradle tự tải. |
-| Service ngừng sau reboot | Kiểm tra Accessibility, battery optimization và autostart của OEM. |
-| Không đếm giờ | Kiểm tra Accessibility đang bật, app không nằm trong danh sách loại trừ và đang trong khung giờ cho phép. |
-| Quên PIN / cần vào nhanh khi dev | Dùng **mã khôi phục** ở màn khóa; bản debug có thể dùng Super PIN `999999`. |
+| `Minimum supported Gradle version is 9.3.1` | Use Gradle 9.3.1 (wrapper or Android Studio). |
+| `Keystore file ... debug.keystore not found` | Create the keystore as described in 5.3. |
+| `google-services.json is missing` | Warning only; the app does not require Firebase. |
+| Missing `SDK Platform 36.1` | Install it via SDK Manager or let Gradle download it. |
+| Service stops after reboot | Check Accessibility, battery optimization and OEM autostart settings. |
+| Screen time is not counted | Confirm Accessibility is enabled, the app is not excluded, and the current time is inside the allowed window. |
+| Forgot PIN / need quick dev access | Use the **recovery code** on the lock screen; debug builds can use Super PIN `999999`. |
 
-### 5.8 Checklist kiểm chứng trên thiết bị thật
+### 5.8 Real-device verification checklist
 
-- [ ] Reboot máy → Accessibility vẫn bật → watchdog hoạt động lại trong ≤60 giây.
-- [ ] Vuốt app khỏi recent → service tự khởi động lại (AlarmManager dự phòng, ~5 giây hoặc khi mở lại app).
-- [ ] **MIUI/Redmi**: bật Autostart + “No restrictions”; khóa màn hình 10 phút rồi mở YouTube → cổng xuất hiện đúng ngưỡng X.
-- [ ] **One UI/Samsung**: thêm vào “Never sleeping apps”; để qua đêm và kiểm tra service còn sống.
-- [ ] **Android 15/16**: sau reboot kiểm tra notification; nếu FGS `specialUse` bị chặn, watchdog vẫn chạy nhờ Accessibility — mở app để khởi động lại notification.
-- [ ] **Force-stop**: xác nhận giới hạn của Android — app không tự bật lại cho tới khi người dùng mở lại.
+- [ ] Reboot → Accessibility stays enabled → watchdog is active again within 60 seconds.
+- [ ] Swipe the app from recents → the service restarts (fallback AlarmManager, ~5 seconds or when the app is reopened).
+- [ ] **MIUI/Redmi**: enable Autostart + “No restrictions”; lock the screen for 10 minutes, then open YouTube → the gate appears at the configured X threshold.
+- [ ] **One UI/Samsung**: add the app to “Never sleeping apps”; leave it overnight and confirm the service survives.
+- [ ] **Android 15/16**: after reboot check the notification; if the `specialUse` FGS is rejected, the watchdog still runs via Accessibility — open the app to restart the notification.
+- [ ] **Force-stop**: confirm the Android limitation — the app does not restart until the user opens it again.
 
 ---
 
-## 6. Quyền cần cấp
+## 6. Required permissions
 
-| Quyền | Vai trò | Cách cấp |
+| Permission | Purpose | Where to grant |
 |---|---|---|
-| Accessibility Service | **Bắt buộc** — biết app nào đang foreground để đếm giờ và mở cổng | Cài đặt → Trợ năng |
-| Bỏ qua tối ưu hóa pin | Giữ service không bị hệ điều hành giết | Cài đặt → Pin |
-| Device Admin | Bước gỡ ứng dụng phải qua cảnh báo | Cài đặt → Quản trị thiết bị |
-| Thông báo (Android 13+) | Hiển thị trạng thái bảo vệ | Hộp thoại runtime |
+| Accessibility Service | **Required** — detects the foreground app to count time and open gates | Settings → Accessibility |
+| Ignore battery optimization | Keeps the service from being killed by the OS | Settings → Battery |
+| Device Admin | Adds a warning step before uninstalling | Settings → Device admin apps |
+| Notifications (Android 13+) | Shows protection status | Runtime dialog |
 
-Wizard onboarding trong app hướng dẫn từng bước và có nút mở thẳng màn hình cài đặt tương ứng.
-
----
-
-## 7. Quyền riêng tư & dữ liệu
-
-- Mọi hồ sơ, thời gian xem, lịch sử câu hỏi nằm trong Room/SQLite **trên thiết bị**.
-- Không có server, không analytics, không crash reporter, không SDK quảng cáo.
-- Ứng dụng **không đọc nội dung màn hình**, không ghi phím, không lấy mật khẩu hay tin nhắn. Accessibility chỉ dùng để nhận diện package đang foreground.
-- Kết nối mạng chỉ xảy ra khi phụ huynh chủ động nhập URL JSON để cập nhật câu hỏi.
-- Gỡ ứng dụng sẽ xóa toàn bộ dữ liệu cục bộ.
+The onboarding wizard walks through each step and provides buttons that open the relevant settings screen.
 
 ---
 
-## 8. Định dạng câu hỏi
+## 7. Privacy & data
 
-Câu hỏi dùng JSON, có thể nạp từ asset hoặc URL:
+- Every profile, screen-time record and quiz history lives in Room/SQLite **on the device**.
+- No server, no analytics, no crash reporter, no advertising SDK.
+- The app **never reads screen content**, never records keystrokes, and never collects passwords or messages. Accessibility is used only to detect the foreground package.
+- Network access happens only when the parent explicitly enters a JSON URL to update questions.
+- Uninstalling the app deletes all local data.
+
+---
+
+## 8. Question format
+
+Questions are JSON and can be loaded from an asset or a URL:
 
 ```json
 [
   {
     "id": "q_math_101",
     "type": "choice",
-    "topic": "toán",
+    "topic": "math",
     "age_band": "7-9",
     "difficulty": 1,
-    "lang": "vi",
-    "question": "8 × 7 bằng bao nhiêu?",
+    "lang": "en",
+    "question": "What is 8 × 7?",
     "options": ["54", "56", "58", "64"],
     "answer": "56",
-    "hint": "8 × 5 = 40, cộng thêm 16",
+    "hint": "8 × 5 = 40, then add 16",
     "explanation": "8 × 7 = 56",
     "active": 1
   }
@@ -325,55 +326,55 @@ Câu hỏi dùng JSON, có thể nạp từ asset hoặc URL:
 ```
 
 - `age_band`: `4-6`, `7-9`, `10-12`.
-- `lang`: `vi` hoặc `en`.
-- Bộ câu hỏi mặc định nằm tại `app/src/main/assets/questions-starter.json`.
+- `lang`: `vi` or `en`.
+- The default bank is at `app/src/main/assets/questions-starter.json`.
 
-### Nhập từ Excel / CSV
+### Excel / CSV import
 
-Trong **Cài đặt → Câu hỏi**, chọn **Nhập câu hỏi từ Excel**. Hỗ trợ `.xlsx` và `.csv` với các cột:
+In **Settings → Questions**, choose **Import questions from Excel**. Both `.xlsx` and `.csv` are supported with these columns:
 
-| Cột | Bắt buộc | Ghi chú |
+| Column | Required | Notes |
 |---|---|---|
-| STT | Không | Bỏ qua |
-| Question | Có | Nội dung câu hỏi |
-| A / B / C / D | Có ít nhất 2 | Các đáp án; ô trống được bỏ qua |
-| Correct | Có | Chữ cái A–D, số 1–4, hoặc đúng nội dung đáp án |
-| Description | Không | Lời giải, lưu vào `explanation` |
-| Topic / Age Band / Difficulty / Hint / Lang | Không | Nếu có sẽ ghi đè giá trị mặc định đang chọn trong app |
+| STT | No | Ignored |
+| Question | Yes | Question text |
+| A / B / C / D | At least 2 | Answer options; blank cells are skipped |
+| Correct | Yes | Letter A–D, number 1–4, or the exact option text |
+| Description | No | Stored as `explanation` |
+| Topic / Age Band / Difficulty / Hint / Lang | No | Override the defaults selected in the app |
 
-- Nhóm tuổi và ngôn ngữ mặc định chọn ngay trong thẻ nhập file; cột `Age Band` / `Lang` (nếu có) được ưu tiên.
-- **Chống trùng:** câu hỏi trùng *nội dung + đáp án + nhóm tuổi + ngôn ngữ* sẽ bị bỏ qua; nhập lại cùng file sẽ cập nhật thay vì nhân đôi. JSON thiếu `id` cũng được sinh ID ổn định theo nội dung.
-- File mẫu: [Google Sheets](https://docs.google.com/spreadsheets/d/1Z88wm1TV01O3vufHuXGkX0kgsY7ctbVlasEZmIFNa-A/edit?usp=sharing).
-- File `.xls` cũ chưa hỗ trợ — lưu sang `.xlsx` hoặc `.csv`.
+- Default age band and content language are selected in the import card; `Age Band` / `Lang` columns take precedence when present.
+- **Duplicate prevention:** the same *question + answer + age band + language* is skipped; re-importing the same file updates rows instead of duplicating them. JSON without an `id` also receives a deterministic content-based ID.
+- Template: [Google Sheets](https://docs.google.com/spreadsheets/d/1Z88wm1TV01O3vufHuXGkX0kgsY7ctbVlasEZmIFNa-A/edit?usp=sharing).
+- Legacy `.xls` files are not supported — save as `.xlsx` or `.csv`.
 
-### Xóa toàn bộ ngân hàng
+### Delete the entire bank
 
-Trong **Cài đặt → Câu hỏi**, nút **Xóa toàn bộ câu hỏi** sẽ xóa toàn bộ bảng `questions` (và lịch sử `question_seen` đi kèm) sau khi xác nhận. Cổng đố vui vẫn hoạt động bằng bộ sinh câu hỏi tự động cho đến khi bạn nhập lại.
-
----
-
-## 9. Trạng thái dự án
-
-Đây là **MVP đang phát triển**, code build xanh và đã có unit test cho policy, bảo mật PIN và bộ sinh câu hỏi. Một số điểm cần hoàn thiện trước khi phát hành:
-
-- [ ] Kiểm chứng trên ma trận thiết bị thật (Android TV, TV box AOSP, tablet, điện thoại).
-- [ ] Đo RAM/CPU/pin của service nền trên TV box cấu hình thấp.
-- [ ] Đồng bộ nội dung câu hỏi tiếng Anh (hiện gói starter pack là tiếng Việt).
-- [ ] Pipeline cập nhật nội dung có manifest + kiểm tra sha256.
-- [ ] Bổ sung nội dung 1.450 câu theo kế hoạch.
+In **Settings → Questions**, **Delete all questions** removes the whole `questions` table (and its `question_seen` history) after confirmation. Quiz gates keep working with the automatic question generator until you import again.
 
 ---
 
-## 10. Triết lý thiết kế
+## 9. Project status
 
-> “Không lấy đi thời gian của con — đổi thời gian đó thành một cơ hội học tập nhỏ.”
+This is an **in-progress MVP**. The code compiles and has unit tests for policy, PIN security and the fallback generator. Remaining work before release:
 
-Quiz Gate được xây dựng quanh ba nguyên tắc:
-
-1. **An toàn cho trẻ trước tiên** — không có trạng thái nào khiến trẻ bị kẹt vĩnh viễn.
-2. **Phụ huynh giữ quyền quyết định** — mọi giới hạn đều có thể mở bằng PIN.
-3. **Riêng tư tuyệt đối** — dữ liệu của gia đình không rời khỏi thiết bị.
+- [ ] Validate on the real device matrix (Android TV, AOSP TV boxes, tablets, phones).
+- [ ] Measure background-service RAM/CPU/battery on low-end TV boxes.
+- [ ] Add English content to the starter pack (the bundled pack is Vietnamese).
+- [ ] Add a content pipeline with manifest + sha256 verification.
+- [ ] Grow the bank to the planned 1,450 questions.
 
 ---
 
-*Quiz Gate — vừa học, vừa chơi, vừa lớn.*
+## 10. Design philosophy
+
+> “Don't take time away from the child — turn that time into a small learning opportunity.”
+
+Quiz Gate is built around three principles:
+
+1. **Child safety first** — no state can leave a child permanently stuck.
+2. **Parents keep control** — every limit can be unlocked with the PIN.
+3. **Absolute privacy** — family data never leaves the device.
+
+---
+
+*Quiz Gate — learn a little, play a little, grow a little.*
