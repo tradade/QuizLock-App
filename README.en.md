@@ -97,7 +97,7 @@ Children often get upset when a device is suddenly taken away. Quiz Gate takes a
 - 8-character recovery code shown once at setup, used to reset the PIN.
 - **App lock**: once a PIN is configured, the whole management UI is locked on launch and whenever the app returns from the background; unlock with the PIN or recovery code.
 - **Super PIN (debug builds only)**: enter `999999` on the lock screen to open management without the configured PIN, bypassing lockout as well. Release builds ignore it entirely.
-- **Broken-state warning**: the background service checks permissions every minute; if Accessibility is off, the notification switches to “Permission needed” with a button that opens Accessibility settings.
+- **Broken-state warning**: the background service checks permissions every hour; if Accessibility is off, the notification switches to “Permission needed” with a button that opens Accessibility settings.
 - Device Admin receiver + Boot receiver so protection comes back after a restart.
 - Persistent foreground notification showing protection status.
 
