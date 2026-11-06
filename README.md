@@ -1,6 +1,6 @@
 # Quiz Gate
 
-[Tiếng Việt](README.md) · [English](README.en.md)
+[Tiếng Việt](README.vi.md) · [English](README.md)
 
 > **Quiz for screen time — turn device time into a little learning-and-play moment.**
 
