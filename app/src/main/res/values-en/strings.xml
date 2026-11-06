@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Quiz Gate</string>
+    <string name="accessibility_service_description">Monitors the foreground app and shows educational quiz gates to manage children\'s screen time.</string>
+    <string name="notification_channel_name">Quiz Gate monitoring status</string>
+    <string name="notification_channel_desc">Shows current screen time and quiz gate status</string>
+    <string name="fgs_title">Quiz Gate is running</string>
+    <string name="fgs_content">Monitoring screen time</string>
+    <string name="notif_fix_action">Enable Accessibility</string>
+    <string name="admin_enabled_toast">Quiz Gate: Uninstall protection enabled</string>
+    <string name="admin_disable_warning">Warning: disabling Device Administrator will turn off screen-time protection for your child.</string>
+    <string name="admin_disabled_toast">Quiz Gate: Device Administrator disabled</string>
+</resources>

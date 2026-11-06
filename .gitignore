@@ -16,3 +16,7 @@
 local.properties
 .env
 debug.keystore
+/.aistudio
+/.issues
+/.commandcode
+/public/assets/aistudio
