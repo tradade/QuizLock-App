@@ -31,6 +31,8 @@ class WatchdogForegroundService : Service() {
 
     companion object {
         private const val TAG = "WatchdogFgs"
+        private const val NOTIFICATION_REFRESH_MILLIS = 60_000L
+        private const val HEALTH_CHECK_INTERVAL_MILLIS = 60L * 60L * 1000L
 
         const val CHANNEL_ID = "quizgate_watchdog_channel"
         const val NOTIFICATION_ID = 1001
@@ -81,11 +83,25 @@ class WatchdogForegroundService : Service() {
             val app = application as? QuizGateApplication ?: return@launch
             val repo = app.repository
             var lastSignature: String? = null
+            var lastHealth: WatchdogHealth? = null
+            var lastHealthCheckElapsed = 0L
 
             while (isActive) {
                 try {
                     val strings = AppStrings.of(repo.getAppLanguage())
-                    val health = WatchdogHealthChecker.check(this@WatchdogForegroundService)
+
+                    // Permission health is checked hourly; the progress notification
+                    // still refreshes every minute.
+                    val nowElapsed = SystemClock.elapsedRealtime()
+                    if (lastHealth == null ||
+                        nowElapsed - lastHealthCheckElapsed >= HEALTH_CHECK_INTERVAL_MILLIS
+                    ) {
+                        lastHealth = WatchdogHealthChecker.check(this@WatchdogForegroundService)
+                        lastHealthCheckElapsed = nowElapsed
+                    }
+                    val health = lastHealth
+                        ?: WatchdogHealthChecker.check(this@WatchdogForegroundService)
+
                     val profile = repo.getActiveProfile()
                     val parentModeUntil = repo.getParentModeUntil()
 
@@ -126,7 +142,7 @@ class WatchdogForegroundService : Service() {
                     }
                 } catch (_: Exception) {
                 }
-                delay(60_000L) // Poll once a minute, but only notify on change
+                delay(NOTIFICATION_REFRESH_MILLIS) // Notify only on change
             }
         }
     }

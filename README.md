@@ -96,7 +96,7 @@ Trẻ em thường bị cắt ngang cảm xúc khi bị tắt thiết bị độ
 - Mã khôi phục 8 ký tự, chỉ hiển thị một lần khi tạo, dùng để đặt lại PIN.
 - **Khóa ứng dụng**: khi đã thiết lập PIN, toàn bộ màn hình quản lý sẽ khóa lúc mở app và khi quay lại từ nền; mở bằng PIN hoặc mã khôi phục.
 - **Super PIN (chỉ bản debug)**: nhập `999999` tại màn khóa để vào phần quản lý mà không cần PIN đã thiết lập, đồng thời bỏ qua lockout. Release build hoàn toàn bỏ qua Super PIN.
-- **Cảnh báo BROKEN**: service nền kiểm tra quyền mỗi phút; nếu Trợ năng bị tắt, notification đổi sang trạng thái “Cần kiểm tra quyền” kèm nút mở thẳng cài đặt Trợ năng.
+- **Cảnh báo BROKEN**: service nền kiểm tra quyền mỗi giờ; nếu Trợ năng bị tắt, notification đổi sang trạng thái “Cần kiểm tra quyền” kèm nút mở thẳng cài đặt Trợ năng.
 - Device Admin receiver + Boot receiver để dịch vụ sống lại sau khi khởi động máy.
 - Thông báo nền thường trực hiển thị trạng thái bảo vệ.
 
