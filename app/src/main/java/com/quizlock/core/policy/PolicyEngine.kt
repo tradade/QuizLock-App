@@ -88,7 +88,7 @@ class PolicyEngine(
             return WatchdogDecision.InParentMode(remainingSec.coerceAtLeast(0L))
         }
 
-        // 3. Excluded apps (learning apps / Quiz Gate itself) are exempt
+        // 3. Excluded apps (learning apps / QuizLock itself) are exempt
         if (isForegroundExcluded) {
             return WatchdogDecision.Armed
         }

@@ -10,13 +10,15 @@ import java.util.zip.ZipInputStream
 import javax.xml.parsers.DocumentBuilderFactory
 
 /**
- * Imports the Quiz Gate question spreadsheet template.
+ * Imports the QuizLock question spreadsheet template.
  *
  * Supported columns (header row optional):
- * STT | Question | A | B | C | D | Correct | Description
- * Optional: Topic, Age Band, Difficulty, Hint, Lang.
+ * STT | Question/Câu hỏi | A/Đáp án A | B/Đáp án B | C/Đáp án C | D/Đáp án D |
+ * Correct/Đáp án đúng | Description/Lời giải
+ * Optional: Topic/Chủ đề, Age Band/Độ tuổi, Difficulty/Độ khó, Hint/Gợi ý, Lang/Ngôn ngữ.
  *
- * A .xlsx file is parsed directly from its ZIP/XML parts; CSV is also accepted.
+ * A .xlsx file is parsed directly from its ZIP/XML parts; comma-, semicolon-, and
+ * tab-separated text files are also accepted.
  */
 object ExcelQuestionImporter {
 
@@ -53,7 +55,7 @@ object ExcelQuestionImporter {
             when {
                 isZip(bytes) -> parseXlsx(bytes)
                 isOleFormat(bytes) -> return Result.Failure(Error.UNSUPPORTED_OLD_XLS)
-                else -> parseCsv(bytes.toString(Charsets.UTF_8))
+                else -> parseCsv(decodeText(bytes))
             }
         } catch (e: Exception) {
             return Result.Failure(Error.UNREADABLE, e.message)
@@ -86,6 +88,24 @@ object ExcelQuestionImporter {
             bytes[1] == 0xCF.toByte() &&
             bytes[2] == 0x11.toByte() &&
             bytes[3] == 0xE0.toByte()
+
+    private fun decodeText(bytes: ByteArray): String {
+        return when {
+            bytes.size >= 3 &&
+                bytes[0] == 0xEF.toByte() &&
+                bytes[1] == 0xBB.toByte() &&
+                bytes[2] == 0xBF.toByte() ->
+                bytes.copyOfRange(3, bytes.size).toString(Charsets.UTF_8)
+
+            bytes.size >= 2 && bytes[0] == 0xFF.toByte() && bytes[1] == 0xFE.toByte() ->
+                bytes.copyOfRange(2, bytes.size).toString(Charsets.UTF_16LE)
+
+            bytes.size >= 2 && bytes[0] == 0xFE.toByte() && bytes[1] == 0xFF.toByte() ->
+                bytes.copyOfRange(2, bytes.size).toString(Charsets.UTF_16BE)
+
+            else -> bytes.toString(Charsets.UTF_8)
+        }
+    }
 
     // --- XLSX ---
 
@@ -209,7 +229,8 @@ object ExcelQuestionImporter {
     private fun parseCsv(text: String): List<List<String>> {
         val clean = text.removePrefix("\uFEFF")
         val firstLine = clean.lineSequence().firstOrNull().orEmpty()
-        val delimiter = if (firstLine.count { it == ';' } > firstLine.count { it == ',' }) ';' else ','
+        val delimiter = listOf(',', ';', '\t')
+            .maxBy { candidate -> firstLine.count { it == candidate } }
 
         val rows = mutableListOf<List<String>>()
         val row = mutableListOf<String>()
@@ -280,6 +301,14 @@ object ExcelQuestionImporter {
                 if (text.isNotEmpty()) options[letter] = text
             }
 
+            val distinctOptions = options.values
+                .map { it.trim().lowercase(Locale.ROOT) }
+                .toSet()
+            if (distinctOptions.size != options.size) {
+                skipped++
+                continue
+            }
+
             val correctRaw = columnMap["correct"]
                 ?.let { row.getOrNull(it) }
                 ?.trim()
@@ -312,7 +341,7 @@ object ExcelQuestionImporter {
             val lang = normalizeLang(columnMap["lang"]?.let { row.getOrNull(it) })
                 ?: defaults.lang
             val difficulty = columnMap["difficulty"]
-                ?.let { row.getOrNull(it)?.trim()?.toIntOrNull() }
+                ?.let { row.getOrNull(it)?.let(::parseDifficulty) }
                 ?.coerceIn(1, 5)
                 ?: defaults.difficulty
 
@@ -354,16 +383,16 @@ object ExcelQuestionImporter {
         headers.forEachIndexed { index, header ->
             val key = when (header) {
                 "question", "cauhoi", "noidung" -> "question"
-                "a", "optiona", "dapana" -> "option_A"
-                "b", "optionb", "dapanb" -> "option_B"
-                "c", "optionc", "dapanc" -> "option_C"
-                "d", "optiond", "dapand" -> "option_D"
-                "correct", "answer", "dapan", "dapandung", "dung" -> "correct"
-                "description", "explanation", "giaithich", "loigiai" -> "explanation"
+                "a", "optiona", "answera", "dapana" -> "option_A"
+                "b", "optionb", "answerb", "dapanb" -> "option_B"
+                "c", "optionc", "answerc", "dapanc" -> "option_C"
+                "d", "optiond", "answerd", "dapand" -> "option_D"
+                "correct", "answer", "correctanswer", "answerkey", "dapan", "dapandung", "dung" -> "correct"
+                "description", "explanation", "giaithich", "loigiai", "loigiaiich" -> "explanation"
                 "hint", "goiy" -> "hint"
                 "topic", "chude", "theloai" -> "topic"
-                "ageband", "nhomtuoi", "doituoi" -> "age_band"
-                "difficulty", "dokho" -> "difficulty"
+                "ageband", "nhomtuoi", "doituoi", "dotuoi", "tuoi" -> "age_band"
+                "difficulty", "dokho", "mucdo" -> "difficulty"
                 "lang", "language", "ngonngu" -> "lang"
                 else -> null
             }
@@ -390,25 +419,48 @@ object ExcelQuestionImporter {
             if (options.containsKey(letter)) return letter
         }
 
-        val firstLetter = upper.firstOrNull { it in 'A'..'D' }
-        if (firstLetter != null && options.containsKey(firstLetter.toString())) {
-            return firstLetter.toString()
+        // Spreadsheet users often type labels such as "Answer C" or "Đáp án C".
+        // Use the last A–D token so the A in "Answer" does not win.
+        val lastLetter = upper.lastOrNull { it in 'A'..'D' }
+        if (lastLetter != null && options.containsKey(lastLetter.toString())) {
+            return lastLetter.toString()
         }
         return null
     }
 
     private fun normalizeHeader(value: String): String {
-        val decomposed = Normalizer.normalize(value.trim().lowercase(Locale.ROOT), Normalizer.Form.NFD)
+        val decomposed = Normalizer.normalize(
+            value.trim().lowercase(Locale.ROOT).replace('đ', 'd'),
+            Normalizer.Form.NFD
+        )
         return decomposed.replace(Regex("\\p{M}+"), "").replace(Regex("[^a-z0-9]"), "")
     }
 
     private fun normalizeAgeBand(raw: String?): String? {
-        val value = raw?.replace("–", "-")?.replace(" ", "")?.replace("_", "") ?: return null
+        val value = normalizeHeader(raw ?: return null)
+            .removeSuffix("tuoi")
+            .removeSuffix("years")
+            .removeSuffix("year")
+            .removePrefix("ages")
+            .removePrefix("age")
+            .removePrefix("nhom")
         return when {
-            value == "4-6" || value == "46" -> "4-6"
-            value == "7-9" || value == "79" -> "7-9"
-            value == "10-12" || value == "1012" -> "10-12"
+            value.matches(Regex("4(?:to|den)6|46")) -> "4-6"
+            value.matches(Regex("7(?:to|den)9|79")) -> "7-9"
+            value.matches(Regex("10(?:to|den)12|1012")) -> "10-12"
             else -> null
+        }
+    }
+
+    private fun parseDifficulty(raw: String?): Int? {
+        val value = normalizeHeader(raw ?: return null)
+        return when (value) {
+            "1", "de", "ratde", "veryeasy", "easy" -> 1
+            "2", "trungbinh", "medium" -> 2
+            "3", "kho", "hard" -> 3
+            "4" -> 4
+            "5", "ratkho", "veryhard" -> 5
+            else -> value.toIntOrNull()
         }
     }
 

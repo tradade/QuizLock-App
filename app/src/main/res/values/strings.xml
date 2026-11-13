@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Quiz Gate</string>
+    <string name="app_name">QuizLock</string>
     <string name="accessibility_service_description">Dịch vụ giám sát ứng dụng nền và hiển thị cổng câu đố học tập để quản lý thời gian sử dụng thiết bị của trẻ em.</string>
-    <string name="notification_channel_name">Trạng thái giám sát Quiz Gate</string>
+    <string name="notification_channel_name">Trạng thái giám sát QuizLock</string>
     <string name="notification_channel_desc">Hiển thị thời gian xem hiện tại và trạng thái cổng câu đố</string>
-    <string name="fgs_title">Quiz Gate đang hoạt động</string>
+    <string name="fgs_title">QuizLock đang hoạt động</string>
     <string name="fgs_content">Đang canh chừng thời gian màn hình</string>
     <string name="notif_fix_action">Bật Trợ năng</string>
-    <string name="admin_enabled_toast">Quiz Gate: Đã kích hoạt bảo vệ chống gỡ ứng dụng</string>
+    <string name="admin_enabled_toast">QuizLock: Đã kích hoạt bảo vệ chống gỡ ứng dụng</string>
     <string name="admin_disable_warning">Cảnh báo: Tắt quyền Quản trị viên thiết bị sẽ vô hiệu hóa tính năng bảo vệ thời gian sử dụng thiết bị cho trẻ em.</string>
-    <string name="admin_disabled_toast">Quiz Gate: Quyền quản trị đã bị tắt</string>
+    <string name="admin_disabled_toast">QuizLock: Quyền quản trị đã bị tắt</string>
 </resources>

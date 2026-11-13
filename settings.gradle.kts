@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "Quiz Gate"
+rootProject.name = "QuizLock"
 
 include(":app")

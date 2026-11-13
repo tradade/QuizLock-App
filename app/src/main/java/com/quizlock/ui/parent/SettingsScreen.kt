@@ -1054,7 +1054,7 @@ fun SettingsScreen(
         ChangePinDialog(
             onSavePin = { newPin ->
                 coroutineScope.launch {
-                    repository.setupPin(newPin)
+                    repository.changePin(newPin)
                     showNewPinDialog = false
                 }
             },

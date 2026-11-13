@@ -94,6 +94,59 @@ class ExcelQuestionImporterTest {
     }
 
     @Test
+    fun `accepts the parent friendly Vietnamese template headers`() {
+        val csv = """
+            Câu hỏi,Đáp án A,Đáp án B,Đáp án C,Đáp án D,Đáp án đúng,Lời giải,Gợi ý,Chủ đề,Độ tuổi,Độ khó,Ngôn ngữ
+            2 + 3 bằng bao nhiêu?,4,5,6,7,B,2 + 3 = 5,Đếm thêm 3 từ số 2,Toán,7 đến 9 tuổi,Dễ,vi
+        """.trimIndent()
+
+        val result = parseCsv(csv)
+        assertTrue("Expected success but was $result", result is ExcelQuestionImporter.Result.Success)
+        val question = (result as ExcelQuestionImporter.Result.Success).questions.single()
+
+        assertEquals("2 + 3 bằng bao nhiêu?", question.question)
+        assertEquals("5", question.answer)
+        assertEquals("2 + 3 = 5", question.explanation)
+        assertEquals("Đếm thêm 3 từ số 2", question.hint)
+        assertEquals("Toán", question.topic)
+        assertEquals("7-9", question.ageBand)
+        assertEquals(1, question.difficulty)
+        assertEquals("vi", question.lang)
+    }
+
+    @Test
+    fun `accepts the English template headers copied from the app`() {
+        val csv = """
+            Question,Answer A,Answer B,Answer C,Answer D,Correct answer,Explanation,Hint
+            What is 2 + 3?,4,5,6,7,B,2 + 3 = 5.,Count on from 2.
+        """.trimIndent()
+
+        val result = parseCsv(csv)
+        assertTrue("Expected success but was $result", result is ExcelQuestionImporter.Result.Success)
+        val question = (result as ExcelQuestionImporter.Result.Success).questions.single()
+        assertEquals("5", question.answer)
+        assertEquals("2 + 3 = 5.", question.explanation)
+        assertEquals("Count on from 2.", question.hint)
+    }
+
+    @Test
+    fun `reads tab separated utf16 csv exported by spreadsheet apps`() {
+        val csv = listOf(
+            listOf("Câu hỏi", "Đáp án A", "Đáp án B", "Đáp án đúng"),
+            listOf("1 + 1 = ?", "1", "2", "B")
+        ).joinToString("\n") { it.joinToString("\t") }
+
+        val result = ExcelQuestionImporter.parse(
+            ByteArrayInputStream(csv.toByteArray(Charsets.UTF_16LE).let { byteArrayOf(0xFF.toByte(), 0xFE.toByte()) + it })
+        )
+
+        assertTrue("Expected success but was $result", result is ExcelQuestionImporter.Result.Success)
+        val question = (result as ExcelQuestionImporter.Result.Success).questions.single()
+        assertEquals("1 + 1 = ?", question.question)
+        assertEquals("2", question.answer)
+    }
+
+    @Test
     fun `accepts the correct answer as option text`() {
         val csv = """
             Question,A,B,C,D,Correct,Description
@@ -102,6 +155,17 @@ class ExcelQuestionImporterTest {
 
         val success = parseCsv(csv) as ExcelQuestionImporter.Result.Success
         assertEquals("Đông", success.questions.single().answer)
+    }
+
+    @Test
+    fun `accepts labelled answer keys without mistaking the prefix for option A`() {
+        val csv = """
+            Câu hỏi,Đáp án A,Đáp án B,Đáp án C,Đáp án D,Đáp án đúng
+            Màu của bầu trời?,Đỏ,Xanh lá,Xanh dương,Vàng,Answer C
+        """.trimIndent()
+
+        val success = parseCsv(csv) as ExcelQuestionImporter.Result.Success
+        assertEquals("Xanh dương", success.questions.single().answer)
     }
 
     @Test
@@ -116,6 +180,20 @@ class ExcelQuestionImporterTest {
         val success = parseCsv(csv) as ExcelQuestionImporter.Result.Success
         assertEquals(1, success.questions.size)
         assertEquals(2, success.skippedRows)
+    }
+
+    @Test
+    fun `skips rows whose answer options are duplicated`() {
+        val csv = """
+            Câu hỏi,Đáp án A,Đáp án B,Đáp án C,Đáp án đúng
+            Chọn số lớn hơn,5,5,4,B
+            Chọn số nhỏ hơn,1,2,3,A
+        """.trimIndent()
+
+        val success = parseCsv(csv) as ExcelQuestionImporter.Result.Success
+        assertEquals(1, success.questions.size)
+        assertEquals(1, success.skippedRows)
+        assertEquals("Chọn số nhỏ hơn", success.questions.single().question)
     }
 
     @Test

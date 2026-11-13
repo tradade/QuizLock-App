@@ -1,6 +1,0 @@
-{
-  "name": "Quiz Gate",
-  "description": "Screen time control and educational quiz gate for Android TV, tablets, and smartphones.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

@@ -1,10 +1,15 @@
-# Quiz Gate
+# QuizLock
 
 [Tiếng Việt](README.vi.md) · [English](README.md)
 
+![CI](https://github.com/tradade/QuizLock/actions/workflows/ci.yml/badge.svg)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+![Min SDK](https://img.shields.io/badge/minSdk-24-green)
+![Release](https://img.shields.io/badge/release-1.0.0-orange)
+
 > **Câu đố đổi giờ xem — biến thời gian dùng thiết bị thành vừa học vừa chơi.**
 
-Quiz Gate là ứng dụng Android dành cho phụ huynh muốn quản lý thời gian sử dụng TV / tablet / smartphone của con **mà không cần cấm đoán**. Thay vì khóa máy, ứng dụng biến mỗi khoảng thời gian xem thành một “cổng” nhỏ: con trả lời đúng một câu hỏi Toán, Tiếng Việt hoặc Logic để mở khóa và tiếp tục xem.
+QuizLock là ứng dụng Android dành cho phụ huynh muốn quản lý thời gian sử dụng TV / tablet / smartphone của con **mà không cần cấm đoán**. Thay vì khóa máy, ứng dụng biến mỗi khoảng thời gian xem thành một “cổng” nhỏ: con trả lời đúng một câu hỏi Toán, Tiếng Việt hoặc Logic để mở khóa và tiếp tục xem.
 
 Ứng dụng chạy hoàn toàn **on-device**, không backend, không tài khoản, không quảng cáo. Mục tiêu là một công cụ nhẹ, riêng tư và đủ đơn giản để phụ huynh Việt Nam dùng được trên cả TV box giá rẻ lẫn điện thoại phổ thông.
 
@@ -12,7 +17,7 @@ Quiz Gate là ứng dụng Android dành cho phụ huynh muốn quản lý thờ
 
 ## 1. Ý tưởng
 
-Trẻ em thường bị cắt ngang cảm xúc khi bị tắt thiết bị đột ngột. Quiz Gate chọn cách khác:
+Trẻ em thường bị cắt ngang cảm xúc khi bị tắt thiết bị đột ngột. QuizLock chọn cách khác:
 
 - **Không cấm** — con vẫn được xem, nhưng phải “trả phí” bằng một câu trả lời đúng.
 - **Không học thêm nặng nề** — câu hỏi bám theo độ tuổi, có gợi ý và lời giải ngắn.
@@ -35,7 +40,7 @@ Trẻ em thường bị cắt ngang cảm xúc khi bị tắt thiết bị độ
            │ đủ X phút / hết trần ngày / ngoài giờ │
            ▼                                       │
 ┌──────────────────────┐                          │
-│   Mở Quiz Gate       │ ◄────────────────────────┘
+│   Mở QuizLock       │ ◄────────────────────────┘
 │ (câu hỏi + 4 đáp án) │
 └──────────┬───────────┘
            │ trả lời đúng
@@ -102,7 +107,7 @@ Trẻ em thường bị cắt ngang cảm xúc khi bị tắt thiết bị độ
 
 ### Ngân hàng câu hỏi
 - Đóng gói sẵn **200 câu hỏi** tiếng Việt theo 3 nhóm tuổi trong APK.
-- Cập nhật thêm từ URL JSON trực tiếp hoặc nhập từ file Excel/CSV trong Cài đặt.
+- Cập nhật thêm từ URL HTTPS trực tiếp hoặc nhập từ file Excel/CSV/TSV trong Cài đặt.
 - Chống trùng theo nội dung: câu hỏi trùng nội dung + đáp án + nhóm tuổi + ngôn ngữ sẽ bị bỏ qua khi nhập.
 - Có nút **xóa toàn bộ ngân hàng câu hỏi** (có xác nhận) trong Cài đặt.
 - Khi hết câu hoặc mất dữ liệu, **bộ sinh câu hỏi dự phòng** tự tạo phép Toán / Logic theo nhóm tuổi — cổng không bao giờ “chết”.
@@ -117,6 +122,8 @@ Trẻ em thường bị cắt ngang cảm xúc khi bị tắt thiết bị độ
 ## 4. Kiến trúc & công nghệ
 
 Dự án hiện là **một module `:app`** (chưa tách multi-module như bản thiết kế ban đầu), ưu tiên độ đơn giản và kích thước APK nhỏ.
+
+> Application ID: `com.cloudon.quizlock` · Kotlin namespace: `com.quizlock`.
 
 | Thành phần | Lựa chọn |
 |---|---|
@@ -167,12 +174,12 @@ app/src/main/java/com/quizlock/
 | Android Studio | Khuyến nghị, bản hỗ trợ AGP 9.x |
 | Thiết bị / emulator | Android 7.0 (API 24) trở lên |
 
-> Ứng dụng không cần backend hay Firebase. Thiếu `google-services.json` chỉ tạo cảnh báo, không chặn build.
+> Ứng dụng không cần backend hay Firebase — dự án không có dependency hay cấu hình Firebase.
 
 ### 5.2 Chuẩn bị project
 
 ```bash
-git clone <repo-url> QuizLock
+git clone https://github.com/tradade/QuizLock.git QuizLock
 cd QuizLock
 ```
 
@@ -184,26 +191,11 @@ sdk.dir=/duong/dan/Android/Sdk
 
 Hoặc đặt biến môi trường `ANDROID_HOME`.
 
-Repo có `gradle/wrapper/gradle-wrapper.properties` nhưng có thể chưa kèm script `gradlew`. Nếu thiếu:
+Gradle wrapper đã có sẵn (`./gradlew`). Mở project bằng Android Studio hoặc chạy wrapper trực tiếp.
 
-```bash
-gradle wrapper --gradle-version 9.3.1
-```
+### 5.3 Ký release (tùy chọn)
 
-Hoặc mở project bằng Android Studio và để IDE sync/ tải Gradle.
-
-### 5.3 Tạo debug keystore
-
-Cấu hình build debug trỏ tới `debug.keystore` ở thư mục gốc:
-
-```bash
-keytool -genkeypair -v -keystore debug.keystore \
-  -storepass android -alias androiddebugkey -keypass android \
-  -keyalg RSA -keysize 2048 -validity 10000 \
-  -dname "CN=Android Debug,O=Android,C=US"
-```
-
-Build release dùng biến môi trường:
+Build debug dùng debug keystore mặc định của Android, nên `assembleDebug` chạy được ngay sau khi clone. Build release dùng biến môi trường:
 
 ```bash
 export KEYSTORE_PATH=/duong/dan/upload-key.jks
@@ -220,7 +212,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 - APK debug: `app/build/outputs/apk/debug/app-debug.apk`
 - Release: `./gradlew :app:assembleRelease` → `app/build/outputs/apk/release/`
-- Nếu cài đè báo lỗi chữ ký: `adb uninstall com.aistudio.quizgate.app` rồi cài lại.
+- Nếu cài đè báo lỗi chữ ký: `adb uninstall com.cloudon.quizlock` rồi cài lại.
 - **Android TV / TV box** (bật ADB debugging trong Developer options):
 
 ```bash
@@ -244,7 +236,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 #### Ghi chú theo thiết bị
 
-- **Xiaomi / Redmi (MIUI)**: bật Autostart và đặt pin “No restrictions” cho Quiz Gate.
+- **Xiaomi / Redmi (MIUI)**: bật Autostart và đặt pin “No restrictions” cho QuizLock.
 - **Samsung / One UI**: thêm app vào “Never sleeping apps” nếu service bị dừng.
 - **Android TV / TV box**: một số máy ẩn màn hình cấp quyền; dùng remote hoặc ADB để mở Settings. Kiểm tra lại Accessibility sau khi reboot.
 - **Android 13+**: cấp quyền thông báo để thấy trạng thái bảo vệ.
@@ -253,15 +245,14 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 ```bash
 ./gradlew :app:testDebugUnitTest
+./gradlew :app:lintDebug
 ```
 
 ### 5.7 Xử lý sự cố thường gặp
 
 | Lỗi | Cách xử lý |
 |---|---|
-| `Minimum supported Gradle version is 9.3.1` | Dùng đúng Gradle 9.3.1 (wrapper hoặc Android Studio). |
-| `Keystore file ... debug.keystore not found` | Tạo keystore theo mục 5.3. |
-| `google-services.json is missing` | Chỉ là cảnh báo; app không cần Firebase. |
+| `Minimum supported Gradle version is 9.3.1` | Dùng wrapper đi kèm (`./gradlew`) hoặc Android Studio. |
 | Thiếu `SDK Platform 36.1` | Cài qua SDK Manager hoặc để Gradle tự tải. |
 | Service ngừng sau reboot | Kiểm tra Accessibility, battery optimization và autostart của OEM. |
 | Không đếm giờ | Kiểm tra Accessibility đang bật, app không nằm trong danh sách loại trừ và đang trong khung giờ cho phép. |
@@ -296,14 +287,16 @@ Wizard onboarding trong app hướng dẫn từng bước và có nút mở th�
 - Mọi hồ sơ, thời gian xem, lịch sử câu hỏi nằm trong Room/SQLite **trên thiết bị**.
 - Không có server, không analytics, không crash reporter, không SDK quảng cáo.
 - Ứng dụng **không đọc nội dung màn hình**, không ghi phím, không lấy mật khẩu hay tin nhắn. Accessibility chỉ dùng để nhận diện package đang foreground.
-- Kết nối mạng chỉ xảy ra khi phụ huynh chủ động nhập URL JSON để cập nhật câu hỏi.
+- Kết nối mạng chỉ xảy ra khi phụ huynh chủ động nhập URL HTTPS JSON để cập nhật câu hỏi.
 - Gỡ ứng dụng sẽ xóa toàn bộ dữ liệu cục bộ.
+
+Bản lưu trong repo: [Chính sách riêng tư](docs/PRIVACY.md) · [Ghi chú tuân thủ Play](docs/PLAY_COMPLIANCE.md).
 
 ---
 
 ## 8. Định dạng câu hỏi
 
-Câu hỏi dùng JSON, có thể nạp từ asset hoặc URL:
+Câu hỏi dùng JSON, có thể nạp từ asset hoặc URL HTTPS:
 
 ```json
 [
@@ -330,21 +323,23 @@ Câu hỏi dùng JSON, có thể nạp từ asset hoặc URL:
 
 ### Nhập từ Excel / CSV
 
-Trong **Cài đặt → Câu hỏi**, chọn **Nhập câu hỏi từ Excel**. Hỗ trợ `.xlsx` và `.csv` với các cột:
+Trong **Cài đặt → Câu hỏi**, chọn **Nhập câu hỏi từ Excel**. Với phụ huynh, định dạng dễ nhất là **một bảng `.xlsx`** (Excel hoặc Google Sheets), mỗi dòng là một câu hỏi. Có thể dùng `.csv`/`.tsv` nếu muốn nhập file nhẹ.
 
-| Cột | Bắt buộc | Ghi chú |
-|---|---|---|
-| STT | Không | Bỏ qua |
-| Question | Có | Nội dung câu hỏi |
-| A / B / C / D | Có ít nhất 2 | Các đáp án; ô trống được bỏ qua |
-| Correct | Có | Chữ cái A–D, số 1–4, hoặc đúng nội dung đáp án |
-| Description | Không | Lời giải, lưu vào `explanation` |
-| Topic / Age Band / Difficulty / Hint / Lang | Không | Nếu có sẽ ghi đè giá trị mặc định đang chọn trong app |
+Mẫu khuyên dùng:
 
-- Nhóm tuổi và ngôn ngữ mặc định chọn ngay trong thẻ nhập file; cột `Age Band` / `Lang` (nếu có) được ưu tiên.
+| Câu hỏi | Đáp án A | Đáp án B | Đáp án C | Đáp án D | Đáp án đúng | Lời giải | Gợi ý |
+|---|---|---|---|---|---|---|---|
+| 2 + 3 bằng bao nhiêu? | 4 | 5 | 6 | 7 | B | 2 + 3 = 5. | Đếm thêm 3 từ số 2. |
+
+- **Bắt buộc:** `Câu hỏi`, ít nhất 2 ô đáp án, `Đáp án đúng`.
+- `Đáp án đúng` nên điền `A`, `B`, `C` hoặc `D`; cũng chấp nhận `1`–`4`, nội dung đáp án, hoặc dạng `Đáp án B`.
+- **Không cần điền:** `STT`, `Nhóm tuổi`, `Ngôn ngữ`, `Chủ đề`, `Độ khó` nếu toàn bộ file dùng cùng nhóm tuổi/ngôn ngữ. Chọn hai giá trị này ngay trong màn hình nhập.
+- Cột tùy chọn: `Lời giải`/`Description`, `Gợi ý`/`Hint`, `Chủ đề`/`Topic`, `Độ tuổi`/`Age Band`, `Độ khó`/`Difficulty`, `Ngôn ngữ`/`Lang`.
+- Hệ thống hiểu cả tiêu đề tiếng Việt (`Câu hỏi`, `Đáp án A`...) và tiếng Anh (`Question`, `Answer A`...).
+- Hỗ trợ `.xlsx`, `.csv`, `.tsv` và CSV phân cách bằng dấu phẩy, chấm phẩy hoặc tab; file `.xls` cũ chưa hỗ trợ.
+- Trong app có nút **Sao chép mẫu để dán vào Excel / Sheets**: phụ huynh không phải tự nhớ tên cột.
 - **Chống trùng:** câu hỏi trùng *nội dung + đáp án + nhóm tuổi + ngôn ngữ* sẽ bị bỏ qua; nhập lại cùng file sẽ cập nhật thay vì nhân đôi. JSON thiếu `id` cũng được sinh ID ổn định theo nội dung.
-- File mẫu: [Google Sheets](https://docs.google.com/spreadsheets/d/1Z88wm1TV01O3vufHuXGkX0kgsY7ctbVlasEZmIFNa-A/edit?usp=sharing).
-- File `.xls` cũ chưa hỗ trợ — lưu sang `.xlsx` hoặc `.csv`.
+- File mẫu dùng chung trong repo: [`docs/question-bank-template.csv`](docs/question-bank-template.csv).
 
 ### Xóa toàn bộ ngân hàng
 
@@ -368,7 +363,7 @@ Trong **Cài đặt → Câu hỏi**, nút **Xóa toàn bộ câu hỏi** sẽ x
 
 > “Không lấy đi thời gian của con — đổi thời gian đó thành một cơ hội học tập nhỏ.”
 
-Quiz Gate được xây dựng quanh ba nguyên tắc:
+QuizLock được xây dựng quanh ba nguyên tắc:
 
 1. **An toàn cho trẻ trước tiên** — không có trạng thái nào khiến trẻ bị kẹt vĩnh viễn.
 2. **Phụ huynh giữ quyền quyết định** — mọi giới hạn đều có thể mở bằng PIN.
@@ -376,4 +371,14 @@ Quiz Gate được xây dựng quanh ba nguyên tắc:
 
 ---
 
-*Quiz Gate — vừa học, vừa chơi, vừa lớn.*
+## 11. Đóng góp
+
+Xem [CONTRIBUTING.md](CONTRIBUTING.md) để biết cách build/test và [SECURITY.md](SECURITY.md) để báo lỗ hổng bảo mật riêng tư.
+
+## 12. Giấy phép
+
+Phát hành theo [Apache License 2.0](LICENSE). Xem [NOTICE](NOTICE) và [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+---
+
+*QuizLock — vừa học, vừa chơi, vừa lớn.*
