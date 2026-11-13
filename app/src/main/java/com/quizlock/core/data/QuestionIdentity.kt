@@ -6,8 +6,9 @@ import java.util.Locale
 /**
  * Identity helpers for question imports.
  *
- * - [stableId] is used when a source has no id: the same content imports to the
- *   same primary key, so re-importing updates instead of creating a new row.
+ * - [stableId] is used when a source has no id: the same question/answer pair
+ *   in the same age band/language keeps its primary key, so editing options or
+ *   metadata on re-import updates instead of creating a new row.
  * - [contentKey] is used for duplicate detection across different ids. It ignores
  *   topic/difficulty so the same question with changed metadata does not duplicate.
  */
@@ -33,7 +34,6 @@ object QuestionIdentity {
     ): String {
         val payload = listOf(
             question.trim(),
-            optionsJson.trim(),
             answer.trim(),
             ageBand.trim(),
             lang.trim().lowercase(Locale.ROOT)
@@ -64,19 +64,34 @@ object QuestionDeduplicator {
     fun plan(
         incoming: List<QuestionEntity>,
         existingIds: Set<String>,
-        existingKeys: Set<String>
+        existingKeys: Set<String>,
+        existingIdsByKey: Map<String, String> = emptyMap()
     ): QuestionImportPlan {
         val ids = existingIds.toMutableSet()
         val keys = existingKeys.toMutableSet()
+        val reusedKeys = mutableSetOf<String>()
         val toInsert = mutableListOf<QuestionEntity>()
         var duplicates = 0
 
         for (question in incoming) {
             val key = QuestionIdentity.contentKey(question)
+            val existingIdForKey = existingIdsByKey[key]
             when {
                 // Same primary key: this is an update, always allow it.
                 question.id in ids -> {
                     toInsert.add(question)
+                    keys.add(key)
+                    reusedKeys.add(key)
+                }
+                // A legacy/imported row may have an id generated with a different
+                // schema. Reuse its id so edited options update instead of creating
+                // a second row that the content key would otherwise skip.
+                existingIdForKey != null &&
+                    question.id.startsWith("auto_") &&
+                    key in keys &&
+                    reusedKeys.add(key) -> {
+                    toInsert.add(question.copy(id = existingIdForKey))
+                    ids.add(existingIdForKey)
                     keys.add(key)
                 }
                 // Same question + answer + age band + language already exists: skip.

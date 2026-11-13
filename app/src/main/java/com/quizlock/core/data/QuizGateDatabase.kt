@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.quizlock.BuildConfig
 
 @Database(
     entities = [
@@ -16,7 +17,7 @@ import androidx.room.RoomDatabase
         AttemptLogEntity::class
     ],
     version = 2,
-    exportSchema = false
+    exportSchema = true
 )
 abstract class QuizGateDatabase : RoomDatabase() {
 
@@ -34,13 +35,17 @@ abstract class QuizGateDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): QuizGateDatabase {
             return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
+                val builder = Room.databaseBuilder(
                     context.applicationContext,
                     QuizGateDatabase::class.java,
                     "quizgate.db"
                 )
-                    .fallbackToDestructiveMigration()
-                    .build()
+                // Destructive fallback is for local development only. Release builds
+                // must provide an explicit migration for every schema change.
+                if (BuildConfig.DEBUG) {
+                    builder.fallbackToDestructiveMigration(dropAllTables = true)
+                }
+                val instance = builder.build()
                 INSTANCE = instance
                 instance
             }

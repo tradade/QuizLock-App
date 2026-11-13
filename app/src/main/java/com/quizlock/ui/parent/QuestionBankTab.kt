@@ -1,9 +1,8 @@
 package com.quizlock.ui.parent
 
-import android.content.ClipDescription
+import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,8 +25,6 @@ import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.ErrorOutline
-import androidx.compose.material.icons.filled.HelpOutline
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Restore
 import androidx.compose.material.icons.filled.School
@@ -181,6 +178,25 @@ fun QuestionBankTab(
         }
     }
 
+    fun copyImportTemplate() {
+        val header = if (excelLang == "en") {
+            "Question\tAnswer A\tAnswer B\tAnswer C\tAnswer D\tCorrect answer\tExplanation\tHint"
+        } else {
+            "Câu hỏi\tĐáp án A\tĐáp án B\tĐáp án C\tĐáp án D\tĐáp án đúng\tLời giải\tGợi ý"
+        }
+        val sample = if (excelLang == "en") {
+            "What is 2 + 3?\t4\t5\t6\t7\tB\t2 + 3 = 5.\tCount on from 2."
+        } else {
+            "2 + 3 bằng bao nhiêu?\t4\t5\t6\t7\tB\t2 + 3 = 5.\tĐếm thêm 3 từ số 2."
+        }
+        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+        clipboard?.setPrimaryClip(
+            ClipData.newPlainText("QuizLock question template", "$header\n$sample")
+        )
+        excelStatusSuccess = true
+        excelStatusMessage = s.excelImportTemplateCopied
+    }
+
     val excelPicker = rememberLauncherForActivityResult(
         ActivityResultContracts.OpenDocument()
     ) { uri ->
@@ -328,7 +344,7 @@ fun QuestionBankTab(
                         statusMessage = null
                     },
                     label = { Text(s.urlFieldLabel) },
-                    placeholder = { Text("https://example.com/questions-custom.json") },
+                    placeholder = { Text("https://raw.githubusercontent.com/tradade/QuizLock/main/app/src/main/assets/questions-starter.json") },
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -345,7 +361,7 @@ fun QuestionBankTab(
                 ) {
                     TextButton(
                         onClick = {
-                            urlInput = "https://raw.githubusercontent.com/quizgate/starter-packs/main/vietnamese_math_science_200.json"
+                            urlInput = "https://raw.githubusercontent.com/tradade/QuizLock/main/app/src/main/assets/questions-starter.json"
                         }
                     ) {
                         Text(s.fillSampleLink, fontSize = 12.sp)
@@ -363,7 +379,7 @@ fun QuestionBankTab(
                 Button(
                     onClick = {
                         val trimmedUrl = urlInput.trim()
-                        if (trimmedUrl.isEmpty() || (!trimmedUrl.startsWith("http://") && !trimmedUrl.startsWith("https://"))) {
+                        if (trimmedUrl.isEmpty() || !trimmedUrl.startsWith("https://", ignoreCase = true)) {
                             statusMessage = s.invalidUrlMessage
                             isStatusSuccess = false
                             return@Button
@@ -449,6 +465,14 @@ fun QuestionBankTab(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
+                Spacer(modifier = Modifier.height(6.dp))
+
+                Text(
+                    text = s.excelImportFormatHint,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+
                 Spacer(modifier = Modifier.height(14.dp))
 
                 Text(
@@ -523,6 +547,8 @@ fun QuestionBankTab(
                                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                                 "text/csv",
                                 "text/comma-separated-values",
+                                "text/tab-separated-values",
+                                "text/plain",
                                 "application/csv",
                                 "application/octet-stream"
                             )
@@ -551,16 +577,10 @@ fun QuestionBankTab(
                 }
 
                 TextButton(
-                    onClick = {
-                        runCatching {
-                            context.startActivity(
-                                Intent(Intent.ACTION_VIEW, Uri.parse(EXCEL_TEMPLATE_URL))
-                            )
-                        }
-                    },
-                    modifier = Modifier.testTag("excel_template_link")
+                    onClick = ::copyImportTemplate,
+                    modifier = Modifier.testTag("copy_excel_template_button")
                 ) {
-                    Text(s.excelImportSampleLink, fontSize = 12.sp)
+                    Text(s.excelImportTemplateCopy, fontSize = 12.sp)
                 }
 
                 excelStatusMessage?.let { msg ->
@@ -825,9 +845,6 @@ private sealed interface ExcelImportOutcome {
     data class Success(val imported: Int, val skipped: Int, val duplicates: Int) : ExcelImportOutcome
     data class Failure(val error: ExcelQuestionImporter.Error) : ExcelImportOutcome
 }
-
-private const val EXCEL_TEMPLATE_URL =
-    "https://docs.google.com/spreadsheets/d/1Z88wm1TV01O3vufHuXGkX0kgsY7ctbVlasEZmIFNa-A/edit?usp=sharing"
 
 @Composable
 private fun AgeBandStatBadge(

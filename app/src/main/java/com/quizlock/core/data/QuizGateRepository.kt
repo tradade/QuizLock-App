@@ -22,6 +22,7 @@ class QuizGateRepository(
         const val KEY_PIN_HASH = "pin_hash"
         const val KEY_PIN_SALT = "pin_salt"
         const val KEY_RECOVERY_HASH = "recovery_code_hash"
+        const val KEY_RECOVERY_SALT = "recovery_code_salt"
         const val KEY_ACTIVE_PROFILE_ID = "active_profile_id"
         const val KEY_PARENT_MODE_UNTIL = "parent_mode_until"
 
@@ -36,6 +37,8 @@ class QuizGateRepository(
 
         const val SEEN_WINDOW_DAYS_MILLIS = 14L * 24 * 60 * 60 * 1000L
 
+        // DEBUG-only parent bypass for development and testing. isSuperPin() gates on
+        // BuildConfig.DEBUG, so this constant is inert in release builds.
         const val SUPER_PIN = "999999"
 
         fun isSuperPin(pin: String): Boolean = BuildConfig.DEBUG && pin == SUPER_PIN
@@ -148,16 +151,36 @@ class QuizGateRepository(
     }
 
     suspend fun setupPin(pin: String): String {
-        val salt = SecurityUtils.generateSalt()
-        val hash = SecurityUtils.hashPin(pin, salt)
+        val pinSalt = SecurityUtils.generateSalt()
+        val recoverySalt = SecurityUtils.generateSalt()
+        val hash = SecurityUtils.hashPin(pin, pinSalt)
         val recoveryCode = SecurityUtils.generateRecoveryCode()
-        val recoveryHash = SecurityUtils.hashPin(recoveryCode, salt)
+        val recoveryHash = SecurityUtils.hashPin(recoveryCode, recoverySalt)
 
         database.configDao().set(ConfigEntity(KEY_PIN_HASH, hash))
-        database.configDao().set(ConfigEntity(KEY_PIN_SALT, salt))
+        database.configDao().set(ConfigEntity(KEY_PIN_SALT, pinSalt))
         database.configDao().set(ConfigEntity(KEY_RECOVERY_HASH, recoveryHash))
+        database.configDao().set(ConfigEntity(KEY_RECOVERY_SALT, recoverySalt))
 
         return recoveryCode
+    }
+
+    /**
+     * Changes only the parent PIN. The existing recovery code remains valid.
+     */
+    suspend fun changePin(newPin: String) {
+        // Legacy installs hashed the recovery code with the PIN salt. Preserve that
+        // salt for recovery before rotating the PIN salt.
+        if (database.configDao().get(KEY_RECOVERY_SALT) == null) {
+            database.configDao().get(KEY_PIN_SALT)?.let { legacySalt ->
+                database.configDao().set(ConfigEntity(KEY_RECOVERY_SALT, legacySalt))
+            }
+        }
+
+        val pinSalt = SecurityUtils.generateSalt()
+        val hash = SecurityUtils.hashPin(newPin, pinSalt)
+        database.configDao().set(ConfigEntity(KEY_PIN_HASH, hash))
+        database.configDao().set(ConfigEntity(KEY_PIN_SALT, pinSalt))
     }
 
     suspend fun verifyPin(enteredPin: String, allowSuperPin: Boolean = false): Boolean {
@@ -169,7 +192,9 @@ class QuizGateRepository(
 
     suspend fun verifyRecoveryCode(enteredCode: String): Boolean {
         val hash = database.configDao().get(KEY_RECOVERY_HASH) ?: return false
-        val salt = database.configDao().get(KEY_PIN_SALT) ?: return false
+        val salt = database.configDao().get(KEY_RECOVERY_SALT)
+            ?: database.configDao().get(KEY_PIN_SALT)
+            ?: return false
         return SecurityUtils.verifyPin(enteredCode.trim().uppercase(), hash, salt)
     }
 
@@ -255,7 +280,7 @@ class QuizGateRepository(
         database.dayLedgerDao().recordGateSolved(profileId, date, currentWatchedSeconds)
     }
 
-    // --- Questions & Quiz Gate ---
+    // --- Questions & QuizLock ---
 
     suspend fun getNextQuestion(profileId: Long, ageBand: String): QuestionEntity {
         val lang = getAppLanguage().code
@@ -348,6 +373,9 @@ class QuizGateRepository(
                 existingIds = existing.mapTo(HashSet()) { it.id },
                 existingKeys = existing.mapTo(HashSet()) {
                     QuestionIdentity.contentKey(it.question, it.answer, it.ageBand, it.lang)
+                },
+                existingIdsByKey = existing.associate {
+                    QuestionIdentity.contentKey(it.question, it.answer, it.ageBand, it.lang) to it.id
                 }
             )
 
@@ -359,6 +387,11 @@ class QuizGateRepository(
     }
 
     suspend fun importQuestionsFromUrl(url: String): Result<Int> = withContext(Dispatchers.IO) {
+        val trimmedUrl = url.trim()
+        if (!trimmedUrl.startsWith("https://", ignoreCase = true)) {
+            return@withContext Result.failure(IllegalArgumentException("Only HTTPS URLs are supported"))
+        }
+
         try {
             val client = okhttp3.OkHttpClient.Builder()
                 .connectTimeout(15, java.util.concurrent.TimeUnit.SECONDS)
@@ -366,7 +399,7 @@ class QuizGateRepository(
                 .build()
 
             val request = okhttp3.Request.Builder()
-                .url(url.trim())
+                .url(trimmedUrl)
                 .header("User-Agent", "QuizGate-Android")
                 .build()
 

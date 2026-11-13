@@ -348,10 +348,12 @@ class Strings internal constructor(private val values: Map<String, String>) {
     val showSample: String by values
     val excelImportTitle: String by values
     val excelImportDesc: String by values
+    val excelImportFormatHint: String by values
     val excelImportButton: String by values
     val excelImportAgeBandLabel: String by values
     val excelImportLanguageLabel: String by values
-    val excelImportSampleLink: String by values
+    val excelImportTemplateCopy: String by values
+    val excelImportTemplateCopied: String by values
     val excelImportSuccess: String by values
     val excelImportErrorEmpty: String by values
     val excelImportErrorOldFormat: String by values
@@ -543,7 +545,7 @@ val ViStrings = Strings(
         "pinMustBe6Digits" to ("Mã PIN phải đủ 6 chữ số."),
         "pinMismatch" to ("Xác nhận mã PIN không trùng khớp."),
         "saveNewPin" to ("Lưu mã PIN mới"),
-        "onboardingWelcomeTitle" to ("Chào mừng đến với Quiz Gate!"),
+        "onboardingWelcomeTitle" to ("Chào mừng đến với QuizLock!"),
         "onboardingWelcomeSubtitle" to ("Giải pháp thông minh giúp phụ huynh kiểm soát thời gian sử dụng thiết bị của trẻ bằng các câu đố giáo dục bổ ích."),
         "onboardingStartButton" to ("Bắt đầu thiết lập (5 phút)"),
         "onboardingBullet1" to ("Tự động ngắt màn hình sau mỗi X phút để trẻ giải 1 câu đố."),
@@ -558,7 +560,7 @@ val ViStrings = Strings(
         "onboardingProfileTitle" to ("Hồ sơ của bé & Quy định"),
         "onboardingProfileSubtitle" to ("Thiết lập hồ sơ ban đầu, chiến lược kiểm soát và chu kỳ cổng câu đố."),
         "onboardingReadyTitle" to ("Tất cả đã sẵn sàng!"),
-        "onboardingReadySubtitle" to ("Quiz Gate đã sẵn sàng bảo vệ thời gian sử dụng thiết bị.\nBạn có thể điều chỉnh thêm các khung giờ và ứng dụng loại trừ trong Cài Đặt bất kỳ lúc nào."),
+        "onboardingReadySubtitle" to ("QuizLock đã sẵn sàng bảo vệ thời gian sử dụng thiết bị.\nBạn có thể điều chỉnh thêm các khung giờ và ứng dụng loại trừ trong Cài Đặt bất kỳ lúc nào."),
         "onboardingFinishButton" to ("Vào Bảng Điều Khiển Phụ Huynh"),
         "onboardingPermissionsTitle" to ("Cấp quyền giám sát cần thiết"),
         "onboardingPermissionsSubtitle" to ("Để đếm giờ và hiển thị cổng câu đố phủ lên YouTube/Games, ứng dụng cần các quyền sau:"),
@@ -605,7 +607,7 @@ val ViStrings = Strings(
         "privacyHeroTitle" to ("100% Cục bộ & Bảo mật trên thiết bị"),
         "privacyHeroSubtitle" to ("Không máy chủ, không thu thập dữ liệu cá nhân, không quảng cáo."),
         "privacySection1Title" to ("1. Thu thập và lưu trữ dữ liệu"),
-        "privacySection1Body" to ("Ứng dụng Quiz Gate hoạt động theo nguyên tắc On-device First:\n" +
+        "privacySection1Body" to ("Ứng dụng QuizLock hoạt động theo nguyên tắc On-device First:\n" +
         "• Toàn bộ hồ sơ của bé, thời gian xem màn hình và lịch sử làm câu đố được lưu trữ cục bộ trong cơ sở dữ liệu SQLite (Room) trên thiết bị của bạn.\n" +
         "• Ứng dụng KHÔNG truyền bất kỳ thông tin nhận dạng cá nhân nào (tên, độ tuổi, kết quả học tập) lên máy chủ bên thứ ba hay đám mây.\n" +
         "• Không sử dụng cookies theo dõi, Google Analytics hay bất kỳ SDK quảng cáo thương mại nào."),
@@ -620,17 +622,17 @@ val ViStrings = Strings(
         "privacySection4Title" to ("4. Quyền xóa dữ liệu"),
         "privacySection4Body" to ("Phụ huynh có toàn quyền kiểm soát dữ liệu:\n" +
         "• Bạn có thể xóa hồ sơ của bé, reset lịch sử câu đố trực tiếp trong ứng dụng.\n" +
-        "• Khi gỡ cài đặt ứng dụng Quiz Gate, 100% dữ liệu liên quan sẽ bị xóa sạch hoàn toàn khỏi thiết bị."),
-        "tosHeroTitle" to ("Điều khoản sử dụng Quiz Gate"),
+        "• Khi gỡ cài đặt ứng dụng QuizLock, 100% dữ liệu liên quan sẽ bị xóa sạch hoàn toàn khỏi thiết bị."),
+        "tosHeroTitle" to ("Điều khoản sử dụng QuizLock"),
         "tosHeroSubtitle" to ("Công cụ đồng hành cùng cha mẹ xây dựng thói quen số lành mạnh"),
         "tosSection1Title" to ("1. Mục đích ứng dụng"),
-        "tosSection1Body" to ("Quiz Gate được thiết kế như một giải pháp giáo dục kết hợp quản lý thời gian sử dụng thiết bị (Parental Control & Screen Time Gate). Thay vì cấm đoán cực đoan, ứng dụng khuyến khích trẻ rèn luyện tư duy Toán học, Tiếng Việt và Logic để đổi lấy thời gian giải trí tích cực."),
+        "tosSection1Body" to ("QuizLock được thiết kế như một giải pháp giáo dục kết hợp quản lý thời gian sử dụng thiết bị (Parental Control & Screen Time Gate). Thay vì cấm đoán cực đoan, ứng dụng khuyến khích trẻ rèn luyện tư duy Toán học, Tiếng Việt và Logic để đổi lấy thời gian giải trí tích cực."),
         "tosSection2Title" to ("2. Trách nhiệm của phụ huynh"),
         "tosSection2Body" to ("• Phụ huynh chịu trách nhiệm bảo mật mã PIN 6 số và lưu giữ mã khôi phục an toàn.\n" +
         "• Phụ huynh nên cùng thảo luận với con về hạn mức xem và chiến lược đố vui để tạo sự đồng thuận trong gia đình.\n" +
         "• Không chia sẻ mã PIN cho trẻ để đảm bảo cơ chế bảo vệ thời gian hoạt động hiệu quả."),
         "tosSection3Title" to ("3. Giới hạn trách nhiệm"),
-        "tosSection3Body" to ("• Quiz Gate là công cụ hỗ trợ gia đình trên cơ sở thiện chí. Ứng dụng không thay thế hoàn toàn sự giám sát trực tiếp của cha mẹ.\n" +
+        "tosSection3Body" to ("• QuizLock là công cụ hỗ trợ gia đình trên cơ sở thiện chí. Ứng dụng không thay thế hoàn toàn sự giám sát trực tiếp của cha mẹ.\n" +
         "• Các câu hỏi trong ngân hàng dữ liệu được biên soạn phù hợp chương trình giáo dục tiểu học và mầm non Việt Nam. Phụ huynh có thể tùy chỉnh hoặc nạp thêm câu hỏi theo nhu cầu học tập riêng."),
         "gateQuizWith" to ("Đố vui cùng"),
         "gateSubmit" to ("Kiểm tra đáp án"),
@@ -671,10 +673,10 @@ val ViStrings = Strings(
         "bandGroup7to9" to ("Nhóm 7–9 tuổi"),
         "bandGroup10to12" to ("Nhóm 10–12 tuổi"),
         "updateFromUrlTitle" to ("Cập nhật từ đường dẫn URL (JSON)"),
-        "updateFromUrlDesc" to ("Nhập đường link trực tiếp (HTTP/HTTPS) chứa tệp JSON câu hỏi. Hệ thống sẽ tải và hợp nhất vào cơ sở dữ liệu trên máy mà không làm mất tiến độ học."),
+        "updateFromUrlDesc" to ("Nhập đường link HTTPS trực tiếp chứa tệp JSON câu hỏi. Hệ thống sẽ tải và hợp nhất vào cơ sở dữ liệu trên máy mà không làm mất tiến độ học."),
         "urlFieldLabel" to ("Đường dẫn URL chứa file JSON câu hỏi"),
         "fillSampleLink" to ("Điền link mẫu thử nghiệm"),
-        "invalidUrlMessage" to ("Vui lòng nhập đường dẫn URL hợp lệ bắt đầu bằng https:// hoặc http://"),
+        "invalidUrlMessage" to ("Vui lòng nhập đường dẫn HTTPS hợp lệ (bắt đầu bằng https://)."),
         "importSuccess" to ("Đã tải và nạp %d câu hỏi vào ngân hàng!"),
         "importFailed" to ("Không thể cập nhật: %s"),
         "networkError" to ("Lỗi kết nối mạng"),
@@ -684,15 +686,17 @@ val ViStrings = Strings(
         "restoreDataDesc" to ("Khôi phục lại gói 200 câu hỏi mẫu tiếng Việt (Toán, Tiếng Việt, Logic) được biên soạn sẵn từ ứng dụng."),
         "restoreSuccess" to ("Đã khôi phục thành công %d câu hỏi chuẩn mặc định!"),
         "restoreButton" to ("Khôi phục 200 câu hỏi chuẩn ban đầu"),
-        "jsonFormatTitle" to ("Định dạng JSON câu hỏi chuẩn"),
+        "jsonFormatTitle" to ("Định dạng nâng cao (JSON / URL)"),
         "collapse" to ("Thu gọn"),
         "showSample" to ("Xem mẫu"),
         "excelImportTitle" to ("Nhập câu hỏi từ Excel"),
-        "excelImportDesc" to ("Chọn file .xlsx hoặc .csv có các cột: Question, A, B, C, D, Correct, Description. Dòng thiếu đáp án hợp lệ sẽ bị bỏ qua."),
-        "excelImportButton" to ("Chọn file Excel / CSV"),
+        "excelImportDesc" to ("Cách dễ nhất: mở Excel hoặc Google Sheets, dán mẫu rồi điền mỗi dòng một câu hỏi. Bắt buộc có câu hỏi, ít nhất 2 đáp án và đáp án đúng. File .xlsx, .csv, .tsv và CSV phân cách bằng tab đều được hỗ trợ."),
+        "excelImportFormatHint" to ("Mẫu khuyên dùng: Câu hỏi | Đáp án A | Đáp án B | Đáp án C | Đáp án D | Đáp án đúng | Lời giải | Gợi ý. Nhóm tuổi và ngôn ngữ dùng lựa chọn bên dưới; không cần thêm vào file."),
+        "excelImportButton" to ("Chọn file Excel / CSV / TSV"),
         "excelImportAgeBandLabel" to ("Áp dụng cho nhóm tuổi"),
         "excelImportLanguageLabel" to ("Ngôn ngữ nội dung"),
-        "excelImportSampleLink" to ("Mở file mẫu trên Google Sheets"),
+        "excelImportTemplateCopy" to ("Sao chép mẫu để dán vào Excel / Sheets"),
+        "excelImportTemplateCopied" to ("Đã sao chép mẫu. Hãy dán vào Excel hoặc Google Sheets rồi điền câu hỏi."),
         "excelImportSuccess" to ("Đã nhập %d câu hỏi (bỏ qua %d dòng lỗi, %d câu trùng)."),
         "excelImportErrorEmpty" to ("File trống."),
         "excelImportErrorOldFormat" to ("Chưa hỗ trợ file .xls cũ. Hãy lưu sang .xlsx hoặc .csv."),
@@ -707,13 +711,13 @@ val ViStrings = Strings(
         "deleteAllQuestionsSuccess" to ("Đã xóa %d câu hỏi. Cổng đố vui sẽ dùng câu hỏi tự sinh."),
         "deleteAllQuestionsError" to ("Không thể xóa ngân hàng câu hỏi."),
         "notifBrokenTitle" to ("Cần kiểm tra quyền"),
-        "notifBrokenContent" to ("Dịch vụ Trợ năng đang tắt — mở Quiz Gate để sửa."),
+        "notifBrokenContent" to ("Dịch vụ Trợ năng đang tắt — mở QuizLock để sửa."),
         "notifNoProfile" to ("Chưa có hồ sơ trẻ"),
         "notifWatchingTitle" to ("Đang canh chừng thời gian màn hình"),
         "notifProtectionActive" to ("Bảo vệ hoạt động"),
         "notifParentModeRemaining" to ("Parent Mode: Còn %d phút"),
         "notifWatchProgress" to ("%s: Đã xem %d phút / %d phút"),
-        "notifTitle" to ("Quiz Gate đang bảo vệ"),
+        "notifTitle" to ("QuizLock đang bảo vệ"),
     )
 )
 
@@ -756,7 +760,7 @@ val EnStrings = Strings(
         "activeChildBadge" to ("Current Child Watching"),
         "switchChild" to ("Switch"),
         "todayWatchTime" to ("Today's Screen Time"),
-        "gatesPassed" to ("Quiz Gates Cleared"),
+        "gatesPassed" to ("QuizLocks Cleared"),
         "quizSolvedLabel" to ("Correct Answers"),
         "starsLabel" to ("Stars"),
         "quizAccuracy" to ("Quiz Accuracy"),
@@ -769,7 +773,7 @@ val EnStrings = Strings(
         "emergencyQuick30m" to ("Pause 30m"),
         "emergencyQuick1h" to ("Pause 1h"),
         "emergencyQuick2h" to ("Pause 2h"),
-        "testGateButton" to ("Test Quiz Gate"),
+        "testGateButton" to ("Test QuizLock"),
         "systemStatusRunning" to ("Protection system is active"),
         "systemStatusAttention" to ("Requires system permissions check"),
         "band4to6Short" to ("Ages 4–6"),
@@ -852,7 +856,7 @@ val EnStrings = Strings(
         "importQuestionsUrlPlaceholder" to ("https://example.com/questions.json"),
         "importQuestionsButton" to ("Download & Import"),
         "restoreStarterQuestions" to ("Restore Starter Question Pack"),
-        "exclusionsDesc" to ("Educational or emergency calling apps that are never blocked by Quiz Gate."),
+        "exclusionsDesc" to ("Educational or emergency calling apps that are never blocked by QuizLock."),
         "exclusionsCardTitle" to ("Excluded apps (not counted)"),
         "exclusionsCardDesc" to ("Enable for learning, online-class or reading apps so they never count against screen time."),
         "searchAppsPlaceholder" to ("Search applications..."),
@@ -883,7 +887,7 @@ val EnStrings = Strings(
         "pinMustBe6Digits" to ("PIN must be exactly 6 digits."),
         "pinMismatch" to ("PIN confirmation does not match."),
         "saveNewPin" to ("Save New PIN"),
-        "onboardingWelcomeTitle" to ("Welcome to Quiz Gate!"),
+        "onboardingWelcomeTitle" to ("Welcome to QuizLock!"),
         "onboardingWelcomeSubtitle" to ("A smart parental control tool helping balance screen time with educational quiz gates."),
         "onboardingStartButton" to ("Start Setup (5 min)"),
         "onboardingBullet1" to ("Automatically pauses screen after X minutes for an educational quiz."),
@@ -898,7 +902,7 @@ val EnStrings = Strings(
         "onboardingProfileTitle" to ("Child Profile & Rules"),
         "onboardingProfileSubtitle" to ("Set up initial child profile, control policy, and quiz interval."),
         "onboardingReadyTitle" to ("All Set & Ready!"),
-        "onboardingReadySubtitle" to ("Quiz Gate is ready to protect screen time.\nYou can customize hours and app exclusions in Settings anytime."),
+        "onboardingReadySubtitle" to ("QuizLock is ready to protect screen time.\nYou can customize hours and app exclusions in Settings anytime."),
         "onboardingFinishButton" to ("Enter Parent Dashboard"),
         "onboardingPermissionsTitle" to ("Required monitoring permissions"),
         "onboardingPermissionsSubtitle" to ("To count screen time and show quiz gates over YouTube/Games, the app needs these permissions:"),
@@ -945,7 +949,7 @@ val EnStrings = Strings(
         "privacyHeroTitle" to ("100% On-device & Private"),
         "privacyHeroSubtitle" to ("No servers, no personal data collection, no ads."),
         "privacySection1Title" to ("1. Data collection & storage"),
-        "privacySection1Body" to ("Quiz Gate follows an On-device First principle:\n" +
+        "privacySection1Body" to ("QuizLock follows an On-device First principle:\n" +
         "• All child profiles, screen time and quiz history are stored locally in an SQLite (Room) database on your device.\n" +
         "• The app does NOT transmit any personally identifying information (name, age, learning results) to third-party servers or the cloud.\n" +
         "• No tracking cookies, Google Analytics or commercial advertising SDKs are used."),
@@ -960,17 +964,17 @@ val EnStrings = Strings(
         "privacySection4Title" to ("4. Right to delete data"),
         "privacySection4Body" to ("Parents have full control over their data:\n" +
         "• You can delete a child profile and reset quiz history directly in the app.\n" +
-        "• Uninstalling Quiz Gate permanently removes 100% of the related data from the device."),
-        "tosHeroTitle" to ("Quiz Gate Terms of Use"),
+        "• Uninstalling QuizLock permanently removes 100% of the related data from the device."),
+        "tosHeroTitle" to ("QuizLock Terms of Use"),
         "tosHeroSubtitle" to ("A companion tool for parents building healthy digital habits"),
         "tosSection1Title" to ("1. Purpose of the app"),
-        "tosSection1Body" to ("Quiz Gate is designed as an educational tool that combines parental control and screen-time gating. Instead of strict prohibition, the app encourages children to practise math, language and logic in exchange for positive entertainment time."),
+        "tosSection1Body" to ("QuizLock is designed as an educational tool that combines parental control and screen-time gating. Instead of strict prohibition, the app encourages children to practise math, language and logic in exchange for positive entertainment time."),
         "tosSection2Title" to ("2. Parent responsibilities"),
         "tosSection2Body" to ("• Parents are responsible for keeping the 6-digit PIN secure and storing the recovery code safely.\n" +
         "• Parents should discuss viewing limits and quiz strategies with their child to build family consensus.\n" +
         "• Do not share the PIN with children so the screen-time protection works effectively."),
         "tosSection3Title" to ("3. Limitation of liability"),
-        "tosSection3Body" to ("• Quiz Gate is a family assistance tool provided in good faith. It does not fully replace direct parental supervision.\n" +
+        "tosSection3Body" to ("• QuizLock is a family assistance tool provided in good faith. It does not fully replace direct parental supervision.\n" +
         "• Question content is compiled to suit Vietnamese primary and preschool curricula. Parents may customise or import additional questions for their own learning needs."),
         "gateQuizWith" to ("Quiz time with"),
         "gateSubmit" to ("Submit Answer"),
@@ -989,7 +993,7 @@ val EnStrings = Strings(
         "gateVictorySubtitle" to ("You answered correctly!"),
         "gateVictoryDefaultExplanation" to ("Congratulations, you got it right!"),
         "gateReturning" to ("Returning to your app..."),
-        "gateParentModalTitle" to ("Unlock Quiz Gate"),
+        "gateParentModalTitle" to ("Unlock QuizLock"),
         "gateParentModalSubtitle" to ("Enter the PIN to dismiss the gate or start Parent Mode"),
         "gateUnlockDesc" to ("Parent unlock"),
         "gateReadQuestionDesc" to ("Read the question aloud"),
@@ -1011,10 +1015,10 @@ val EnStrings = Strings(
         "bandGroup7to9" to ("Ages 7–9"),
         "bandGroup10to12" to ("Ages 10–12"),
         "updateFromUrlTitle" to ("Update from URL (JSON)"),
-        "updateFromUrlDesc" to ("Enter a direct HTTP/HTTPS link to a question JSON file. It will be downloaded and merged into the local database without losing progress."),
+        "updateFromUrlDesc" to ("Enter a direct HTTPS link to a question JSON file. It will be downloaded and merged into the local database without losing progress."),
         "urlFieldLabel" to ("URL of the question JSON file"),
         "fillSampleLink" to ("Fill sample link"),
-        "invalidUrlMessage" to ("Please enter a valid URL starting with https:// or http://"),
+        "invalidUrlMessage" to ("Please enter a valid HTTPS URL starting with https://."),
         "importSuccess" to ("Loaded %d questions into the bank!"),
         "importFailed" to ("Update failed: %s"),
         "networkError" to ("Network error"),
@@ -1024,15 +1028,17 @@ val EnStrings = Strings(
         "restoreDataDesc" to ("Restore the built-in 200-question starter pack (Math, Language, Logic)."),
         "restoreSuccess" to ("Restored %d default questions!"),
         "restoreButton" to ("Restore the 200 starter questions"),
-        "jsonFormatTitle" to ("Standard question JSON format"),
+        "jsonFormatTitle" to ("Advanced format (JSON / URL)"),
         "collapse" to ("Collapse"),
         "showSample" to ("Show sample"),
         "excelImportTitle" to ("Import questions from Excel"),
-        "excelImportDesc" to ("Choose an .xlsx or .csv file with columns: Question, A, B, C, D, Correct, Description. Rows without a valid answer are skipped."),
-        "excelImportButton" to ("Choose Excel / CSV file"),
+        "excelImportDesc" to ("Easiest option: open Excel or Google Sheets, paste the template, then enter one question per row. Question, at least 2 options and the correct answer are required. .xlsx, .csv, .tsv and tab-separated CSV are supported."),
+        "excelImportFormatHint" to ("Recommended columns: Question | Answer A | Answer B | Answer C | Answer D | Correct answer | Explanation | Hint. Choose age band and language below; they do not need to be in the file."),
+        "excelImportButton" to ("Choose Excel / CSV / TSV file"),
         "excelImportAgeBandLabel" to ("Apply to age band"),
         "excelImportLanguageLabel" to ("Content language"),
-        "excelImportSampleLink" to ("Open template in Google Sheets"),
+        "excelImportTemplateCopy" to ("Copy a template for Excel / Sheets"),
+        "excelImportTemplateCopied" to ("Template copied. Paste it into Excel or Google Sheets, then enter your questions."),
         "excelImportSuccess" to ("Imported %d questions (skipped %d invalid rows, %d duplicates)."),
         "excelImportErrorEmpty" to ("The file is empty."),
         "excelImportErrorOldFormat" to ("Legacy .xls files aren't supported. Save as .xlsx or .csv."),
@@ -1047,13 +1053,13 @@ val EnStrings = Strings(
         "deleteAllQuestionsSuccess" to ("Deleted %d questions. Quiz gates will use generated questions."),
         "deleteAllQuestionsError" to ("Could not delete the question bank."),
         "notifBrokenTitle" to ("Permission needed"),
-        "notifBrokenContent" to ("Accessibility is off — open Quiz Gate to fix it."),
+        "notifBrokenContent" to ("Accessibility is off — open QuizLock to fix it."),
         "notifNoProfile" to ("No child profile yet"),
         "notifWatchingTitle" to ("Monitoring screen time"),
         "notifProtectionActive" to ("Protection active"),
         "notifParentModeRemaining" to ("Parent Mode: %d minutes left"),
         "notifWatchProgress" to ("%s: Watched %d min / %d min"),
-        "notifTitle" to ("Quiz Gate is protecting"),
+        "notifTitle" to ("QuizLock is protecting"),
     )
 )
 

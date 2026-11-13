@@ -16,7 +16,10 @@
 local.properties
 .env
 debug.keystore
+*.jks
+*.keystore
+keystore.properties
 /.aistudio
 /.issues
 /.commandcode
-/public/assets/aistudio
+/public

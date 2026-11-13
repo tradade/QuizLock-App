@@ -411,7 +411,7 @@ fun DashboardScreen(
             }
         }
 
-        // Quick Test Quiz Gate preview
+        // Quick Test QuizLock preview
         Card(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp),

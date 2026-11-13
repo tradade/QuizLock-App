@@ -30,8 +30,8 @@ class QuizGateApplication : Application() {
                 // Seed starter pack if fresh database
                 StarterPackImporter.importIfNeeded(this@QuizGateApplication, database)
 
-                // Seed default exclusion for Quiz Gate itself
-                repository.addExclusion(packageName, "Quiz Gate")
+                // Seed default exclusion for QuizLock itself
+                repository.addExclusion(packageName, "QuizLock")
 
                 // Start the watchdog only after setup. Onboarding starts it when finished.
                 if (repository.isPinConfigured()) {

@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-   Sample backup rules file; uncomment and customize as necessary.
-   See https://developer.android.com/guide/topics/data/autobackup
-   for details.
-   Note: This file is ignored for devices older than API 31
-   See https://developer.android.com/about/versions/12/backup-restore
--->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Defense in depth: the app has allowBackup=false, and this file also excludes
+     the local database and preferences from any legacy backup transport. -->
 <full-backup-content>
-    <!--
-   <include domain="sharedpref" path="."/>
-   <exclude domain="sharedpref" path="device.xml"/>
--->
+    <exclude domain="database" path="quizgate.db" />
+    <exclude domain="database" path="quizgate.db-wal" />
+    <exclude domain="database" path="quizgate.db-shm" />
+    <exclude domain="sharedpref" path="." />
 </full-backup-content>
